@@ -1,0 +1,19 @@
+{
+  "name": "online-yokocho-front",
+  "version": "1.0.0",
+  "description": "オンライン横丁のフロントエンドアプリケーション",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Re-eRA/online-yokocho-front.git"
+  },
+  "author": "Re-eRA",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Re-eRA/online-yokocho-front/issues"
+  },
+  "homepage": "https://github.com/Re-eRA/online-yokocho-front#readme"
+}
