@@ -4,6 +4,7 @@
   "description": "オンライン横丁のフロントエンドアプリケーション",
   "main": "index.js",
   "scripts": {
+    "dev": "live-server . --host=0.0.0.0 --ignore=.git",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
