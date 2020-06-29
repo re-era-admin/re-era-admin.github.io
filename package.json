@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "live-server . --host=0.0.0.0 --ignore=.git",
+    "lint": "./node_modules/htmllint-cli/bin/cli.js **/*.html |  grep -v node_modules && ./node_modules/csslint/dist/cli.js **/*.css",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -16,5 +17,10 @@
   "bugs": {
     "url": "https://github.com/Re-eRA/online-yokocho-front/issues"
   },
-  "homepage": "https://github.com/Re-eRA/online-yokocho-front#readme"
+  "homepage": "https://github.com/Re-eRA/online-yokocho-front#readme",
+  "devDependencies": {
+    "csslint": "^1.0.5",
+    "htmllint": "^0.8.0",
+    "htmllint-cli": "0.0.7"
+  }
 }
