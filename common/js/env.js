@@ -2,7 +2,7 @@ const ENV_VARS = {
   ENV_NAME: "staging",
   ENV_TEXT: "開発環境",
   CONTEXT_PATH: "https://cranky-bell-765f86.netlify.app/",
-  BACKEND_CONTEXT_PATH: "https://stg-online-yokocho.herokuapp.com/",
+  AP_CONTEXT_PATH: "https://stg-online-yokocho.herokuapp.com",
 };
 
 let COM_FUNC = {

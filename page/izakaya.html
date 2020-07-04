@@ -5,10 +5,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="/css/izakaya.css" />
     <script defer src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script defer type="module" src="/js/izakaya.js"></script>
     <title>店舗一覧</title>
   </head>
   <body>
     <h1>店舗一覧</h1>
-    <script src="/js/izakaya.js"></script>
+    <hr />
+    <div class="container">
+      <div id="izakaya-list" class="izakaya-list">
+        <div
+          :id="item.id"
+          class="izakaya-box"
+          v-for="(item , index) in izakaya_list"
+        >
+          <h2 class="izakaya-name">店舗名：{{ item.izakayaName }}</h2>
+          <img src="https://placehold.jp/200x200.png" alt="" id="owner-icon" />
+          <p class="owner-name">店主：{{ item.ownerName }}</p>
+          <p class="genre">トークジャンル：{{ item.talkGenre }}</p>
+          <p class="hitokoto">店主より一言：{{ item.hitokoto }}</p>
+          <p class="price">1時間あたりのお値段：¥{{ item.pricePerHour }}</p>
+        </div>
+      </div>
+    </div>
   </body>
 </html>
