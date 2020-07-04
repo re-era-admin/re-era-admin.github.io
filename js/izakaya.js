@@ -32,10 +32,9 @@ let datas;
   // ---------------------------------------------------------------------------
 
   function getIzakayaList() {
-    // fetch(IZAKAYA_ENDPOINT, {
-    fetch("http://localhost:8082/store/", {
+    fetch(IZAKAYA_ENDPOINT, {
       method: "GET",
-      // mode: "cors",
+      mode: "cors",
     })
       .then((response) => {
         if (!response.ok) {
