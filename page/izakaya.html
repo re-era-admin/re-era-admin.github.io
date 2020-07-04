@@ -19,6 +19,10 @@
           class="izakaya-box"
           v-for="(item , index) in izakaya_list"
         >
+          <a
+            class="detail-link"
+            :href="'/page/detail.html?id=' + item.izakayaId"
+          ></a>
           <h2 class="izakaya-name">店舗名：{{ item.izakayaName }}</h2>
           <img src="https://placehold.jp/200x200.png" alt="" id="owner-icon" />
           <p class="owner-name">店主：{{ item.ownerName }}</p>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/detail.css" />
+    <script defer src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script defer type="module" src="/js/detail.js"></script>
+    <title>店舗の詳細</title>
+  </head>
+  <body>
+    <h1>店舗の詳細</h1>
+    <hr />
+    <div class="container">
+      <div id="izakaya-box" class="izakaya-box">
+        <a class="charge-link" href="/page/buy.html"></a>
+        <h2 class="izakaya-name">店舗名：{{ izakaya.izakayaName }}</h2>
+        <img src="https://placehold.jp/200x200.png" alt="" id="owner-icon" />
+        <p class="owner-name">店主：{{ izakaya.ownerName }}</p>
+        <p class="genre">トークジャンル：{{ izakaya.talkGenre }}</p>
+        <p class="hitokoto">店主より一言：{{ izakaya.hitokoto }}</p>
+        <p class="price">1時間あたりのお値段：¥{{ izakaya.pricePerHour }}</p>
+      </div>
+    </div>
+  </body>
+</html>
