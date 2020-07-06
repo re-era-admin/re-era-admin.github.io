@@ -24,7 +24,12 @@
             :href="'/page/detail.html?id=' + item.izakayaId"
           ></a>
           <h2 class="izakaya-name">店舗名：{{ item.izakayaName }}</h2>
-          <img src="https://placehold.jp/200x200.png" alt="" id="owner-icon" />
+          <img
+            class="owner-icon"
+            :src="item.ownerImageUrl"
+            alt=""
+            id="owner-icon"
+          />
           <p class="owner-name">店主：{{ item.ownerName }}</p>
           <p class="genre">トークジャンル：{{ item.talkGenre }}</p>
           <p class="hitokoto">店主より一言：{{ item.hitokoto }}</p>

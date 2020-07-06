@@ -12,6 +12,11 @@ a.charge-link {
   z-index: 3;
 }
 
+img.owner-icon {
+  width: 20vw;
+  object-fit: scale-down;
+}
+
 * {
   outline: solid 0.8px gainsboro;
 }
