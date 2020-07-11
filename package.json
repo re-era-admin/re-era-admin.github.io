@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "echo \"コンテンツは https://localhost.re-era.tech:8080/ で確認できます。\n 下の127.〜は無視してください. \" && live-server . --host=0.0.0.0 --ignore='.git/**' --https=https.conf.js --no-browser",
-    "lint": "./node_modules/htmllint-cli/bin/cli.js **/*.html |  grep -v node_modules && ./node_modules/csslint/dist/cli.js **/*.css"
+    "lint": "./node_modules/htmllint-cli/bin/cli.js *.html page/*.html && ./node_modules/csslint/dist/cli.js **/*.css"
   },
   "repository": {
     "type": "git",
