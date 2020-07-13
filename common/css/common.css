@@ -1,0 +1,81 @@
+:root {
+  /** グローバル変数 */
+  --primary-color: #48a2b9; /** 強調色 */
+  --background-color: #000000; /** 基本背景色*/
+  --text-color: #ffffff; /** 基本文字色 */
+  --light-text-color: #707070; /** 薄め文字色 */
+}
+
+html,
+body {
+  width: 100%;
+  margin: 0px;
+  font-family: "Noto Serif JP", serif;
+  color: var(--text-color);
+  background-color: var(--background-color);
+}
+/* 日本語フォントの字詰め調整 */
+body {
+  -webkit-text-size-adjust: 100%;
+  font-feature-settings: "palt";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+@media screen and (-webkit-min-device-pixel-ratio: 0) {
+  ::i-block-chrome,
+  body {
+    font-feature-settings: "pkna";
+  }
+}
+
+/* ===== リセットCSS =====  */
+h1,
+h2,
+h3,
+p {
+  margin: 0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* iOSでのSubmitボタンのスタイルをリセット */
+input[type="submit"],
+input[type="button"] {
+  -webkit-box-sizing: content-box;
+  -webkit-appearance: button;
+  appearance: button;
+  border: none;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+input[type="submit"]::-webkit-search-decoration,
+input[type="button"]::-webkit-search-decoration {
+  display: none;
+}
+input[type="submit"]::focus,
+input[type="button"]::focus {
+  outline-offset: -2px;
+}
+
+img {
+  /* Chrome系における画像ボケ対策 */
+  -webkit-backface-visibility: hidden;
+}
+
+/* レスポンシブ改行位置調整クラス */
+br.sp_bk {
+  display: none;
+}
+br.pc_bk {
+  display: inline;
+}
+
+/* ===== マージン用div まとめて宣言 =====  */
+.m-w5v {
+  width: 5vw;
+}
+.m-h5v {
+  height: 5vw;
+}

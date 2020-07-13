@@ -1,6 +1,6 @@
 # オンライン横丁 フロントエンド
 
-## URL
+## デプロイ先URL
 
 * masterブランチのデプロイ環境
   * https://cranky-bell-765f86.netlify.app/
@@ -17,20 +17,20 @@ $ npm install
 
 ## ローカルサーバ立ち上げ
 
-ローカル確認用のWebサーバに`live-server` というものを使用しています。
+ローカル確認用のWebサーバに `live-server`  というものを使用しています。
 以下のコマンドでインストールしてください。
 ` $ npm install -g live-server` 
 
 ```console:bash
 ❯ npm run dev
 
-> online-yokocho-front@1.0.0 dev (git cloneディレクトリ)
-> live-server . --host=0.0.0.0 --ignore=.git
+> echo "コンテンツは https://localhost.re-era.tech:8080/ で確認できます。
+ 下の127.〜は無視してください. " && live-server . --host=0.0.0.0 --ignore='.git/**' --https=https.conf.js --no-browser
 
-Serving "." at http://127.0.0.1:8080
-Ready for changes
+コンテンツは https://localhost.re-era.tech:8080/ で確認できます。
+ 下の127.〜は無視してください.
 
-(localhost:8080/ で確認できる)
+(-> localhost.re-era.tech:8080/ で確認できる)
 ```
 
 ## 環境差異の扱い
