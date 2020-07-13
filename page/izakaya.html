@@ -8,15 +8,49 @@
     <script defer src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script defer type="module" src="/js/izakaya.js"></script>
+    <script>
+      (function (d) {
+        var config = {
+            kitId: "bwu7gyp",
+            scriptTimeout: 3000,
+            async: true,
+          },
+          h = d.documentElement,
+          t = setTimeout(function () {
+            h.className =
+              h.className.replace(/\bwf-loading\b/g, "") + " wf-inactive";
+          }, config.scriptTimeout),
+          tk = d.createElement("script"),
+          f = false,
+          s = d.getElementsByTagName("script")[0],
+          a;
+        h.className += " wf-loading";
+        tk.src = "https://use.typekit.net/" + config.kitId + ".js";
+        tk.async = true;
+        tk.onload = tk.onreadystatechange = function () {
+          a = this.readyState;
+          if (f || (a && a != "complete" && a != "loaded")) return;
+          f = true;
+          clearTimeout(t);
+          try {
+            Typekit.load(config);
+          } catch (e) {}
+        };
+        s.parentNode.insertBefore(tk, s);
+      })(document);
+    </script>
     <title>店舗一覧</title>
   </head>
   <body>
     <header id="header">
       <img class="header-img" src="/asset/image/header-out.png" />
     </header>
+    <div class="m-h60v"></div>
     <section id="section">
-      <div class="m-w5v"></div>
+      <div class="m-w16_5v"></div>
       <div class="container">
+        <p class="navi-text">↓クリックで詳細表示↓</p>
+        <div class="m-h6v"></div>
         <div id="izakaya-content" class="izakaya-content">
           <div
             :id="item.id"
@@ -28,23 +62,41 @@
                 class="detail-link"
                 :href="'/page/detail.html?id=' + item.izakayaId"
               ></a>
-              <h2 class="izakaya-name">店舗名：{{ item.izakayaName }}</h2>
+              <div class="m-h6_5v"></div>
               <img
                 class="owner-icon"
                 :src="item.ownerImageUrl"
                 alt=""
                 id="owner-icon"
               />
-              <p class="owner-name">店主：{{ item.ownerName }}</p>
-              <p class="genre">トークジャンル：{{ item.talkGenre }}</p>
-              <p class="hitokoto">店主より一言：{{ item.hitokoto }}</p>
-              <p class="price">1時間あたりのお値段：¥{{ item.pricePerHour }}</p>
+              <h2 class="izakaya-name">{{ item.izakayaName }}</h2>
+              <p class="izakaya-info genre">
+                【トークジャンル】<br />{{ item.talkGenre }}
+              </p>
+              <p class="izakaya-info owner-name">
+                【店主】<br />{{ item.ownerName }}
+              </p>
+              <p class="izakaya-info hitokoto">
+                【店主より】<br />{{ item.hitokoto }}
+              </p>
+              <div class="izakaya-tags">
+                <p class="price">¥{{ item.pricePerHour }} / 40分</p>
+                <div class="congestion-item">
+                  <img
+                    class="congestion-icon"
+                    src="/asset/image/Icon_ionic-md-person.png"
+                  />
+                  <span class="izakaya-congesiton">3/4</span>
+                </div>
+                <p class="entry-available vacancy">入店可</p>
+              </div>
+              <div class="m-h6_5v"></div>
             </div>
-            <div class="m-h5v"></div>
+            <div class="m-h13v"></div>
           </div>
         </div>
       </div>
-      <div class="m-w5v"></div>
+      <div class="m-w16_5v"></div>
     </section>
   </body>
 </html>

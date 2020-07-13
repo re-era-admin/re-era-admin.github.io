@@ -10,9 +10,10 @@ html,
 body {
   width: 100%;
   margin: 0px;
-  font-family: "Noto Serif JP", serif;
+  font-family: "Kozuka Gothic Pro", sans-serif;
   color: var(--text-color);
   background-color: var(--background-color);
+  line-height: 2;
 }
 /* 日本語フォントの字詰め調整 */
 body {
@@ -73,9 +74,27 @@ br.pc_bk {
 }
 
 /* ===== マージン用div まとめて宣言 =====  */
+/* 横方向マージン  */
 .m-w5v {
   width: 5vw;
 }
+.m-w16_5v {
+  width: 16.5vw;
+}
+
+/* 縦方向マージン  */
 .m-h5v {
   height: 5vw;
+}
+.m-h6v {
+  height: 6vw;
+}
+.m-h6_5v {
+  height: 6.5vw;
+}
+.m-h13v {
+  height: 13vw;
+}
+.m-h60v {
+  height: 60vw;
 }
