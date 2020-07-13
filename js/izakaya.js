@@ -47,7 +47,7 @@ let datas;
         datas = data;
 
         var vm = new Vue({
-          el: "#izakaya-list",
+          el: "#izakaya-content",
           data: {
             izakaya_list: [],
           },
