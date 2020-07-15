@@ -21,12 +21,21 @@ import { ENV_VARS, COM_FUNC } from "/common/js/env.js";
     console.log("id :", izakayaId);
 
     getIzakaya(izakayaId);
+
+    document
+      .getElementById("link-out")
+      .addEventListener("click", handlers.clickBuyLink);
   });
 
   // ===========================================================================
   // イベントハンドラ関数定義
   // ---------------------------------------------------------------------------
 
+  var handlers = {
+    clickBuyLink: function (e) {
+      window.location.href = "/page/izakaya.html";
+    },
+  };
   // ===========================================================================
   // 関数定義 (イベントハンドラ以外)
   // ---------------------------------------------------------------------------
@@ -45,7 +54,7 @@ import { ENV_VARS, COM_FUNC } from "/common/js/env.js";
       .then((data) => {
         console.log(data);
         var vm = new Vue({
-          el: "#izakaya-box",
+          el: "#izakaya-content",
           data: {
             izakaya: [],
           },

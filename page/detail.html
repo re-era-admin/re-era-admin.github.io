@@ -4,24 +4,122 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="/css/detail.css" />
+    <link rel="stylesheet" href="/common/css/common.css" />
     <script defer src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script defer type="module" src="/js/detail.js"></script>
-    <title>店舗の詳細</title>
+    <script>
+      (function (d) {
+        var config = {
+            kitId: "bwu7gyp",
+            scriptTimeout: 3000,
+            async: true,
+          },
+          h = d.documentElement,
+          t = setTimeout(function () {
+            h.className =
+              h.className.replace(/\bwf-loading\b/g, "") + " wf-inactive";
+          }, config.scriptTimeout),
+          tk = d.createElement("script"),
+          f = false,
+          s = d.getElementsByTagName("script")[0],
+          a;
+        h.className += " wf-loading";
+        tk.src = "https://use.typekit.net/" + config.kitId + ".js";
+        tk.async = true;
+        tk.onload = tk.onreadystatechange = function () {
+          a = this.readyState;
+          if (f || (a && a != "complete" && a != "loaded")) return;
+          f = true;
+          clearTimeout(t);
+          try {
+            Typekit.load(config);
+          } catch (e) {}
+        };
+        s.parentNode.insertBefore(tk, s);
+      })(document);
+    </script>
+    <title>店舗詳細</title>
   </head>
   <body>
-    <h1>店舗の詳細</h1>
-    <hr />
-    <div class="container">
-      <div id="izakaya-box" class="izakaya-box">
-        <a class="charge-link" href="/page/buy.html"></a>
-        <h2 class="izakaya-name">店舗名：{{ izakaya.izakayaName }}</h2>
-        <img class="owner-icon" :src="izakaya.ownerImageUrl" id="owner-icon" />
-        <p class="owner-name">店主：{{ izakaya.ownerName }}</p>
-        <p class="genre">トークジャンル：{{ izakaya.talkGenre }}</p>
-        <p class="hitokoto">店主より一言：{{ izakaya.hitokoto }}</p>
-        <p class="price">1時間あたりのお値段：¥{{ izakaya.pricePerHour }}</p>
+    <header id="header">
+      <div>
+        <img
+          id="link-out"
+          class="header-img"
+          src="/asset/image/header-out.png"
+        />
       </div>
-    </div>
+    </header>
+    <div class="m-h60v"></div>
+    <section id="section">
+      <div class="m-w16_5v"></div>
+      <div class="container">
+        <div id="izakaya-content" class="izakaya-content">
+          <div class="izakaya-box">
+            <div class="izakaya-overview">
+              <div class="owner-icon">
+                <img :src="izakaya.ownerImageUrl" id="owner-icon" />
+              </div>
+              <div class="m-h4_5v"></div>
+              <div class="izakaya-name">
+                <h2>{{ izakaya.izakayaName }}</h2>
+              </div>
+              <div class="m-h6v"></div>
+              <div class="izakaya-tags">
+                <div class="price">
+                  <p>¥{{ izakaya.pricePerHour }} / 40分</p>
+                </div>
+                <div class="m-w3v"></div>
+                <div class="congestion-item">
+                  <div class="congestion-icon">
+                    <img src="/asset/image/Icon_ionic-md-person.png" />
+                  </div>
+                  <div class="congesiton-text">
+                    <p>3/4</p>
+                  </div>
+                </div>
+                <div class="m-w3v"></div>
+                <div class="entry-available vacancy">
+                  <p class="">入店可</p>
+                </div>
+              </div>
+            </div>
+            <div class="m-h4_5v"></div>
+            <div class="profile-title">
+              <p>店主のプロフィール</p>
+            </div>
+            <div class="m-h4_5v"></div>
+            <div class="owner-name">
+              <p>店主： {{ izakaya.ownerName }}</p>
+            </div>
+            <div class="genre">
+              <p>トークジャンル： {{ izakaya.talkGenre }}</p>
+            </div>
+            <div class="m-h4_5v"></div>
+            <div class="description-title">
+              <p>お店の説明</p>
+            </div>
+            <div class="description-text">
+              <p>{{ izakaya.description }}</p>
+            </div>
+          </div>
+          <div class="m-h2v"></div>
+          <div class="buy-content">
+            <div class="charge-link">
+              <a href="/page/buy.html">チケットを購入する</a>
+            </div>
+            <div class="info-text">
+              <p>
+                購入後すぐにZoomのURLが届きます。<br />チケットの有効時間カウントダウンはZoomでトークルームに<br />
+                入った時点からのカウントです。
+              </p>
+            </div>
+          </div>
+          <div class="m-h5v"></div>
+        </div>
+      </div>
+      <div class="m-w16_5v"></div>
+    </section>
   </body>
 </html>

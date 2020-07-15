@@ -1,22 +1,116 @@
+body {
+  min-height: 100vh;
+  background-image: url(/asset/image/background-img.png);
+  background-size: cover;
+  background-position-x: center;
+  background-position-y: top;
+  background-attachment: fixed;
+}
+
+/** ヘッダー構築部 */
+header#header {
+  width: 100vw;
+  height: 0;
+  position: sticky;
+  z-index: 30;
+  top: 0;
+}
+.header-img {
+  width: 100vw;
+}
+#link-out:hover {
+  cursor: pointer;
+}
+
+/** コンテンツ部 */
+section#section {
+  display: flex;
+  flex-direction: row;
+}
+div.container {
+  width: 67vw;
+}
 div.izakaya-box {
   position: relative;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+}
+.izakaya-overview {
+  border: 1px solid white;
+  padding: 6.6vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.description-text > p {
+  font-size: 2.4vw;
+}
+.charge-link {
+  width: 75.5vw;
+  background-color: var(--strong-color);
+  text-align: center;
+}
+.charge-link > a {
+  display: block;
+  font-size: 5.3vw;
+  color: white;
+  text-decoration: none;
+}
+.info-text > p {
+  font-size: 2.4vw;
 }
 
-a.charge-link {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  text-indent: -999px;
-  z-index: 3;
-}
-
-img.owner-icon {
-  width: 20vw;
+.owner-icon > img {
+  max-width: 25.3vw;
+  max-height: 25.3vw;
   object-fit: scale-down;
 }
 
+.izakaya-tags {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+}
+.price {
+  height: 20px;
+  padding: 0 2vw;
+  background-color: var(--strong-color);
+  line-height: 1.6;
+}
+.price > p {
+  font-size: 3.7vw;
+}
+.congestion-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.congestion-icon > img {
+  width: 3.7vw;
+  object-fit: contain;
+}
+.congesiton-text > p {
+  font-size: 3.7vw;
+}
+.entry-available > p {
+  font-size: 3.7vw;
+}
+.entry-available.vacancy {
+  color: #00ffc4;
+}
+.entry-available.full {
+  color: var(--strong-color);
+}
+.owner-name > p {
+  font-size: 2.4vw;
+}
+.genre > p {
+  font-size: 2.4vw;
+}
+
 * {
-  outline: solid 0.8px gainsboro;
+  /* outline: solid 0.8px gainsboro; */
 }
