@@ -68,8 +68,10 @@ img.owner-icon {
 .price {
   height: min-content;
   padding: 0 3.2vw;
-  background-color: #ff00d8;
+}
+.price > p {
   line-height: 1.4;
+  background-color: var(--strong-color);
 }
 .congestion-icon {
   width: 3.7vw;
@@ -82,7 +84,7 @@ img.owner-icon {
   color: #00ffc4;
 }
 .entry-available.full {
-  color: #ff00d8;
+  color: var(--strong-color);
 }
 
 * {

@@ -4,6 +4,7 @@
   --background-color: #000000; /** 基本背景色*/
   --text-color: #ffffff; /** 基本文字色 */
   --light-text-color: #707070; /** 薄め文字色 */
+  --strong-color: #ff00d8;
 }
 
 html,
@@ -35,6 +36,13 @@ h2,
 h3,
 p {
   margin: 0;
+  padding: 0;
+}
+
+h1,
+h2,
+h3 {
+  line-height: 1;
 }
 
 * {
@@ -73,8 +81,11 @@ br.pc_bk {
   display: inline;
 }
 
-/* ===== マージン用div まとめて宣言 =====  */
+/* ===== マージン用divのクラス. まとめて宣言 =====  */
 /* 横方向マージン  */
+.m-w3v {
+  width: 3vw;
+}
 .m-w5v {
   width: 5vw;
 }
@@ -83,6 +94,12 @@ br.pc_bk {
 }
 
 /* 縦方向マージン  */
+.m-h2v {
+  height: 2vw;
+}
+.m-h4_5v {
+  height: 4.5vw;
+}
 .m-h5v {
   height: 5vw;
 }
