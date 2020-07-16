@@ -1,69 +1,121 @@
+import $ from "jquery";
+import VueTheMask from "vue-the-mask";
+// import { ENV_VARS, COM_FUNC } from "/common/js/env.js";
+
 (function () {
   "use strict";
 
   // ===========================================================================
   // 共通変数定義
   // ---------------------------------------------------------------------------
-  var checkoutForm = document.getElementById("checkout-form");
+
+  // ===========================================================================
+  // イベントハンドラ関数定義
+  // ---------------------------------------------------------------------------
+
+  var handler = {
+    submitPurchase: function () {
+      var cardInformation = {
+        name: document.querySelector("#cardName").value,
+        number: document.querySelector("#cardNumber").value,
+        expiration_month: document.querySelector("#cardMonth").value,
+        expiration_year: document.querySelector("#cardYear").value,
+        security_code: document.querySelector("#cardCvv").value,
+      };
+      Omise.createToken("card", cardInformation, function (
+        statusCode,
+        response
+      ) {
+        if (statusCode === 200) {
+          // Success: send back the TOKEN_ID to your server. The TOKEN_ID can be
+          // found in `response.id`.
+
+          var emailVal = document.querySelector("#email").value;
+          var izakayaId = document.querySelector("#izakayaId").value;
+
+          let purchaseFormData = new FormData();
+          purchaseFormData.append("omiseToken", response.id);
+          purchaseFormData.append("email", emailVal);
+          purchaseFormData.append("izakayaId", izakayaId);
+
+          fetch("https://localhost.re-era.tech:8443" + "/ticket/buy", {
+            method: "POST",
+            body: purchaseFormData,
+          })
+            .then((response) => response.json())
+            .catch((error) => console.error("Error:", error))
+            .then((response) =>
+              console.log("Success", JSON.stringify(response))
+            );
+        } else {
+          // Error: display an error message. Note that `response.message` contains
+          // a preformatted error message. Also note that `response.code` will be
+          // "invalid_card" in case of validation error on the card.
+        }
+      });
+    },
+  };
 
   // ===========================================================================
   // 初期化関数
   //  - イベントハンドラを設定
   //  - アラートを表示 etc
   // ---------------------------------------------------------------------------
+  $(function init() {
+    var params = new URL(document.location).searchParams;
+    var izakayaId = params.get("id");
 
-  Omise.setPublicKey("pkey_test_5k4953yfhskp2xwoquh");
+    console.log("id :", izakayaId);
 
-  checkoutForm.addEventListener("submit", submitHandler, false);
+    getIzakaya(izakayaId);
 
-  // ===========================================================================
-  // イベントハンドラ関数定義
-  // ---------------------------------------------------------------------------
+    Omise.setPublicKey("pkey_test_5k4953yfhskp2xwoquh");
 
-  // Submit handler for checkout form.
-  function submitHandler(event) {
-    event.preventDefault();
-
-    /*
-      NOTE: Using `data-name` to prevent sending credit card information fields to the backend server via HTTP Post
-      (according to the security best practice https://www.omise.co/security-best-practices#never-send-card-data-through-your-servers).
-      */
-    var cardInformation = {
-      name: document.querySelector('[data-name="nameOnCard"]').value,
-      number: document.querySelector('[data-name="cardNumber"]').value,
-      expiration_month: document.querySelector('[data-name="expiryMonth"]')
-        .value,
-      expiration_year: document.querySelector('[data-name="expiryYear"]').value,
-      security_code: document.querySelector('[data-name="securityCode"]').value,
-    };
-
-    Omise.createToken("card", cardInformation, function (statusCode, response) {
-      if (statusCode === 200) {
-        // Success: send back the TOKEN_ID to your server. The TOKEN_ID can be
-        // found in `response.id`.
-        checkoutForm.omiseToken.value = response.id;
-
-        checkoutForm.submit();
-      } else {
-        // Error: display an error message. Note that `response.message` contains
-        // a preformatted error message. Also note that `response.code` will be
-        // "invalid_card" in case of validation error on the card.
-      }
-    });
-  }
-
+    document
+      .getElementById("purchase-btn")
+      .addEventListener("click", handler.submitPurchase);
+  });
   // ===========================================================================
   // 関数定義 (イベントハンドラ以外)
   // ---------------------------------------------------------------------------
+
+  function getIzakaya(izakayaId) {
+    fetch("https://localhost.re-era.tech:8443/izakaya/" + izakayaId, {
+      method: "GET",
+      mode: "cors",
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw Error(response.statusText);
+        }
+        return response.json();
+      })
+      .then((data) => {
+        console.log(data);
+        var vm = new Vue({
+          el: "#izakaya-content",
+          data: {
+            izakaya: [],
+          },
+          mounted() {
+            this.izakaya = data;
+          },
+        });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+
   /*
   See on github: https://github.com/muhammederdem/credit-card-form
   */
-
+  Vue.use(VueTheMask);
   new Vue({
     el: "#app",
     data() {
       return {
-        currentCardBackground: Math.floor(Math.random() * 25 + 1), // just for fun :D
+        currentCardBackground: Math.floor(Math.random() * 5 + 1), // just for fun :D
         cardName: "",
         cardNumber: "",
         cardMonth: "",
