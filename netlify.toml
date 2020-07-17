@@ -1,0 +1,8 @@
+[context.production.environment]
+  NODE_ENV = "production"
+
+[context.deploy-preview.environment]
+  NODE_ENV = "staging"
+
+[context.branch-deploy]
+  NODE_ENV = "staging"
