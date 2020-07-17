@@ -18,6 +18,9 @@ header#header {
 .header-img {
   width: 100vw;
 }
+#link-out:hover {
+  cursor: pointer;
+}
 
 /** コンテンツ部 */
 section#section {

@@ -1,0 +1,14 @@
+/** ヘッダー構築部 */
+header#header {
+  width: 100vw;
+  height: 0;
+  position: sticky;
+  z-index: 30;
+  top: 0;
+}
+.header-img {
+  width: 100vw;
+}
+#link-out:hover {
+  cursor: pointer;
+}

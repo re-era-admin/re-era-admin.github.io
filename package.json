@@ -7,6 +7,9 @@
     "dev": "echo \"コンテンツは https://localhost.re-era.tech:8080/ で確認できます。\n 下の127.〜は無視してください. \" && live-server . --host=0.0.0.0 --ignore='.git/**' --https=https.conf.js --no-browser",
     "lint": "./node_modules/htmllint-cli/bin/cli.js *.html page/*.html && ./node_modules/csslint/dist/cli.js **/*.css"
   },
+  "alias": {
+    "vue": "./node_modules/vue/dist/vue.esm.js"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Re-eRA/online-yokocho-front.git"
@@ -19,7 +22,14 @@
   "homepage": "https://github.com/Re-eRA/online-yokocho-front#readme",
   "devDependencies": {
     "csslint": "^1.0.5",
+    "cssnano": "^4.1.10",
     "htmllint": "^0.8.0",
-    "htmllint-cli": "0.0.7"
+    "htmllint-cli": "0.0.7",
+    "license-checker": "^25.0.1"
+  },
+  "dependencies": {
+    "jquery": "^3.5.1",
+    "vue": "^2.6.11",
+    "vue-the-mask": "^0.11.1"
   }
 }

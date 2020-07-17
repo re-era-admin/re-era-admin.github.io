@@ -1,6 +1,8 @@
-import $ from "jquery";
+import Vue from "vue";
 import VueTheMask from "vue-the-mask";
 // import { ENV_VARS, COM_FUNC } from "/common/js/env.js";
+
+import * as jQuery from "jquery";
 
 (function () {
   "use strict";
@@ -61,20 +63,24 @@ import VueTheMask from "vue-the-mask";
   //  - イベントハンドラを設定
   //  - アラートを表示 etc
   // ---------------------------------------------------------------------------
-  $(function init() {
-    var params = new URL(document.location).searchParams;
-    var izakayaId = params.get("id");
+  document.addEventListener(
+    "DOMContentLoaded",
+    function () {
+      var params = new URL(document.location).searchParams;
+      var izakayaId = params.get("id");
 
-    console.log("id :", izakayaId);
+      console.log("id :", izakayaId);
 
-    getIzakaya(izakayaId);
+      getIzakaya(izakayaId);
 
-    Omise.setPublicKey("pkey_test_5k4953yfhskp2xwoquh");
+      Omise.setPublicKey("pkey_test_5k4953yfhskp2xwoquh");
 
-    document
-      .getElementById("purchase-btn")
-      .addEventListener("click", handler.submitPurchase);
-  });
+      document
+        .getElementById("purchase-btn")
+        .addEventListener("click", handler.submitPurchase);
+    },
+    false
+  );
   // ===========================================================================
   // 関数定義 (イベントハンドラ以外)
   // ---------------------------------------------------------------------------

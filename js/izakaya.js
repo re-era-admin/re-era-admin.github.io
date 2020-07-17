@@ -18,14 +18,20 @@ let datas;
   $(function init() {
     getIzakayaList();
 
-    // その他の初期化処理
+    document
+      .getElementById("link-out")
+      .addEventListener("click", handlers.clickBuyLink);
   });
 
   // ===========================================================================
   // イベントハンドラ関数定義
   // ---------------------------------------------------------------------------
 
-  function submitHandler(event) {}
+  var handlers = {
+    clickBuyLink: function (e) {
+      window.location.href = "/index.html";
+    },
+  };
 
   // ===========================================================================
   // 関数定義 (イベントハンドラ以外)
