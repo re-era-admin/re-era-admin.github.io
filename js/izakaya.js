@@ -1,6 +1,8 @@
-import { ENV_VARS, COM_FUNC } from "/common/js/env.js";
+import Vue from "vue";
 
-let datas;
+import jQuery from "jquery";
+window.$ = window.jQuery = jQuery;
+
 (function () {
   "use strict";
 
@@ -8,7 +10,7 @@ let datas;
   // 共通変数定義
   // ---------------------------------------------------------------------------
 
-  const IZAKAYA_ENDPOINT = ENV_VARS.AP_CONTEXT_PATH + "/izakaya/";
+  const IZAKAYA_ENDPOINT = process.env.AP_CONTEXT_PATH + "/izakaya/";
 
   // ===========================================================================
   // 初期化関数
@@ -50,7 +52,6 @@ let datas;
       })
       .then((data) => {
         console.log(data[0]);
-        datas = data;
 
         var vm = new Vue({
           el: "#izakaya-content",
