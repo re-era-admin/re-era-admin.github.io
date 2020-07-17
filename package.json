@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "NODE_ENV=development; parcel *.html --no-source-maps --cert cert.pem --key privkey.pem --host localhost.re-era.tech",
+    "build": "parcel build *.html --no-source-maps",
     "lint": "./node_modules/htmllint-cli/bin/cli.js *.html page/*.html && ./node_modules/csslint/dist/cli.js **/*.css"
   },
   "alias": {
@@ -25,7 +26,8 @@
     "cssnano": "^4.1.10",
     "htmllint": "^0.8.0",
     "htmllint-cli": "0.0.7",
-    "license-checker": "^25.0.1"
+    "license-checker": "^25.0.1",
+    "parcel-bundler": "^1.12.4"
   },
   "dependencies": {
     "jquery": "^3.5.1",
