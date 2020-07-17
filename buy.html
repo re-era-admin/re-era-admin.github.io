@@ -3,6 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/common/css/common.css" />
+    <link rel="stylesheet" href="/css/buy.css" />
     <link rel="stylesheet" href="/css/card-input.css" />
     <link rel="stylesheet" href="/vendor/three-dots/three-dots.min.css" />
     <title>購入</title>
@@ -12,23 +14,33 @@
       <img id="link-out" class="header-img" src="/asset/image/header-out.png" />
     </header>
     <section id="section">
-      <div>
-        <div id="izakaya-content">
-          <div class="izakaya-name">
-            <p>{{ izakaya.izakayaName }}</p>
+      <div class="m-h60v"></div>
+      <div class="container__ticket">
+        <div class="m-w9v"></div>
+        <div class="box__ticket">
+          <div class="box__ticket-inner">
+            <div class="m-h3v"></div>
+            <div class="part__ticket-title square-fill">
+              <p>入店チケット</p>
+            </div>
+            <div class="m-h3v"></div>
+            <div id="box__izakaya" class="box__izakaya">
+              <div class="part__owner-icon">
+                <img :src="izakaya.ownerImageUrl" id="owner-icon" />
+              </div>
+              <div class="part__izakaya-name">
+                <div class="part__izakaya-name-bg">
+                  <p>ENTRANCE TICKET</p>
+                </div>
+                <div class="part__izakaya-name-text">
+                  <p>{{ izakaya.izakayaName }}</p>
+                </div>
+              </div>
+            </div>
           </div>
           <input type="hidden" id="izakayaId" :value="izakaya.izakayaId" />
         </div>
-      </div>
-      <div class="form-group">
-        <label>メールアドレス</label>
-        <input
-          type="mail"
-          id="email"
-          name="email"
-          class="form-control"
-          placeholder="name@example.com"
-        />
+        <div class="m-w9v"></div>
       </div>
       <!-- TODO 参考サイト：https://codepen.io/JavaScriptJunkie/pen/YzzNGeR -->
       <div class="wrapper" id="app">
@@ -44,7 +56,7 @@
                 ></div>
                 <div class="card-item__cover">
                   <img
-                    v-bind:src="'/vendor/interactive-paycard-img/' + currentCardBackground + '.jpeg'"
+                    src="/asset/image/background-img.jpg"
                     class="card-item__bg"
                   />
                 </div>
@@ -186,7 +198,7 @@
               <div class="card-item__side -back">
                 <div class="card-item__cover">
                   <img
-                    v-bind:src="'/vendor/interactive-paycard-img/' + currentCardBackground + '.jpeg'"
+                    src="/asset/image/background-img.jpg"
                     class="card-item__bg"
                   />
                 </div>
@@ -210,6 +222,17 @@
             </div>
           </div>
           <div class="card-form__inner">
+            <div class="card-input">
+              <label for="emailAddress" class="card-input__label"
+                >メールアドレス</label
+              >
+              <input
+                type="email"
+                id="email"
+                class="card-input__input"
+                placeholder="name@example.com"
+              />
+            </div>
             <div class="card-input">
               <label for="cardNumber" class="card-input__label"
                 >カード番号</label
@@ -298,6 +321,14 @@
                     v-on:blur="flipCard(false)"
                     autocomplete="off"
                   />
+                </div>
+              </div>
+              <div class="card-input">
+                <label for="cardNumber" class="card-input__label"
+                  >チケット料金</label
+                >
+                <div class="price-text">
+                  <p v-cloak>¥{{ price }}</p>
                 </div>
               </div>
             </div>
