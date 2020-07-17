@@ -93,7 +93,6 @@ section.section {
 body {
   min-height: 100vh;
   /* background-color: rgb(255, 234, 234); */
-  background-image: url("/otonokizaka-roof.jpg");
   background-position: center;
   background-size: cover;
   background-color: gainsboro;
