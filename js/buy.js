@@ -1,8 +1,8 @@
 import Vue from "vue";
 import VueTheMask from "vue-the-mask";
 
-import jQuery from "jquery";
-window.$ = window.jQuery = jQuery;
+// import jQuery from "jquery";
+// window.$ = window.jQuery = jQuery;
 
 (function () {
   "use strict";
@@ -70,8 +70,6 @@ window.$ = window.jQuery = jQuery;
   var params = new URL(document.location).searchParams;
   izakayaId = params.get("id");
 
-  console.log("id :", izakayaId);
-
   getIzakaya(izakayaId);
 
   Omise.setPublicKey("pkey_test_5k4953yfhskp2xwoquh");
@@ -112,8 +110,8 @@ window.$ = window.jQuery = jQuery;
         });
 
         /*
-  See on github: https://github.com/muhammederdem/credit-card-form
-  */
+        See on github: https://github.com/muhammederdem/credit-card-form
+        */
         Vue.use(VueTheMask);
         new Vue({
           el: "#app",
