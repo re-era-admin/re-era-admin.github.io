@@ -11,13 +11,13 @@ import VueTheMask from "vue-the-mask";
   // 共通変数定義
   // ---------------------------------------------------------------------------
   let izakayaId;
-  let pricePerHour;
+
   // ===========================================================================
   // イベントハンドラ関数定義
   // ---------------------------------------------------------------------------
 
   var handlers = {
-    clickBuyLink: function (e) {
+    clickBackLink: function (e) {
       window.location.href = "/detail.html?id=" + izakayaId;
     },
     submitPurchase: function () {
@@ -37,7 +37,6 @@ import VueTheMask from "vue-the-mask";
           // found in `response.id`.
 
           var emailVal = document.querySelector("#email").value;
-          var izakayaId = document.querySelector("#izakayaId").value;
 
           let purchaseFormData = new FormData();
           purchaseFormData.append("omiseToken", response.id);
@@ -74,12 +73,14 @@ import VueTheMask from "vue-the-mask";
 
   Omise.setPublicKey("pkey_test_5k4953yfhskp2xwoquh");
 
-  document
-    .getElementById("link-out")
-    .addEventListener("click", handlers.clickBuyLink);
-  document
-    .getElementById("purchase-btn")
-    .addEventListener("click", handlers.submitPurchase);
+  window.addEventListener("DOMContentLoaded", function () {
+    document
+      .getElementById("link-out")
+      .addEventListener("click", handlers.clickBackLink);
+    document
+      .getElementById("purchase-btn")
+      .addEventListener("click", handlers.submitPurchase);
+  });
 
   // ===========================================================================
   // 関数定義 (イベントハンドラ以外)
@@ -96,16 +97,15 @@ import VueTheMask from "vue-the-mask";
         }
         return response.json();
       })
-      .then((data) => {
-        console.log(data.pricePerHour);
-        pricePerHour = data.pricePerHour;
+      .then((izakaya) => {
+        console.log(izakaya.pricePerHour);
         var vm = new Vue({
           el: "#box__izakaya",
           data: {
             izakaya: [],
           },
           mounted() {
-            this.izakaya = data;
+            this.izakaya = izakaya;
           },
         });
 
@@ -130,12 +130,11 @@ import VueTheMask from "vue-the-mask";
               isCardFlipped: false,
               focusElementStyle: null,
               isInputFocused: false,
-              price: pricePerHour,
+              price: izakaya.pricePerHour,
             };
           },
           mounted() {
             this.cardNumberTemp = this.otherCardMask;
-            this.price = pricePerHour;
           },
           computed: {
             getCardType() {

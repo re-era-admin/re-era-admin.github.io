@@ -1,7 +1,7 @@
 import Vue from "vue";
 
-// import jQuery from "jquery";
-// window.$ = window.jQuery = jQuery;
+import jQuery from "jquery";
+window.$ = window.jQuery = jQuery;
 
 (function () {
   "use strict";
