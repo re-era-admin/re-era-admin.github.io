@@ -1,7 +1,7 @@
 import Vue from "vue";
 
-import jQuery from "jquery";
-window.$ = window.jQuery = jQuery;
+// import jQuery from "jquery";
+// window.$ = window.jQuery = jQuery;
 
 (function () {
   "use strict";
@@ -17,14 +17,14 @@ window.$ = window.jQuery = jQuery;
   //  - イベントハンドラを設定
   //  - アラートを表示 etc
   // ---------------------------------------------------------------------------
-  $(function init() {
-    getIzakayaList();
+  getIzakayaList();
 
+  window.addEventListener("DOMContentLoaded", function () {
+    console.log("dom content loaded");
     document
       .getElementById("link-out")
       .addEventListener("click", handlers.clickBuyLink);
   });
-
   // ===========================================================================
   // イベントハンドラ関数定義
   // ---------------------------------------------------------------------------
@@ -51,8 +51,6 @@ window.$ = window.jQuery = jQuery;
         return response.json();
       })
       .then((data) => {
-        console.log(data[0]);
-
         var vm = new Vue({
           el: "#izakaya-content",
           data: {

@@ -1,7 +1,7 @@
 import Vue from "vue";
 
-import jQuery from "jquery";
-window.$ = window.jQuery = jQuery;
+// import jQuery from "jquery";
+// window.$ = window.jQuery = jQuery;
 
 (function () {
   "use strict";
@@ -17,14 +17,13 @@ window.$ = window.jQuery = jQuery;
   //  - イベントハンドラを設定
   //  - アラートを表示 etc
   // ---------------------------------------------------------------------------
-  $(function init() {
-    var params = new URL(document.location).searchParams;
-    var izakayaId = params.get("id");
+  var params = new URL(document.location).searchParams;
+  var izakayaId = params.get("id");
 
-    console.log("id :", izakayaId);
+  getIzakaya(izakayaId);
 
-    getIzakaya(izakayaId);
-
+  window.addEventListener("DOMContentLoaded", function () {
+    console.log("dom loaded");
     document
       .getElementById("link-out")
       .addEventListener("click", handlers.clickBuyLink);
