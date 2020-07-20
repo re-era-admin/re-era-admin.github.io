@@ -123,7 +123,42 @@ header#header {
 .container__loading.active {
   display: block;
 }
+.box__modal {
+  position: fixed;
+  top: 0;
+  z-index: 300;
+  height: 100vh;
+  width: 100vw;
+  background-color: rgba(20, 20, 20, 0.8);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  visibility: hidden;
+}
+.box__modal.active {
+  visibility: visible;
+}
+.part__modal-title {
+  font-size: 6vw;
+}
+.part__modal-text > p {
+  font-size: 5vw;
+  color: white;
+  text-align: center;
+}
+.part__btn-top {
+  border: solid 1px white;
+  padding: 2vw 4vw;
+  border-radius: 2vw;
+  display: flex;
+  justify-content: center;
+}
 
+.part__btn-top > a {
+  font-size: 3vw;
+  color: white;
+}
 /** 共通パーツ */
 .square-fill {
   display: flex;
