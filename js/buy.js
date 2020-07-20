@@ -1,8 +1,8 @@
 import Vue from "vue";
 import VueTheMask from "vue-the-mask";
 
-// import jQuery from "jquery";
-// window.$ = window.jQuery = jQuery;
+import jQuery from "jquery";
+window.$ = window.jQuery = jQuery;
 
 (function () {
   "use strict";
@@ -49,9 +49,18 @@ import VueTheMask from "vue-the-mask";
           })
             .then((response) => response.json())
             .catch((error) => console.error("Error:", error))
-            .then((response) =>
-              console.log("Success", JSON.stringify(response))
-            );
+            .then((response) => {
+              console.log("Success", JSON.stringify(response));
+              var vm = new Vue({
+                el: "#container__modal",
+                data: {
+                  msg: [],
+                },
+                mounted() {
+                  this.msg = response;
+                },
+              });
+            });
         } else {
           // Error: display an error message. Note that `response.message` contains
           // a preformatted error message. Also note that `response.code` will be
@@ -66,22 +75,20 @@ import VueTheMask from "vue-the-mask";
   //  - イベントハンドラを設定
   //  - アラートを表示 etc
   // ---------------------------------------------------------------------------
-  var params = new URL(document.location).searchParams;
-  izakayaId = params.get("id");
+  $(function init() {
+    var params = new URL(document.location).searchParams;
+    izakayaId = params.get("id");
 
-  getIzakaya(izakayaId);
+    getIzakaya(izakayaId);
 
-  Omise.setPublicKey("pkey_test_5k4953yfhskp2xwoquh");
+    Omise.setPublicKey("pkey_test_5k4953yfhskp2xwoquh");
 
-  window.addEventListener("DOMContentLoaded", function () {
-    document
-      .getElementById("link-out")
-      .addEventListener("click", handlers.clickBackLink);
-    document
-      .getElementById("purchase-btn")
-      .addEventListener("click", handlers.submitPurchase);
+    window.addEventListener("load", function () {
+      document
+        .getElementById("link-out")
+        .addEventListener("click", handlers.clickBackLink);
+    });
   });
-
   // ===========================================================================
   // 関数定義 (イベントハンドラ以外)
   // ---------------------------------------------------------------------------
@@ -114,7 +121,7 @@ import VueTheMask from "vue-the-mask";
         */
         Vue.use(VueTheMask);
         new Vue({
-          el: "#app",
+          el: "#card-form-wrapper",
           data() {
             return {
               // currentCardBackground: Math.floor(Math.random() * 5 + 1), // just for fun :D
@@ -197,6 +204,7 @@ import VueTheMask from "vue-the-mask";
               }, 300);
               vm.isInputFocused = false;
             },
+            submitPurchase: handlers.submitPurchase,
           },
         });
       })

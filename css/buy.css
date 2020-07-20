@@ -72,20 +72,24 @@ header#header {
 }
 .part__izakaya-name {
   position: relative;
-  width: 60vw;
+  width: 51vw;
 }
 .part__izakaya-name-bg {
   width: 100%;
   height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .part__izakaya-name-bg > p {
-  width: 330px;
+  width: 106vw;
   color: var(--strong-color);
-  transform: scale(1, 3);
+  transform: scale(0.6, 2.3);
   font-weight: 900;
   font-size: 10vw;
   text-align: center;
   opacity: 0.4;
+  flex-shrink: 0;
 }
 
 .part__izakaya-name-text {
@@ -99,17 +103,24 @@ header#header {
 .part__izakaya-name-text > p {
   border-bottom: 1px solid white;
   border-top: 1px solid white;
+  letter-spacing: 0.2em;
+  font-weight: 700;
 }
 
-.price-text > p {
+.part__price-text > p {
   color: black;
+  font-size: 5vw;
+}
+.bill-text > p {
+  color: gray;
+  font-size: 3vw;
 }
 
 /** モーダル部品 */
-.loading-modal {
+.container__loading {
   display: none;
 }
-.loading-modal.active {
+.container__loading.active {
   display: block;
 }
 

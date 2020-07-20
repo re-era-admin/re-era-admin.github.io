@@ -93,6 +93,7 @@ br.pc_bk {
 }
 .m-w3v {
   width: 3vw;
+  flex-shrink: 0;
 }
 .m-w5v {
   width: 5vw;
