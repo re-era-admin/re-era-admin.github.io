@@ -3,7 +3,7 @@
   --primary-color: #48a2b9; /** 強調色 */
   --background-color: #000000; /** 基本背景色*/
   --text-color: #ffffff; /** 基本文字色 */
-  --light-text-color: #707070; /** 薄め文字色 */
+  --text-color-light-bg: #414141; /** 薄め文字色 */
   --strong-color: #ff00d8;
 }
 

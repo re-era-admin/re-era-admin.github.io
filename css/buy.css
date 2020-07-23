@@ -1,28 +1,52 @@
 body {
   min-height: 100vh;
-  background-image: url(/asset/image/background-img.jpg);
-  background-size: cover;
-  background-position-x: center;
-  background-position-y: top;
-  background-attachment: fixed;
 }
 
 /** ヘッダー構築部 */
 header#header {
   width: 100vw;
-  height: 0;
   position: sticky;
   z-index: 30;
-  top: 0;
+  top: -37vw;
 }
 .header-img {
   width: 100vw;
+  position: relative;
 }
-#link-out:hover {
-  cursor: pointer;
+.header-img > img {
+  width: 100%;
+}
+.part__link-top > a {
+  position: absolute;
+  width: 100%;
+  height: 75%;
+  top: 0;
+  left: 0;
+  z-index: 3;
 }
 
 /** コンテンツ部 */
+
+.background-img {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  background: url(/asset/image/background-img.jpg);
+  background-size: cover;
+  background-position-x: center;
+  background-position-y: center;
+  background-attachment: fixed;
+}
+section#section {
+  display: flex;
+  flex-direction: column;
+}
+
+.container__main-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 .container__ticket {
   display: flex;
   justify-content: center;
@@ -61,6 +85,9 @@ header#header {
     98% 80%
   );
 }
+.part__ticket-title > p {
+  font-size: 3vw;
+}
 
 .box__izakaya {
   display: flex;
@@ -82,7 +109,6 @@ header#header {
   justify-content: center;
 }
 .part__izakaya-name-bg > p {
-  width: 106vw;
   color: var(--strong-color);
   transform: scale(0.6, 2.3);
   font-weight: 900;
@@ -90,6 +116,12 @@ header#header {
   text-align: center;
   opacity: 0.4;
   flex-shrink: 0;
+}
+_::-webkit-full-page-media,
+_:future,
+:root .part__izakaya-name-bg > p {
+  transform: scale(0.45, 2.3);
+  font-weight: 600;
 }
 
 .part__izakaya-name-text {
@@ -105,13 +137,14 @@ header#header {
   border-top: 1px solid white;
   letter-spacing: 0.2em;
   font-weight: 700;
+  font-size: 4vw;
 }
 
 .part__price-text > p {
-  color: black;
+  color: var(--text-color-light-bg);
   font-size: 5vw;
 }
-.bill-text > p {
+.part__bill-text > p {
   color: gray;
   font-size: 3vw;
 }
@@ -126,6 +159,7 @@ header#header {
 .box__modal {
   position: fixed;
   top: 0;
+  left: 0;
   z-index: 300;
   height: 100vh;
   width: 100vw;
@@ -149,13 +183,13 @@ header#header {
 }
 .part__btn-top {
   border: solid 1px white;
-  padding: 2vw 4vw;
   border-radius: 2vw;
   display: flex;
   justify-content: center;
 }
 
 .part__btn-top > a {
+  padding: 2vw 4vw;
   font-size: 3vw;
   color: white;
 }
@@ -169,4 +203,113 @@ header#header {
   text-align: center;
   justify-content: center;
   align-items: center;
+}
+
+/** card-input.css を背景手前に浮かせる */
+#section,
+.wrapper {
+  position: relative;
+  z-index: 3;
+}
+
+/** ディスプレイサイズ1024px以上での表示時 */
+@media screen and (min-width: 1024px) {
+  body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  /** ヘッダ部 */
+  header#header {
+    width: 1024px;
+    top: -390px;
+  }
+  .header-img {
+    width: 1024px;
+  }
+  .part__link-top {
+    background: linear-gradient(to right, rgb(0, 0, 0), rgba(0, 0, 0, 0) 10%),
+      linear-gradient(to left, rgb(0, 0, 0), rgba(0, 0, 0, 0) 10%);
+  }
+  /** コンテンツ部 */
+  .background-img {
+    width: 1024px;
+    background: linear-gradient(90deg, rgb(0, 0, 0), rgba(0, 0, 0, 0) 10%),
+      linear-gradient(270deg, rgb(0, 0, 0), rgba(0, 0, 0, 0) 10%),
+      url(/asset/image/background-img.jpg);
+  }
+
+  .header-img:after {
+    position: absolute;
+    content: "";
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* 塗りつぶす */
+    background: linear-gradient(90deg, rgb(0, 0, 0), rgba(0, 0, 0, 0) 10%),
+      linear-gradient(270deg, rgb(0, 0, 0), rgba(0, 0, 0, 0) 10%);
+  }
+  .container__ticket {
+    /* width: 686px; */
+  }
+  .box__ticket {
+    width: 820px;
+    border: 2px solid var(--strong-color);
+    padding: 15px;
+  }
+  .part__ticket-title {
+    font-size: 20px;
+  }
+
+  .box__izakaya {
+    width: 740px;
+  }
+  .part__owner-icon > img {
+    width: 200px;
+  }
+  .part__izakaya-name {
+    width: 510px;
+  }
+  .part__izakaya-name-bg > p {
+    font-size: 100px;
+  }
+
+  .part__izakaya-name-text > p {
+    letter-spacing: 0.2em;
+    font-size: 30px;
+  }
+
+  .part__price-text > p {
+    font-size: 50px;
+  }
+  .part__bill-text > p {
+    font-size: 30px;
+  }
+
+  /** モーダル部品 */
+  .part__modal-title {
+    font-size: 45px;
+  }
+  .part__modal-text {
+    width: 50%;
+  }
+  .part__modal-text > p {
+    font-size: 30px;
+  }
+  .part__btn-top {
+    border-radius: 20px;
+  }
+
+  .part__btn-top > a {
+    padding: 20px 40px;
+    font-size: 30px;
+  }
+
+  /** 共通パーツ */
+  .square-fill {
+    width: 333px;
+    height: 66px;
+  }
 }

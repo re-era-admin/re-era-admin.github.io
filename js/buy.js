@@ -17,9 +17,6 @@ window.$ = window.jQuery = jQuery;
   // ---------------------------------------------------------------------------
 
   var handlers = {
-    clickBackLink: function (e) {
-      window.location.href = "/detail.html?id=" + izakayaId;
-    },
     submitPurchase: function () {
       var cardInformation = {
         name: document.querySelector("#cardName").value,
@@ -65,6 +62,11 @@ window.$ = window.jQuery = jQuery;
           // Error: display an error message. Note that `response.message` contains
           // a preformatted error message. Also note that `response.code` will be
           // "invalid_card" in case of validation error on the card.
+          alert(
+            "カードの確認でエラーが発生しました.",
+            response.code,
+            response.message
+          );
         }
       });
     },
@@ -81,13 +83,11 @@ window.$ = window.jQuery = jQuery;
 
     getIzakaya(izakayaId);
 
+    setLinkBack(izakayaId);
+
     Omise.setPublicKey("pkey_test_5k4953yfhskp2xwoquh");
 
-    window.addEventListener("load", function () {
-      document
-        .getElementById("link-out")
-        .addEventListener("click", handlers.clickBackLink);
-    });
+    window.addEventListener("load", function () {});
   });
   // ===========================================================================
   // 関数定義 (イベントハンドラ以外)
@@ -211,5 +211,10 @@ window.$ = window.jQuery = jQuery;
       .catch((err) => {
         console.log(err);
       });
+  }
+
+  function setLinkBack(izakayaId) {
+    document.querySelector(".part__link-top > a").href =
+      "/detail.html?id=" + izakayaId;
   }
 })();

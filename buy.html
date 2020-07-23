@@ -11,373 +11,388 @@
   </head>
   <body>
     <header id="header">
-      <img id="link-out" class="header-img" src="/asset/image/header-out.png" />
+      <div class="part__link-top">
+        <a href="/izakaya.html"></a>
+      </div>
+      <div class="header-img">
+        <img src="/asset/image/header-out.png" />
+      </div>
     </header>
+    <div class="background-img"></div>
     <section id="section">
-      <div class="m-h60v"></div>
-      <div class="container__ticket">
-        <div class="m-w9v"></div>
-        <div class="box__ticket">
-          <div class="box__ticket-inner">
-            <div class="m-h3v"></div>
-            <div class="part__ticket-title square-fill">
-              <p>入店チケット</p>
-            </div>
-            <div class="m-h3v"></div>
-            <div id="box__izakaya" class="box__izakaya">
-              <div class="part__owner-icon">
-                <img :src="izakaya.ownerImageUrl" id="owner-icon" v-cloak />
+      <div class="container__main-content">
+        <div class="container__ticket">
+          <div class="m-w9v"></div>
+          <div class="box__ticket">
+            <div class="box__ticket-inner">
+              <div class="m-h3v"></div>
+              <div class="part__ticket-title square-fill">
+                <p>入店チケット</p>
               </div>
-              <div class="m-w3v"></div>
-              <div class="part__izakaya-name">
-                <div class="part__izakaya-name-bg">
-                  <p>ENTRANCE TICKET</p>
+              <div class="m-h3v"></div>
+              <div id="box__izakaya" class="box__izakaya">
+                <div class="part__owner-icon">
+                  <img :src="izakaya.ownerImageUrl" id="owner-icon" v-cloak />
                 </div>
-                <div class="part__izakaya-name-text">
-                  <p v-cloak>{{ izakaya.izakayaName }}</p>
+                <div class="m-w3v"></div>
+                <div class="part__izakaya-name">
+                  <div class="part__izakaya-name-bg">
+                    <p>ENTRANCE TICKET</p>
+                  </div>
+                  <div class="part__izakaya-name-text">
+                    <p v-cloak>{{ izakaya.izakayaName }}</p>
+                  </div>
                 </div>
               </div>
+              <div class="m-h3v"></div>
             </div>
-            <div class="m-h3v"></div>
           </div>
+          <div class="m-w9v"></div>
         </div>
-        <div class="m-w9v"></div>
-      </div>
-      <div class="m-h13v"></div>
-      <!-- TODO 参考サイト：https://codepen.io/JavaScriptJunkie/pen/YzzNGeR -->
-      <div class="wrapper" id="card-form-wrapper">
-        <div class="card-form">
-          <div class="card-list">
-            <div class="card-item" v-bind:class="{ '-active' : isCardFlipped }">
-              <div class="card-item__side -front">
-                <div
-                  class="card-item__focus"
-                  v-bind:class="{'-active' : focusElementStyle }"
-                  v-bind:style="focusElementStyle"
-                  ref="focusElement"
-                ></div>
-                <div class="card-item__cover">
-                  <img
-                    src="/asset/image/background-img.jpg"
-                    class="card-item__bg"
-                  />
-                </div>
-
-                <div class="card-item__wrapper">
-                  <div class="card-item__top">
-                    <img
-                      src="/vendor/interactive-paycard-img/chip.png"
-                      class="card-item__chip"
-                    />
-                    <div class="card-item__type">
-                      <transition name="slide-fade-up">
-                        <img
-                          v-bind:src="'/vendor/interactive-paycard-img/' + getCardType + '.png'"
-                          v-if="getCardType"
-                          v-bind:key="getCardType"
-                          alt=""
-                          class="card-item__typeImg"
-                        />
-                      </transition>
-                    </div>
-                  </div>
-                  <label
-                    for="cardNumber"
-                    class="card-item__number"
-                    ref="cardNumber"
-                  >
-                    <template v-if="getCardType === 'amex'">
-                      <span v-for="(n, $index) in amexCardMask" :key="$index">
-                        <transition name="slide-fade-up">
-                          <div
-                            class="card-item__numberItem"
-                            v-if="$index > 4 && $index < 14 && cardNumber.length > $index && n.trim() !== ''"
-                          >
-                            *
-                          </div>
-                          <div
-                            class="card-item__numberItem"
-                            :class="{ '-active' : n.trim() === '' }"
-                            :key="$index"
-                            v-else-if="cardNumber.length > $index"
-                          >
-                            {{cardNumber[$index]}}
-                          </div>
-                          <div
-                            class="card-item__numberItem"
-                            :class="{ '-active' : n.trim() === '' }"
-                            v-else
-                            :key="$index + 1"
-                          >
-                            {{n}}
-                          </div>
-                        </transition>
-                      </span>
-                    </template>
-
-                    <template v-else>
-                      <span v-for="(n, $index) in otherCardMask" :key="$index">
-                        <transition name="slide-fade-up">
-                          <div
-                            class="card-item__numberItem"
-                            v-if="$index > 4 && $index < 15 && cardNumber.length > $index && n.trim() !== ''"
-                          >
-                            *
-                          </div>
-                          <div
-                            class="card-item__numberItem"
-                            :class="{ '-active' : n.trim() === '' }"
-                            :key="$index"
-                            v-else-if="cardNumber.length > $index"
-                          >
-                            {{cardNumber[$index]}}
-                          </div>
-                          <div
-                            class="card-item__numberItem"
-                            :class="{ '-active' : n.trim() === '' }"
-                            v-else
-                            :key="$index + 1"
-                          >
-                            {{n}}
-                          </div>
-                        </transition>
-                      </span>
-                    </template>
-                  </label>
-                  <div class="card-item__content">
-                    <label
-                      for="cardName"
-                      class="card-item__info"
-                      ref="cardName"
-                    >
-                      <div class="card-item__holder">Card Holder</div>
-                      <transition name="slide-fade-up">
-                        <div
-                          class="card-item__name"
-                          v-if="cardName.length"
-                          key="1"
-                        >
-                          <transition-group name="slide-fade-right">
-                            <span
-                              class="card-item__nameItem"
-                              v-for="(n, $index) in cardName.replace(/\s\s+/g, ' ')"
-                              v-if="$index === $index"
-                              v-bind:key="$index + 1"
-                              >{{n}}</span
-                            >
-                          </transition-group>
-                        </div>
-                        <div class="card-item__name" v-else key="2">
-                          Full Name
-                        </div>
-                      </transition>
-                    </label>
-                    <div class="card-item__date" ref="cardDate">
-                      <label for="cardMonth" class="card-item__dateTitle"
-                        >Expires</label
-                      >
-                      <label for="cardMonth" class="card-item__dateItem">
-                        <transition name="slide-fade-up">
-                          <span v-if="cardMonth" v-bind:key="cardMonth"
-                            >{{cardMonth}}</span
-                          >
-                          <span v-else key="2">MM</span>
-                        </transition>
-                      </label>
-                      /
-                      <label for="cardYear" class="card-item__dateItem">
-                        <transition name="slide-fade-up">
-                          <span v-if="cardYear" v-bind:key="cardYear"
-                            >{{String(cardYear).slice(2,4)}}</span
-                          >
-                          <span v-else key="2">YY</span>
-                        </transition>
-                      </label>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="card-item__side -back">
-                <div class="card-item__cover">
-                  <img
-                    src="/asset/image/background-img.jpg"
-                    class="card-item__bg"
-                  />
-                </div>
-                <div class="card-item__band"></div>
-                <div class="card-item__cvv">
-                  <div class="card-item__cvvTitle">CVV</div>
-                  <div class="card-item__cvvBand">
-                    <span v-for="(n, $index) in cardCvv" :key="$index">
-                      *
-                    </span>
-                  </div>
-                  <div class="card-item__type">
-                    <img
-                      v-bind:src="'/vendor/interactive-paycard-img/' + getCardType + '.png'"
-                      v-if="getCardType"
-                      class="card-item__typeImg"
-                    />
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="card-form__inner">
-            <div class="card-input">
-              <label for="cardNumber" class="card-input__label"
-                >カード番号</label
+        <div class="m-h13v"></div>
+        <!-- TODO 参考サイト：https://codepen.io/JavaScriptJunkie/pen/YzzNGeR -->
+        <div class="wrapper" id="card-form-wrapper">
+          <div class="card-form">
+            <div class="card-list">
+              <div
+                class="card-item"
+                v-bind:class="{ '-active' : isCardFlipped }"
               >
-              <input
-                type="tel"
-                id="cardNumber"
-                class="card-input__input"
-                v-mask="generateCardNumberMask"
-                v-model="cardNumber"
-                v-on:focus="focusInput"
-                v-on:blur="blurInput"
-                data-ref="cardNumber"
-                autocomplete="off"
-              />
-            </div>
-            <div class="card-input">
-              <label for="cardName" class="card-input__label">カード名義</label>
-              <input
-                type="text"
-                id="cardName"
-                class="card-input__input"
-                v-model="cardName"
-                v-on:focus="focusInput"
-                v-on:blur="blurInput"
-                data-ref="cardName"
-                autocomplete="off"
-              />
-            </div>
-            <div class="card-form__row">
-              <div class="card-form__col">
-                <div class="card-form__group">
-                  <label for="cardMonth" class="card-input__label"
-                    >有効期限</label
-                  >
-                  <select
-                    class="card-input__input -select"
-                    id="cardMonth"
-                    v-model="cardMonth"
-                    v-on:focus="focusInput"
-                    v-on:blur="blurInput"
-                    data-ref="cardDate"
-                  >
-                    <option value="" disabled selected>Month</option>
-                    <option
-                      v-bind:value="n < 10 ? '0' + n : n"
-                      v-for="n in 12"
-                      v-bind:disabled="n < minCardMonth"
-                      v-bind:key="n"
-                    >
-                      {{n < 10 ? '0' + n : n}}
-                    </option>
-                  </select>
-                  <select
-                    class="card-input__input -select"
-                    id="cardYear"
-                    v-model="cardYear"
-                    v-on:focus="focusInput"
-                    v-on:blur="blurInput"
-                    data-ref="cardDate"
-                  >
-                    <option value="" disabled selected>Year</option>
-                    <option
-                      v-bind:value="$index + minCardYear"
-                      v-for="(n, $index) in 12"
-                      v-bind:key="n"
-                    >
-                      {{$index + minCardYear}}
-                    </option>
-                  </select>
-                </div>
-              </div>
-              <div class="card-form__col -cvv">
-                <div class="card-input">
-                  <label for="cardCvv" class="card-input__label"
-                    >セキュリティコード</label
-                  >
-                  <input
-                    type="number"
-                    class="card-input__input"
-                    id="cardCvv"
-                    v-mask="'####'"
-                    maxlength="4"
-                    v-model="cardCvv"
-                    v-on:focus="flipCard(true)"
-                    v-on:blur="flipCard(false)"
-                    autocomplete="off"
-                  />
-                </div>
-              </div>
-            </div>
-            <div class="card-form__row">
-              <div class="card-form__col card-input">
-                <div class="card-input">
-                  <label for="emailAddress" class="card-input__label"
-                    >メールアドレス</label
-                  >
-                  <input
-                    type="email"
-                    id="email"
-                    class="card-input__input"
-                    placeholder="name@example.com"
-                  />
-                </div>
-              </div>
-            </div>
-            <div class="card-form__row">
-              <div class="card-form__col">
-                <div class="card-input">
-                  <label for="cardNumber" class="card-input__label"
-                    >合計額(税込)</label
-                  >
-                  <div class="part__price-text">
-                    <p v-cloak>¥{{ price * 1.1 }}</p>
+                <div class="card-item__side -front">
+                  <div
+                    class="card-item__focus"
+                    v-bind:class="{'-active' : focusElementStyle }"
+                    v-bind:style="focusElementStyle"
+                    ref="focusElement"
+                  ></div>
+                  <div class="card-item__cover">
+                    <img
+                      src="/asset/image/background-img.jpg"
+                      class="card-item__bg"
+                    />
                   </div>
-                  <div class="bill-text">
-                    <p v-cloak>内訳： 参加費 ¥{{ price * 1.1 }} x 1</p>
-                  </div>
-                </div>
-              </div>
-            </div>
 
-            <button
-              id="purchase-btn"
-              class="card-form__button"
-              v-on:click="submitPurchase"
-            >
-              購入
-            </button>
+                  <div class="card-item__wrapper">
+                    <div class="card-item__top">
+                      <img
+                        src="/vendor/interactive-paycard-img/chip.png"
+                        class="card-item__chip"
+                      />
+                      <div class="card-item__type">
+                        <transition name="slide-fade-up">
+                          <img
+                            v-bind:src="'/vendor/interactive-paycard-img/' + getCardType + '.png'"
+                            v-if="getCardType"
+                            v-bind:key="getCardType"
+                            alt=""
+                            class="card-item__typeImg"
+                          />
+                        </transition>
+                      </div>
+                    </div>
+                    <label
+                      for="cardNumber"
+                      class="card-item__number"
+                      ref="cardNumber"
+                    >
+                      <template v-if="getCardType === 'amex'">
+                        <span v-for="(n, $index) in amexCardMask" :key="$index">
+                          <transition name="slide-fade-up">
+                            <div
+                              class="card-item__numberItem"
+                              v-if="$index > 4 && $index < 14 && cardNumber.length > $index && n.trim() !== ''"
+                            >
+                              *
+                            </div>
+                            <div
+                              class="card-item__numberItem"
+                              :class="{ '-active' : n.trim() === '' }"
+                              :key="$index"
+                              v-else-if="cardNumber.length > $index"
+                            >
+                              {{cardNumber[$index]}}
+                            </div>
+                            <div
+                              class="card-item__numberItem"
+                              :class="{ '-active' : n.trim() === '' }"
+                              v-else
+                              :key="$index + 1"
+                            >
+                              {{n}}
+                            </div>
+                          </transition>
+                        </span>
+                      </template>
+
+                      <template v-else>
+                        <span
+                          v-for="(n, $index) in otherCardMask"
+                          :key="$index"
+                        >
+                          <transition name="slide-fade-up">
+                            <div
+                              class="card-item__numberItem"
+                              v-if="$index > 4 && $index < 15 && cardNumber.length > $index && n.trim() !== ''"
+                            >
+                              *
+                            </div>
+                            <div
+                              class="card-item__numberItem"
+                              :class="{ '-active' : n.trim() === '' }"
+                              :key="$index"
+                              v-else-if="cardNumber.length > $index"
+                            >
+                              {{cardNumber[$index]}}
+                            </div>
+                            <div
+                              class="card-item__numberItem"
+                              :class="{ '-active' : n.trim() === '' }"
+                              v-else
+                              :key="$index + 1"
+                            >
+                              {{n}}
+                            </div>
+                          </transition>
+                        </span>
+                      </template>
+                    </label>
+                    <div class="card-item__content">
+                      <label
+                        for="cardName"
+                        class="card-item__info"
+                        ref="cardName"
+                      >
+                        <div class="card-item__holder">Card Holder</div>
+                        <transition name="slide-fade-up">
+                          <div
+                            class="card-item__name"
+                            v-if="cardName.length"
+                            key="1"
+                          >
+                            <transition-group name="slide-fade-right">
+                              <span
+                                class="card-item__nameItem"
+                                v-for="(n, $index) in cardName.replace(/\s\s+/g, ' ')"
+                                v-if="$index === $index"
+                                v-bind:key="$index + 1"
+                                >{{n}}</span
+                              >
+                            </transition-group>
+                          </div>
+                          <div class="card-item__name" v-else key="2">
+                            Full Name
+                          </div>
+                        </transition>
+                      </label>
+                      <div class="card-item__date" ref="cardDate">
+                        <label for="cardMonth" class="card-item__dateTitle"
+                          >Expires</label
+                        >
+                        <label for="cardMonth" class="card-item__dateItem">
+                          <transition name="slide-fade-up">
+                            <span v-if="cardMonth" v-bind:key="cardMonth"
+                              >{{cardMonth}}</span
+                            >
+                            <span v-else key="2">MM</span>
+                          </transition>
+                        </label>
+                        /
+                        <label for="cardYear" class="card-item__dateItem">
+                          <transition name="slide-fade-up">
+                            <span v-if="cardYear" v-bind:key="cardYear"
+                              >{{String(cardYear).slice(2,4)}}</span
+                            >
+                            <span v-else key="2">YY</span>
+                          </transition>
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="card-item__side -back">
+                  <div class="card-item__cover">
+                    <img
+                      src="/asset/image/background-img.jpg"
+                      class="card-item__bg"
+                    />
+                  </div>
+                  <div class="card-item__band"></div>
+                  <div class="card-item__cvv">
+                    <div class="card-item__cvvTitle">CVV</div>
+                    <div class="card-item__cvvBand">
+                      <span v-for="(n, $index) in cardCvv" :key="$index">
+                        *
+                      </span>
+                    </div>
+                    <div class="card-item__type">
+                      <img
+                        v-bind:src="'/vendor/interactive-paycard-img/' + getCardType + '.png'"
+                        v-if="getCardType"
+                        class="card-item__typeImg"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="card-form__inner">
+              <div class="card-input">
+                <label for="cardNumber" class="card-input__label"
+                  >カード番号</label
+                >
+                <input
+                  type="tel"
+                  id="cardNumber"
+                  class="card-input__input"
+                  v-mask="generateCardNumberMask"
+                  v-model="cardNumber"
+                  v-on:focus="focusInput"
+                  v-on:blur="blurInput"
+                  data-ref="cardNumber"
+                  autocomplete="off"
+                />
+              </div>
+              <div class="card-input">
+                <label for="cardName" class="card-input__label"
+                  >カード名義</label
+                >
+                <input
+                  type="text"
+                  id="cardName"
+                  class="card-input__input"
+                  v-model="cardName"
+                  v-on:focus="focusInput"
+                  v-on:blur="blurInput"
+                  data-ref="cardName"
+                  autocomplete="off"
+                />
+              </div>
+              <div class="card-form__row">
+                <div class="card-form__col">
+                  <div class="card-form__group">
+                    <label for="cardMonth" class="card-input__label"
+                      >有効期限</label
+                    >
+                    <select
+                      class="card-input__input -select"
+                      id="cardMonth"
+                      v-model="cardMonth"
+                      v-on:focus="focusInput"
+                      v-on:blur="blurInput"
+                      data-ref="cardDate"
+                    >
+                      <option value="" disabled selected>Month</option>
+                      <option
+                        v-bind:value="n < 10 ? '0' + n : n"
+                        v-for="n in 12"
+                        v-bind:disabled="n < minCardMonth"
+                        v-bind:key="n"
+                      >
+                        {{n < 10 ? '0' + n : n}}
+                      </option>
+                    </select>
+                    <select
+                      class="card-input__input -select"
+                      id="cardYear"
+                      v-model="cardYear"
+                      v-on:focus="focusInput"
+                      v-on:blur="blurInput"
+                      data-ref="cardDate"
+                    >
+                      <option value="" disabled selected>Year</option>
+                      <option
+                        v-bind:value="$index + minCardYear"
+                        v-for="(n, $index) in 12"
+                        v-bind:key="n"
+                      >
+                        {{$index + minCardYear}}
+                      </option>
+                    </select>
+                  </div>
+                </div>
+                <div class="card-form__col -cvv">
+                  <div class="card-input">
+                    <label for="cardCvv" class="card-input__label"
+                      >セキュリティコード</label
+                    >
+                    <input
+                      type="password"
+                      class="card-input__input"
+                      id="cardCvv"
+                      v-mask="'####'"
+                      maxlength="4"
+                      v-model="cardCvv"
+                      v-on:focus="flipCard(true)"
+                      v-on:blur="flipCard(false)"
+                      autocomplete="off"
+                    />
+                  </div>
+                </div>
+              </div>
+              <div class="card-form__row">
+                <div class="card-form__col card-input">
+                  <div class="card-input">
+                    <label for="emailAddress" class="card-input__label"
+                      >メールアドレス</label
+                    >
+                    <input
+                      type="email"
+                      id="email"
+                      class="card-input__input"
+                      placeholder="name@example.com"
+                    />
+                  </div>
+                </div>
+              </div>
+              <div class="card-form__row">
+                <div class="card-form__col">
+                  <div class="card-input">
+                    <label for="cardNumber" class="card-input__label"
+                      >合計額(税込)</label
+                    >
+                    <div class="part__price-text">
+                      <p v-cloak>¥{{ price }}</p>
+                    </div>
+                    <div class="part__bill-text">
+                      <p v-cloak>内訳： 参加費 ¥{{ price }} x 1</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <button
+                id="purchase-btn"
+                class="card-form__button"
+                v-on:click="submitPurchase"
+              >
+                購入
+              </button>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="container__loading">
-        <!-- TODO:参考サイト https://github.com/nzbin/three-dots -->
-        <div class="dot-spin"></div>
-      </div>
-      <div id="container__modal" class="container__modal">
-        <div class="m-w9v"></div>
-        <div class="box__modal" :class="{ 'active' : msg }">
-          <div class="part__modal-title">
-            <p v-cloak>{{ msg.title }}</p>
-          </div>
-          <div class="m-h2v"></div>
-          <div class="part__modal-text">
-            <p v-cloak>{{ msg.text }}</p>
-          </div>
-          <div class="m-h6v"></div>
-          <div class="part__btn-top">
-            <a href="/index.html">Topへ戻る</a>
-          </div>
+        <div class="container__loading">
+          <!-- TODO:参考サイト https://github.com/nzbin/three-dots -->
+          <div class="dot-spin"></div>
         </div>
-        <div class="m-w9v"></div>
+        <div id="container__modal" class="container__modal">
+          <div class="m-w9v"></div>
+          <div class="box__modal" :class="{ 'active' : msg }">
+            <div class="part__modal-title">
+              <p v-cloak>{{ msg.title }}</p>
+            </div>
+            <div class="m-h2v"></div>
+            <div class="part__modal-text">
+              <p v-cloak>{{ msg.text }}</p>
+            </div>
+            <div class="m-h6v"></div>
+            <div class="part__btn-top">
+              <a href="/index.html">Topへ戻る</a>
+            </div>
+          </div>
+          <div class="m-w9v"></div>
+        </div>
+        <div class="m-h13v"></div>
       </div>
-      <div class="m-h13v"></div>
     </section>
     <script src="https://cdn.omise.co/omise.js"></script>
     <script defer src="/js/buy.js"></script>
