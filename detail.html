@@ -41,85 +41,85 @@
   </head>
   <body>
     <header id="header">
+      <div class="part__link-top">
+        <a href="/izakaya.html"></a>
+      </div>
       <div>
-        <img
-          id="link-out"
-          class="header-img"
-          src="/asset/image/header-out.png"
-        />
+        <img class="header-img" src="/asset/image/header-out.png" />
       </div>
     </header>
-    <div class="m-h60v"></div>
     <section id="section">
-      <div class="m-w16_5v"></div>
-      <div class="container">
-        <div id="izakaya-content" class="izakaya-content">
-          <div class="izakaya-box">
-            <div class="izakaya-overview">
-              <div class="owner-icon">
-                <img :src="izakaya.ownerImageUrl" id="owner-icon" />
+      <div class="container__main-content">
+        <div class="m-w16_5v"></div>
+        <div class="container">
+          <div id="izakaya-content" class="izakaya-content">
+            <div class="izakaya-box">
+              <div class="izakaya-overview">
+                <div class="owner-icon">
+                  <img :src="izakaya.ownerImageUrl" id="owner-icon" />
+                </div>
+                <div class="m-h4_5v"></div>
+                <div class="izakaya-name">
+                  <h2>{{ izakaya.izakayaName }}</h2>
+                </div>
+                <div class="m-h6v"></div>
+                <div class="izakaya-tags">
+                  <div class="price">
+                    <p>¥{{ izakaya.pricePerHour }} / 40分</p>
+                  </div>
+                  <div class="m-w3v"></div>
+                  <div class="congestion-item">
+                    <div class="congestion-icon">
+                      <img src="/asset/image/Icon_ionic-md-person.png" />
+                    </div>
+                    <div class="congesiton-text">
+                      <p>3/4</p>
+                    </div>
+                  </div>
+                  <div class="m-w3v"></div>
+                  <div class="entry-available vacancy">
+                    <p class="">入店可</p>
+                  </div>
+                </div>
               </div>
               <div class="m-h4_5v"></div>
-              <div class="izakaya-name">
-                <h2>{{ izakaya.izakayaName }}</h2>
+              <div class="profile-title">
+                <p>店主のプロフィール</p>
               </div>
-              <div class="m-h6v"></div>
-              <div class="izakaya-tags">
-                <div class="price">
-                  <p>¥{{ izakaya.pricePerHour }} / 40分</p>
-                </div>
-                <div class="m-w3v"></div>
-                <div class="congestion-item">
-                  <div class="congestion-icon">
-                    <img src="/asset/image/Icon_ionic-md-person.png" />
-                  </div>
-                  <div class="congesiton-text">
-                    <p>3/4</p>
-                  </div>
-                </div>
-                <div class="m-w3v"></div>
-                <div class="entry-available vacancy">
-                  <p class="">入店可</p>
-                </div>
+              <div class="m-h4_5v"></div>
+              <div class="owner-name">
+                <p>店主： {{ izakaya.ownerName }}</p>
+              </div>
+              <div class="genre">
+                <p>トークジャンル： {{ izakaya.talkGenre }}</p>
+              </div>
+              <div class="m-h4_5v"></div>
+              <div class="description-title">
+                <p>お店の説明</p>
+              </div>
+              <div class="description-text">
+                <p>{{ izakaya.description }}</p>
               </div>
             </div>
-            <div class="m-h4_5v"></div>
-            <div class="profile-title">
-              <p>店主のプロフィール</p>
+            <div class="m-h2v"></div>
+            <div class="buy-content">
+              <div class="charge-link">
+                <a :href="'/buy.html?id=' + izakaya.izakayaId"
+                  >チケットを購入する</a
+                >
+              </div>
+              <div class="info-text">
+                <p>
+                  購入後すぐにZoomのURLが届きます。<br />チケットの有効時間カウントダウンはZoomでトークルームに<br />
+                  入った時点からのカウントです。
+                </p>
+              </div>
             </div>
-            <div class="m-h4_5v"></div>
-            <div class="owner-name">
-              <p>店主： {{ izakaya.ownerName }}</p>
-            </div>
-            <div class="genre">
-              <p>トークジャンル： {{ izakaya.talkGenre }}</p>
-            </div>
-            <div class="m-h4_5v"></div>
-            <div class="description-title">
-              <p>お店の説明</p>
-            </div>
-            <div class="description-text">
-              <p>{{ izakaya.description }}</p>
-            </div>
+            <div class="m-h5v"></div>
           </div>
-          <div class="m-h2v"></div>
-          <div class="buy-content">
-            <div class="charge-link">
-              <a :href="'/buy.html?id=' + izakaya.izakayaId"
-                >チケットを購入する</a
-              >
-            </div>
-            <div class="info-text">
-              <p>
-                購入後すぐにZoomのURLが届きます。<br />チケットの有効時間カウントダウンはZoomでトークルームに<br />
-                入った時点からのカウントです。
-              </p>
-            </div>
-          </div>
-          <div class="m-h5v"></div>
         </div>
+        <div class="m-w16_5v"></div>
       </div>
-      <div class="m-w16_5v"></div>
     </section>
   </body>
 </html>

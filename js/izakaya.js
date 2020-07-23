@@ -21,19 +21,12 @@ window.$ = window.jQuery = jQuery;
 
   window.addEventListener("DOMContentLoaded", function () {
     console.log("dom content loaded");
-    document
-      .getElementById("link-out")
-      .addEventListener("click", handlers.clickBuyLink);
   });
   // ===========================================================================
   // イベントハンドラ関数定義
   // ---------------------------------------------------------------------------
 
-  var handlers = {
-    clickBuyLink: function (e) {
-      window.location.href = "/index.html";
-    },
-  };
+  var handlers = {};
 
   // ===========================================================================
   // 関数定義 (イベントハンドラ以外)

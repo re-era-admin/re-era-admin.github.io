@@ -1,5 +1,28 @@
 body {
   min-height: 100vh;
+}
+/** ヘッダー構築部 */
+header#header {
+  width: 100vw;
+  position: sticky;
+  z-index: 30;
+  top: -37vw;
+}
+.header-img {
+  width: 100vw;
+}
+.part__link-to-top > a {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
+
+/** コンテンツ部 */
+section#section {
+  display: flex;
+  flex-direction: column;
   background-image: url(/asset/image/background-img.jpg);
   background-size: cover;
   background-position-x: center;
@@ -7,32 +30,16 @@ body {
   background-attachment: fixed;
 }
 
-/** ヘッダー構築部 */
-header#header {
-  width: 100vw;
-  height: 0;
-  position: sticky;
-  z-index: 30;
-  top: 0;
-}
-.header-img {
-  width: 100vw;
-}
-#link-out:hover {
-  cursor: pointer;
-}
-
-/** コンテンツ部 */
-section#section {
-  display: flex;
-  flex-direction: row;
-}
-
 .navi-text {
   font-size: 4vw;
   text-align: center;
 }
-div.container {
+.container__main-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.container {
   width: 67vw;
 }
 
@@ -62,6 +69,7 @@ img.owner-icon {
 .izakaya-info {
   font-size: 2.66vw;
 }
+
 .izakaya-tags {
   display: flex;
   flex-direction: row;
@@ -69,18 +77,26 @@ img.owner-icon {
   justify-content: space-evenly;
 }
 .price {
-  height: min-content;
-  padding: 0 3.2vw;
+  padding: 0 2vw;
+  background-color: var(--strong-color);
+  line-height: 1.6;
 }
 .price > p {
-  line-height: 1.4;
-  background-color: var(--strong-color);
+  font-size: 3.7vw;
 }
-.congestion-icon {
+.congestion-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.congestion-icon > img {
   width: 3.7vw;
   object-fit: contain;
 }
-.entry-available {
+.congesiton-text > p {
+  font-size: 3.7vw;
+}
+.entry-available > p {
   font-size: 3.7vw;
 }
 .entry-available.vacancy {
@@ -92,4 +108,64 @@ img.owner-icon {
 
 * {
   /* outline: solid 0.8px gainsboro; */
+}
+
+/** ディスプレイサイズ1024px以上での表示時 */
+@media screen and (min-width: 1024px) {
+  body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  header#header {
+    width: 1024px;
+    top: -390px;
+  }
+  .header-img {
+    width: 1024px;
+  }
+  .part__link-to-top > a {
+    background: linear-gradient(to right, rgb(0, 0, 0), rgba(0, 0, 0, 0) 10%),
+      linear-gradient(to left, rgb(0, 0, 0), rgba(0, 0, 0, 0) 10%);
+  }
+
+  .navi-text {
+    font-size: 41px;
+  }
+  div.container {
+    width: 686px;
+  }
+  img.owner-icon {
+    width: 204px;
+  }
+  .izakaya-name {
+    font-size: 54px;
+  }
+  .izakaya-info {
+    font-size: 27px;
+  }
+  .izakaya-tags {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+  }
+  .price {
+    padding: 0 20px;
+    line-height: 1.6;
+  }
+  .price > p {
+    font-size: 37px;
+  }
+  .congestion-icon > img {
+    width: 37px;
+    object-fit: contain;
+  }
+  .congesiton-text > p {
+    font-size: 37px;
+  }
+  .entry-available > p {
+    font-size: 37px;
+  }
 }

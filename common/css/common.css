@@ -130,3 +130,53 @@ br.pc_bk {
 .m-h60v {
   height: 60vw;
 }
+
+/** ディスプレイサイズ1024px以上での表示時 */
+@media screen and (min-width: 1024px) {
+  html,
+  body {
+    width: 100vw;
+  }
+  .m-w1_5v {
+    width: 15px;
+  }
+  .m-w3v {
+    width: 30px;
+    flex-shrink: 0;
+  }
+  .m-w5v {
+    width: 50px;
+  }
+  .m-w9v {
+    width: 90px;
+  }
+  .m-w16_5v {
+    width: 165px;
+  }
+
+  /* 縦方向マージン  */
+  .m-h2v {
+    height: 20px;
+  }
+  .m-h3v {
+    height: 30px;
+  }
+  .m-h4_5v {
+    height: 45px;
+  }
+  .m-h5v {
+    height: 50px;
+  }
+  .m-h6v {
+    height: 60px;
+  }
+  .m-h6_5v {
+    height: 65px;
+  }
+  .m-h13v {
+    height: 130px;
+  }
+  .m-h60v {
+    height: 600px;
+  }
+}
