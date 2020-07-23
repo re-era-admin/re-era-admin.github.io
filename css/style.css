@@ -60,7 +60,7 @@ body {
   z-index: -1000;
   top: 0px;
   left: 0px;
-  background: url(../asset/image/バックグラウンド.png);
+  /* background: url(../asset/image/バックグラウンド.png); */
   background-repeat: no-repeat;
   background-position: center;
   z-index: 1;
@@ -479,7 +479,7 @@ part以下定義
 
 #part_aboutThisService_image_pict div {
   height: 100%;
-  background: url(../asset/image/flattoとは.png);
+  /* background: url(../asset/image/flattoとは.png); */
   background-size: contain;
   background-position: center;
   width: 100%;
@@ -573,7 +573,7 @@ part以下定義
   position: absolute;
   width: 45.9vw;
   height: 18.7vw;
-  background: url(../asset/image/匿名OK.png);
+  /* background: url(../asset/image/匿名OK.png); */
   background-repeat: no-repeat;
   background-size: cover;
   left: 50%;
@@ -615,7 +615,7 @@ part以下定義
 
 #part_guide_arrowDown_pict > div {
   position: absolute;
-  background: url(../asset/image/arrowDownWhite.png);
+  /* background: url(../asset/image/arrowDownWhite.png); */
   background-repeat: no-repeat;
   background-position: center;
   top: 50%;
@@ -630,7 +630,7 @@ part以下定義
   position: absolute;
   height: 14.4vw;
   width: 17.9vw;
-  background: url(../asset/image/指針.png);
+  /* background: url(../asset/image/指針.png); */
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
@@ -686,7 +686,7 @@ part以下定義
 
 #part_howToEnjoy_arrowDown_pict > div {
   position: absolute;
-  background: url(../asset/image/arrowDownWhite.png);
+  /* background: url(../asset/image/arrowDownWhite.png); */
   background-repeat: no-repeat;
   background-position: center;
   top: 50%;
@@ -738,7 +738,7 @@ part以下定義
   position: absolute;
   height: 12vw;
   width: 58.9vw;
-  background: url(../asset/image/楽しみ方.png);
+  /* background: url(../asset/image/楽しみ方.png); */
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -812,7 +812,7 @@ part以下定義
 }
 
 .part_howToUse_contents_box > .box_pict > div {
-  background: url(../asset/image/enter.png);
+  /* background: url(../asset/image/enter.png); */
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -849,7 +849,7 @@ part以下定義
 }
 
 .part_howToUse_contents_box > .box_pictsHowToUse2 > .box_pict1 > div {
-  background: url(../asset/image/利用方法2-1.png);
+  /* background: url(../asset/image/利用方法2-1.png); */
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -895,7 +895,7 @@ part以下定義
 }
 
 .part_howToUse_contents_box > .box_pictsHowToUse2 > .box_pict2 > div {
-  background: url(../asset/image/利用方法2-2.png);
+  /* background: url(../asset/image/利用方法2-2.png); */
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -933,7 +933,7 @@ part以下定義
 }
 
 .part_howToUse_contents_box > .box_pictsHowToUse3 > .box_pict1 > div {
-  background: url(../asset/image/利用方法3.png);
+  /* background: url(../asset/image/利用方法3.png); */
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -974,7 +974,7 @@ part以下定義
   position: absolute;
   height: 100%;
   width: 71.7vw;
-  background: url(../asset/image/利用方法4.png);
+  /* background: url(../asset/image/利用方法4.png); */
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -994,7 +994,7 @@ part以下定義
   position: absolute;
   height: 12vw;
   width: 78vw;
-  background: url(../asset/image/サービスの利用方法.png);
+  /* background: url(../asset/image/サービスの利用方法.png); */
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -1025,7 +1025,7 @@ part以下定義
 
 #part_recommendedFor_arrowDown_pict > div {
   position: absolute;
-  background: url(../asset/image/arrowDownWhite.png);
+  /* background: url(../asset/image/arrowDownWhite.png); */
   background-repeat: no-repeat;
   background-position: center;
   top: 50%;
@@ -1075,7 +1075,7 @@ part以下定義
   position: absolute;
   height: 12vw;
   width: 78vw;
-  background: url(../asset/image/こんな方におすすめ.png);
+  /* background: url(../asset/image/こんな方におすすめ.png); */
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -1102,7 +1102,7 @@ part以下定義
 
 #part_topImage_arrowDown_pict > div {
   position: absolute;
-  background: url(../asset/image/arrowDownWhite.png);
+  /* background: url(../asset/image/arrowDownWhite.png); */
   background-repeat: no-repeat;
   background-position: center;
   top: 50%;
