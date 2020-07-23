@@ -1127,7 +1127,7 @@ part以下定義
 #part_topImage_main_pict div {
   height: 100%;
   width: 100%;
-  background: url(../asset/image/yokocho-anime-min.gif);
+  background: url(../asset/image/anime-min.webp);
   background-size: cover;
   background-repeat: no-repeat;
 }
