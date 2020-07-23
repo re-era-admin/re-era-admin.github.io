@@ -106,11 +106,17 @@ br.pc_bk {
 }
 
 /* 縦方向マージン  */
+.m-h1_5v {
+  height: 1.5vw;
+}
 .m-h2v {
   height: 2vw;
 }
 .m-h3v {
   height: 3vw;
+}
+.m-h4v {
+  height: 4vw;
 }
 .m-h4_5v {
   height: 4.5vw;
@@ -155,11 +161,17 @@ br.pc_bk {
   }
 
   /* 縦方向マージン  */
+  .m-h1_5v {
+    height: 15px;
+  }
   .m-h2v {
     height: 20px;
   }
   .m-h3v {
     height: 30px;
+  }
+  .m-h4v {
+    height: 40px;
   }
   .m-h4_5v {
     height: 45px;
