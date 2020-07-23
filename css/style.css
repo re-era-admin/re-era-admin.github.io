@@ -220,7 +220,7 @@ hr {
 
 #headder_img div {
   background-repeat: no-repeat;
-  background: url(../asset/image/オンライン横丁ヘッダー.png);
+  background: url(/asset/image/yokocho-header.png);
   background-size: cover;
   height: 100%;
   width: 100%;
