@@ -17,6 +17,7 @@ header#header {
   height: 100%;
   top: 0;
   left: 0;
+  z-index: 3;
 }
 
 /** コンテンツ部 */
@@ -126,8 +127,8 @@ img.owner-icon {
     width: 1024px;
   }
   .part__link-to-top > a {
-    background: linear-gradient(to right, rgb(0, 0, 0), rgba(0, 0, 0, 0) 10%),
-      linear-gradient(to left, rgb(0, 0, 0), rgba(0, 0, 0, 0) 10%);
+    background: linear-gradient(90deg, rgb(0, 0, 0), rgba(0, 0, 0, 0) 10%),
+      linear-gradient(270deg, rgb(0, 0, 0), rgba(0, 0, 0, 0) 10%);
   }
 
   .navi-text {

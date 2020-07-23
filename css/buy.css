@@ -228,7 +228,17 @@ _:future,
   .header-img {
     width: 1024px;
   }
-  .part__link-top {
+  .header-img:after {
+    position: absolute;
+    content: "";
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, rgb(0, 0, 0), rgba(0, 0, 0, 0) 10%),
+      linear-gradient(270deg, rgb(0, 0, 0), rgba(0, 0, 0, 0) 10%);
+  }
+  .part__link-top > a {
     background: linear-gradient(to right, rgb(0, 0, 0), rgba(0, 0, 0, 0) 10%),
       linear-gradient(to left, rgb(0, 0, 0), rgba(0, 0, 0, 0) 10%);
   }
@@ -240,17 +250,6 @@ _:future,
       url(/asset/image/background-img.jpg);
   }
 
-  .header-img:after {
-    position: absolute;
-    content: "";
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    /* 塗りつぶす */
-    background: linear-gradient(90deg, rgb(0, 0, 0), rgba(0, 0, 0, 0) 10%),
-      linear-gradient(270deg, rgb(0, 0, 0), rgba(0, 0, 0, 0) 10%);
-  }
   .container__ticket {
     /* width: 686px; */
   }
@@ -259,8 +258,8 @@ _:future,
     border: 2px solid var(--strong-color);
     padding: 15px;
   }
-  .part__ticket-title {
-    font-size: 20px;
+  .part__ticket-title > p {
+    font-size: 30px;
   }
 
   .box__izakaya {
@@ -285,7 +284,7 @@ _:future,
     font-size: 50px;
   }
   .part__bill-text > p {
-    font-size: 30px;
+    font-size: 20px;
   }
 
   /** モーダル部品 */

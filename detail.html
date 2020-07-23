@@ -44,10 +44,11 @@
       <div class="part__link-top">
         <a href="/izakaya.html"></a>
       </div>
-      <div>
-        <img class="header-img" src="/asset/image/header-out.png" />
+      <div class="header-img">
+        <img src="/asset/image/header-out.png" />
       </div>
     </header>
+    <div class="background-img"></div>
     <section id="section">
       <div class="container__main-content">
         <div class="m-w16_5v"></div>
@@ -101,13 +102,14 @@
                 <p>{{ izakaya.description }}</p>
               </div>
             </div>
-            <div class="m-h2v"></div>
+            <div class="m-h4v"></div>
             <div class="buy-content">
               <div class="charge-link">
                 <a :href="'/buy.html?id=' + izakaya.izakayaId"
                   >チケットを購入する</a
                 >
               </div>
+              <div class="m-h4v"></div>
               <div class="info-text">
                 <p>
                   購入後すぐにZoomのURLが届きます。<br />チケットの有効時間カウントダウンはZoomでトークルームに<br />
