@@ -105,7 +105,7 @@ section#section {
   width: 100%;
   height: 100%;
   display: flex;
-  align-items: center;
+  align-items: end;
   justify-content: center;
 }
 .part__izakaya-name-bg > p {
