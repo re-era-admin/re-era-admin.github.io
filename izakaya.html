@@ -70,19 +70,19 @@
                   alt=""
                   id="owner-icon"
                 />
-                <h2 class="izakaya-name">{{ item.izakayaName }}</h2>
-                <p class="izakaya-info genre">
+                <h2 class="izakaya-name" v-cloak>{{ item.izakayaName }}</h2>
+                <p class="izakaya-info genre" v-cloak>
                   【トークジャンル】<br />{{ item.talkGenre }}
                 </p>
-                <p class="izakaya-info owner-name">
+                <p class="izakaya-info owner-name" v-cloak>
                   【店主】<br />{{ item.ownerName }}
                 </p>
-                <p class="izakaya-info hitokoto">
+                <p class="izakaya-info hitokoto" v-cloak>
                   【店主より】<br />{{ item.hitokoto }}
                 </p>
                 <div class="izakaya-tags">
                   <div class="price">
-                    <p>¥{{ item.pricePerHour }} / 40分</p>
+                    <p v-cloak>¥{{ item.pricePerHour }} / 40分</p>
                   </div>
                   <div class="m-w3v"></div>
                   <div class="congestion-item">

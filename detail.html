@@ -61,12 +61,12 @@
                 </div>
                 <div class="m-h4_5v"></div>
                 <div class="izakaya-name">
-                  <h2>{{ izakaya.izakayaName }}</h2>
+                  <h2 v-cloak>{{ izakaya.izakayaName }}</h2>
                 </div>
                 <div class="m-h6v"></div>
                 <div class="izakaya-tags">
                   <div class="price">
-                    <p>¥{{ izakaya.pricePerHour }} / 40分</p>
+                    <p v-cloak>¥{{ izakaya.pricePerHour }} / 40分</p>
                   </div>
                   <div class="m-w3v"></div>
                   <div class="congestion-item">
@@ -89,17 +89,17 @@
               </div>
               <div class="m-h4_5v"></div>
               <div class="owner-name">
-                <p>店主： {{ izakaya.ownerName }}</p>
+                <p v-cloak>店主： {{ izakaya.ownerName }}</p>
               </div>
               <div class="genre">
-                <p>トークジャンル： {{ izakaya.talkGenre }}</p>
+                <p v-cloak>トークジャンル： {{ izakaya.talkGenre }}</p>
               </div>
               <div class="m-h4_5v"></div>
               <div class="description-title">
                 <p>お店の説明</p>
               </div>
               <div class="description-text">
-                <p>{{ izakaya.description }}</p>
+                <p v-cloak>{{ izakaya.description }}</p>
               </div>
             </div>
             <div class="m-h4v"></div>
