@@ -21,14 +21,24 @@ header#header {
 }
 
 /** コンテンツ部 */
-section#section {
-  display: flex;
-  flex-direction: column;
-  background-image: url(/asset/image/バックグラウンド.png);
+
+.background-img {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  background: url(/asset/image/バックグラウンド.png);
   background-size: cover;
   background-position-x: center;
-  background-position-y: top;
-  background-attachment: fixed;
+  background-position-y: center;
+  /* background-attachment: fixed; */
+  top: 0;
+}
+
+section#section {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  z-index: 3;
 }
 
 .navi-text {

@@ -35,7 +35,8 @@ header#header {
   background-size: cover;
   background-position-x: center;
   background-position-y: center;
-  background-attachment: fixed;
+  /* background-attachment: fixed; */
+  top: 0;
 }
 section#section {
   position: relative;
