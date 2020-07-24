@@ -24,7 +24,7 @@ header#header {
 section#section {
   display: flex;
   flex-direction: column;
-  background-image: url(/asset/image/background-img.jpg);
+  background-image: url(/asset/image/バックグラウンド.png);
   background-size: cover;
   background-position-x: center;
   background-position-y: top;

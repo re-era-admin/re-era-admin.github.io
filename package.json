@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "NODE_ENV=development; npx parcel *.html --no-source-maps --cert cert.pem --key privkey.pem --host localhost.re-era.tech",
-    "build": "npx parcel build *.html --no-source-maps",
+    "build": "npx parcel build *.html -d dist --no-source-maps",
     "lint": "./node_modules/htmllint-cli/bin/cli.js *.html page/*.html && ./node_modules/csslint/dist/cli.js **/*.css"
   },
   "alias": {
@@ -28,11 +28,20 @@
     "htmllint-cli": "0.0.7",
     "license-checker": "^25.0.1",
     "parcel": "^1.12.4",
-    "parcel-bundler": "^1.12.4"
+    "parcel-bundler": "^1.12.4",
+    "parcel-plugin-static-files-copy": "^2.4.3"
   },
   "dependencies": {
     "jquery": "^3.5.1",
     "vue": "^2.6.11",
     "vue-the-mask": "^0.11.1"
+  },
+  "staticFiles": {
+    "staticPath": [
+      {
+        "staticPath": "vendor",
+        "staticOutDir": "vendor"
+      }
+    ]
   }
 }

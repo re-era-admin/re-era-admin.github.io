@@ -31,7 +31,7 @@ header#header {
   position: fixed;
   width: 100vw;
   height: 100vh;
-  background: url(/asset/image/background-img.jpg);
+  background: url(/asset/image/バックグラウンド.png);
   background-size: cover;
   background-position-x: center;
   background-position-y: center;
@@ -175,7 +175,7 @@ div.izakaya-box {
     width: 1024px;
     background: linear-gradient(90deg, rgb(0, 0, 0), rgba(0, 0, 0, 0) 10%),
       linear-gradient(270deg, rgb(0, 0, 0), rgba(0, 0, 0, 0) 10%),
-      url(/asset/image/background-img.jpg);
+      url(/asset/image/バックグラウンド.png);
   }
 
   .izakaya-overview {
