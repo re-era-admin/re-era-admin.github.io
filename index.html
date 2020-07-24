@@ -8,6 +8,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script>
       (function (d) {
+        if (navigator.userAgent.indexOf("iPhone") > 0) {
+          $("body").addClass("iPhone");
+        }
         var config = {
             kitId: "bwu7gyp",
             scriptTimeout: 3000,
@@ -46,6 +49,7 @@
   </head>
   <body>
     <!-- Position Fixed -->
+    <div id="gradient"></div>
     <div id="headder">
       <div id="headder_img"><div></div></div>
       <div id="headder_btn_enter">
