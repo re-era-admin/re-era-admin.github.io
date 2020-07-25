@@ -123,6 +123,12 @@ img.owner-icon {
 
 /** ディスプレイサイズ1024px以上での表示時 */
 @media screen and (min-width: 1024px) {
+  .background-img {
+    width: 1024px;
+    background: 
+    /* linear-gradient(90deg, rgb(0, 0, 0), rgba(0, 0, 0, 0) 3%),
+      linear-gradient(270deg, rgb(0, 0, 0), rgba(0, 0, 0, 0) 3%), */ url(/asset/image/バックグラウンド.png);
+  }
   body {
     display: flex;
     flex-direction: column;
@@ -137,8 +143,8 @@ img.owner-icon {
     width: 1024px;
   }
   .part__link-to-top > a {
-    background: linear-gradient(90deg, rgb(0, 0, 0), rgba(0, 0, 0, 0) 3%),
-      linear-gradient(270deg, rgb(0, 0, 0), rgba(0, 0, 0, 0) 3%);
+    /* background: linear-gradient(90deg, rgb(0, 0, 0), rgba(0, 0, 0, 0) 3%),
+      linear-gradient(270deg, rgb(0, 0, 0), rgba(0, 0, 0, 0) 3%); */
   }
 
   .navi-text {
@@ -160,7 +166,7 @@ img.owner-icon {
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: center;
   }
   .price {
     padding: 0 20px;
