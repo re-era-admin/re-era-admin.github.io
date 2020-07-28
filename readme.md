@@ -3,7 +3,9 @@
 ## デプロイ先URL
 
 * masterブランチのデプロイ環境
+  * https://yokocho.flatto.online/
   * https://cranky-bell-765f86.netlify.app/
+    * flatto.onlineの元URL
 * developブランチのデプロイ環境
   * https://develop--cranky-bell-765f86.netlify.app/
 
@@ -17,37 +19,29 @@ $ npm install
 
 ## ローカルサーバ立ち上げ
 
-ローカル確認用のWebサーバに `live-server`  というものを使用しています。
-以下のコマンドでインストールしてください。
-` $ npm install -g live-server` 
-
+BundlerであるParcelのWebサーバ機能を用いています.
+以下のコマンドでインストール、立ち上げしてください。
 ```console:bash
-❯ npm run dev
-
-> echo "コンテンツは https://localhost.re-era.tech:8080/ で確認できます。
- 下の127.〜は無視してください. " && live-server . --host=0.0.0.0 --ignore='.git/**' --https=https.conf.js --no-browser
-
-コンテンツは https://localhost.re-era.tech:8080/ で確認できます。
- 下の127.〜は無視してください.
-
-(-> localhost.re-era.tech:8080/ で確認できる)
+$ git clone (repo-url)
+$ npm install 
+$ npm run dev
 ```
+
+コンテンツは https://localhost.re-era.tech:8080/index.html で確認できます。
 
 ## 環境差異の扱い
 
-なるべくenv.jsに寄せる。
-関数と変数の形で環境ごとに変わるのもを定義する。
-環境差異を扱うJavaScript側で`env.js`をimportし、
-`ENV_NAME`の値を見て分岐させるなど。
+dotenvの仕組みをparcel経由で利用しています。
+`.env.(環境名)` のファイル名です。
+環境名部分には `NODE_ENV` の値が入ります。
+現在は4つのKey-valueを提供しています。
 
-```js:env.js
-const ENV_VARS = {
-  ENV_NAME: "staging",
+herokuのAPIサーバを使う場合、AP_CONTEXT_PATH を.staging の値で置き換えます。
+` => AP_CONTEXT_PATH=https://stg-online-yokocho.herokuapp.com `
 
-// (略)
-
-let COM_FUNC = {
-  hello: function (e) {
-
-export { ENV_VARS, COM_FUNC };
+```config:.env.development
+ENV_NAME=local
+ENV_TEXT=ローカル環境
+CONTEXT_PATH=https://localhost.re-era.tech:8080/
+AP_CONTEXT_PATH=https://localhost.re-era.tech:8443
 ```
