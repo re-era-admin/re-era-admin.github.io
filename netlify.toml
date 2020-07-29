@@ -2,7 +2,7 @@
   # publish: 公開対象のディレクトリ
   publish = "dist/"
   # command: デフォルトのビルドコマンド
-  command = "npx -p parcel-bundler parcel build *.html --no-source-maps"
+  command = "npx -p parcel-bundler parcel build src/*.html --no-source-maps"
 
 [context.production.environment]
   NODE_ENV = "production"
