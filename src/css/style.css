@@ -879,6 +879,7 @@ part以下定義
 
 .part_howToUse_contents_box > .box_pictsHowToUse2 > .box_pict1 > div {
   background: url(../asset/image/利用方法2-1.png);
+  border: white solid 2px;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -925,6 +926,7 @@ part以下定義
 
 .part_howToUse_contents_box > .box_pictsHowToUse2 > .box_pict2 > div {
   background: url(../asset/image/利用方法2-2.png);
+  border: white solid 2px;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -963,6 +965,7 @@ part以下定義
 
 .part_howToUse_contents_box > .box_pictsHowToUse3 > .box_pict1 > div {
   background: url(../asset/image/利用方法3.png);
+  border: white solid 2px;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
