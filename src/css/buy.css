@@ -1,5 +1,6 @@
 body {
   min-height: 100vh;
+  overscroll-behavior: none;
 }
 
 /** ヘッダー構築部 */
