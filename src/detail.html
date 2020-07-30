@@ -87,22 +87,12 @@
                     </div>
                     <div class="m-w0_5v"></div>
                     <div class="congesiton-text">
-                      <p v-cloak>
-                        {{ izakaya.numberOfAttendee + "/" + izakaya.maxAttendee
-                        }}
-                      </p>
+                      <p>0/4</p>
                     </div>
                   </div>
                   <div class="m-w3v"></div>
-                  <div v-if="izakaya.numberOfAttendee == izakaya.maxAttendee">
-                    <div class="entry-available full">
-                      <p>満席</p>
-                    </div>
-                  </div>
-                  <div v-else>
-                    <div class="entry-available">
-                      <p>入店可</p>
-                    </div>
+                  <div class="entry-available vacancy">
+                    <p class="">入店可</p>
                   </div>
                 </div>
               </div>
