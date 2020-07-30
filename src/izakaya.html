@@ -6,6 +6,18 @@
     <link rel="stylesheet" href="/css/izakaya.css" />
     <link rel="stylesheet" href="/common/css/common.css" />
     <script src="/js/izakaya.js"></script>
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=UA-174012826-1"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "UA-174012826-1");
+    </script>
     <script>
       (function (d) {
         var config = {
@@ -97,12 +109,21 @@
                     </div>
                     <div class="m-w0_5v"></div>
                     <div class="congesiton-text">
-                      <p>3/4</p>
+                      <p v-cloak>
+                        {{ item.numberOfAttendee + "/" + item.maxAttendee }}
+                      </p>
                     </div>
                   </div>
                   <div class="m-w3v"></div>
-                  <div class="entry-available vacancy">
-                    <p class="">入店可</p>
+                  <div v-if="item.numberOfAttendee == item.maxAttendee">
+                    <div class="entry-available full">
+                      <p>満席</p>
+                    </div>
+                  </div>
+                  <div v-else>
+                    <div class="entry-available">
+                      <p>入店可</p>
+                    </div>
                   </div>
                 </div>
                 <div class="m-h3v"></div>

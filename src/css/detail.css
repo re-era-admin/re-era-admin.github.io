@@ -67,6 +67,9 @@ div.izakaya-box {
   flex-direction: column;
   align-items: center;
 }
+.izakaya-name > h2 {
+  font-size: 5.4vw;
+}
 .profile-title > p {
   font-size: 3.2vw;
 }
@@ -193,7 +196,7 @@ div.izakaya-box {
   img.owner-icon {
     width: 204px;
   }
-  .izakaya-name {
+  .izakaya-name > h2 {
     font-size: 54px;
   }
   .izakaya-info {
