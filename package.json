@@ -41,6 +41,10 @@
       {
         "staticPath": "src/vendor",
         "staticOutDir": "src/vendor"
+      },
+      {
+        "staticPath": "files",
+        "staticOutDir": ""
       }
     ]
   }
