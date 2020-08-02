@@ -67,7 +67,10 @@
         <div class="container">
           <div id="izakaya-content" class="izakaya-content">
             <div class="izakaya-box">
-              <div class="izakaya-overview">
+              <div
+                class="izakaya-overview"
+                :class="{ 'disable' : izakaya.numberOfAttendee == izakaya.maxAttendee}"
+              >
                 <div class="owner-icon">
                   <img :src="izakaya.ownerImageUrl" id="owner-icon" />
                 </div>
@@ -78,7 +81,7 @@
                 <div class="m-h6v"></div>
                 <div class="izakaya-tags">
                   <div class="price">
-                    <p v-cloak>¥{{ izakaya.pricePerHour }} / 40分</p>
+                    <p v-cloak>¥{{ izakaya.price }} / 40分</p>
                   </div>
                   <div class="m-w3v"></div>
                   <div class="congestion-item">
@@ -87,12 +90,22 @@
                     </div>
                     <div class="m-w0_5v"></div>
                     <div class="congesiton-text">
-                      <p>0/4</p>
+                      <p v-cloak>
+                        {{ izakaya.numberOfAttendee + "/" + izakaya.maxAttendee
+                        }}
+                      </p>
                     </div>
                   </div>
                   <div class="m-w3v"></div>
-                  <div class="entry-available vacancy">
-                    <p class="">入店可</p>
+                  <div v-if="izakaya.numberOfAttendee == izakaya.maxAttendee">
+                    <div class="entry-available full">
+                      <p>満席</p>
+                    </div>
+                  </div>
+                  <div v-else>
+                    <div class="entry-available">
+                      <p>入店可</p>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -117,21 +130,21 @@
             </div>
             <div class="m-h4v"></div>
             <div class="buy-content">
-              <div class="charge-link">
-                <!-- 7/31リハーサル用にチケット購入画面をGoogleFormに差し替え -->
-                <!-- <a :href="'/buy.html?id=' + izakaya.izakayaId" -->
-                <a
-                  href="https://docs.google.com/forms/d/e/1FAIpQLSeD3G937i4k1Ogg9ahNvAjMTe_8-9zVhZSEDZyY4I_KPKYfEw/viewform"
+              <div
+                class="charge-link"
+                :class="{ 'disable' : izakaya.numberOfAttendee == izakaya.maxAttendee }"
+              >
+                <a :href="'/buy.html?id=' + izakaya.izakayaId"
                   >チケットを申し込む</a
                 >
               </div>
               <div class="m-h4v"></div>
               <div class="info-text">
-                <!-- <p>
-                  購入後すぐにZoomのURLが届きます。<br />
+                <p>
+                  購入後ZoomのURLが届きます。<br />
                   チケットの有効時間カウントダウンはZoomでトークルームに<br />
                   入った時点からのカウントです。
-                </p> -->
+                </p>
               </div>
             </div>
             <div class="m-h5v"></div>

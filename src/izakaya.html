@@ -73,9 +73,25 @@
             >
               <div class="izakaya-item">
                 <a
-                  class="detail-link"
+                  class="part__cover detail-link"
                   :href="'/detail.html?id=' + item.izakayaId"
                 ></a>
+                <div class="part__cover harigami" :class="item.status">
+                  <div class="part__status-text">
+                    <template v-if="item.status == 'close'">
+                      <p>
+                        閉店中
+                      </p>
+                    </template>
+                    <template v-else-if="item.status == 'full'">
+                      <p>現在満席</p>
+                    </template>
+                  </div>
+                  <div class="m-h2v"></div>
+                  <div class="part__comment-text">
+                    <p v-cloak>{{ item.comment }}</p>
+                  </div>
+                </div>
                 <div class="m-h6_5v"></div>
                 <img
                   class="owner-icon"
@@ -100,22 +116,33 @@
                 <div class="m-h3v"></div>
                 <div class="izakaya-tags">
                   <div class="price">
-                    <p v-cloak>¥{{ item.pricePerHour }} / 40分</p>
+                    <p v-cloak>¥{{ item.price }} / 40分</p>
                   </div>
                   <div class="m-w3v"></div>
-                  <div class="congestion-item">
-                    <div class="congestion-icon">
-                      <img src="/asset/image/Icon_ionic-md-person.png" />
+                  <template v-if="item.status != 'close'">
+                    <div class="congestion-item">
+                      <div class="congestion-icon">
+                        <img src="/asset/image/Icon_ionic-md-person.png" />
+                      </div>
+                      <div class="m-w0_5v"></div>
+                      <div class="congesiton-text">
+                        <p v-cloak>
+                          {{ item.numberOfAttendee + "/" + item.maxAttendee }}
+                        </p>
+                      </div>
                     </div>
-                    <div class="m-w0_5v"></div>
-                    <div class="congesiton-text">
-                      <p>0/4</p>
+                    <div class="m-w3v"></div>
+                    <div v-if="item.numberOfAttendee == item.maxAttendee">
+                      <div class="entry-available full">
+                        <p>満席</p>
+                      </div>
                     </div>
-                  </div>
-                  <div class="m-w3v"></div>
-                  <div class="entry-available vacancy">
-                    <p class="">入店可</p>
-                  </div>
+                    <div v-else>
+                      <div class="entry-available">
+                        <p>入店可</p>
+                      </div>
+                    </div>
+                  </template>
                 </div>
                 <div class="m-h3v"></div>
               </div>

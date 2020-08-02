@@ -55,20 +55,60 @@ section#section {
   width: 67vw;
 }
 
-a.detail-link {
+.izakaya-item {
+  position: relative;
+  border: 1px solid white;
+  text-align: center;
+}
+.izakaya-item.disable {
+  opacity: 70%;
+  background-color: black;
+}
+.part__cover {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  text-indent: -999px;
-  /* z-index: 3; */
 }
-
-.izakaya-item {
-  position: relative;
-  border: 1px solid white;
-  text-align: center;
+.part__cover.harigami {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: start;
+  padding-top: 6vw;
+  z-index: 5;
+}
+.part__cover.harigami.full {
+  display: flex;
+  background-color: rgba(255, 0, 0, 0.4);
+}
+.part__cover.harigami.close {
+  display: flex;
+  background-color: rgba(60, 60, 60, 0.5);
+}
+.part__cover.harigami > p {
+  background-color: black;
+}
+.part__status-text > p {
+  color: white;
+  font-size: 8vw;
+  filter: drop-shadow(0 0 3px black);
+  font-weight: 700;
+}
+.part__comment-text > p {
+  color: white;
+  font-weight: 700;
+  font-size: 4.5vw;
+  filter: drop-shadow(0 0 2px black);
+}
+a.detail-link {
+  z-index: 3;
+}
+.disable > a.detail-link {
+  cursor: default;
+  pointer-events: none;
+  text-decoration: none;
 }
 
 img.owner-icon {
@@ -111,15 +151,11 @@ img.owner-icon {
 .entry-available > p {
   font-size: 3.7vw;
 }
-.entry-available.vacancy {
+.entry-available {
   color: #00ffc4;
 }
 .entry-available.full {
   color: var(--strong-color);
-}
-
-* {
-  /* outline: solid 0.8px gainsboro; */
 }
 
 /** ディスプレイサイズ1024px以上での表示時 */

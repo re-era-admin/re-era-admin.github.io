@@ -44,6 +44,7 @@ window.$ = window.jQuery = jQuery;
         return response.json();
       })
       .then((data) => {
+        console.log("data0:", data[0]);
         var vm = new Vue({
           el: "#izakaya-content",
           data: {

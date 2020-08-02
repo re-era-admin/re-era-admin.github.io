@@ -60,6 +60,7 @@ div.izakaya-box {
   flex-direction: column;
   text-align: center;
 }
+
 .izakaya-overview {
   border: 1px solid white;
   padding: 3vw;
@@ -67,6 +68,11 @@ div.izakaya-box {
   flex-direction: column;
   align-items: center;
 }
+.izakaya-overview.disable {
+  opacity: 70%;
+  background-color: black;
+}
+
 .izakaya-name > h2 {
   font-size: 5.4vw;
 }
@@ -85,6 +91,9 @@ div.izakaya-box {
   background-color: var(--strong-color);
   text-align: center;
 }
+.charge-link.disable {
+  opacity: 60%;
+}
 .charge-link > a {
   display: block;
   font-size: 5.3vw;
@@ -92,6 +101,12 @@ div.izakaya-box {
   text-decoration: none;
   line-height: 2;
 }
+.charge-link.disable > a {
+  cursor: default;
+  pointer-events: none;
+  text-decoration: none;
+}
+
 .info-text > p {
   font-size: 2.4vw;
 }
@@ -131,7 +146,7 @@ div.izakaya-box {
 .entry-available > p {
   font-size: 3.7vw;
 }
-.entry-available.vacancy {
+.entry-available {
   color: #00ffc4;
 }
 .entry-available.full {
