@@ -10,6 +10,9 @@ header#header {
   z-index: 30;
   top: -37vw;
 }
+header#header.under-modal {
+  z-index: auto;
+}
 .header-img {
   width: 100vw;
   position: relative;
@@ -184,17 +187,18 @@ _:future,
   text-align: center;
 }
 .part__btn-top {
+  background-color: white;
   border: solid 1px white;
   border-radius: 2vw;
   display: flex;
   justify-content: center;
 }
-
 .part__btn-top > a {
   padding: 2vw 4vw;
-  font-size: 3vw;
-  color: white;
+  font-size: 6vw;
+  color: black;
 }
+
 /** 共通パーツ */
 .square-fill {
   display: flex;
@@ -212,6 +216,43 @@ _:future,
 .wrapper {
   position: relative;
   z-index: 3;
+}
+
+/** TODO 暫定機能：カード入力欄の非表示 */
+.card-list {
+  visibility: hidden;
+  height: 0;
+  margin-bottom: auto;
+}
+.card-form__inner {
+  padding-top: 0px;
+}
+div.card-input:nth-child(2) {
+  visibility: hidden;
+  height: 0;
+}
+div.card-form__row:nth-child(3) {
+  visibility: hidden;
+  height: 0;
+}
+div.card-form__row:nth-child(5) {
+  visibility: hidden;
+  height: 0;
+}
+.card-form__inner > div:nth-child(1) {
+  visibility: hidden;
+  height: 0;
+}
+#card-form-wrapper {
+  min-height: auto;
+}
+
+.card-list {
+  margin-bottom: 0 !important;
+}
+
+.card-form__inner {
+  padding-top: 0 !important;
 }
 
 /** ディスプレイサイズ1024px以上での表示時 */

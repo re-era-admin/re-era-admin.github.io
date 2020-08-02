@@ -12,6 +12,8 @@ window.$ = window.jQuery = jQuery;
   // ---------------------------------------------------------------------------
   let izakayaId;
 
+  let price;
+
   // ===========================================================================
   // イベントハンドラ関数定義
   // ---------------------------------------------------------------------------
@@ -19,26 +21,31 @@ window.$ = window.jQuery = jQuery;
   var handlers = {
     submitPurchase: function () {
       var cardInformation = {
-        name: document.querySelector("#cardName").value,
-        number: document.querySelector("#cardNumber").value,
-        expiration_month: document.querySelector("#cardMonth").value,
-        expiration_year: document.querySelector("#cardYear").value,
-        security_code: document.querySelector("#cardCvv").value,
+        // name: document.querySelector("#cardName").value,
+        // number: document.querySelector("#cardNumber").value,
+        // expiration_month: document.querySelector("#cardMonth").value,
+        // expiration_year: document.querySelector("#cardYear").value,
+        // security_code: document.querySelector("#cardCvv").value,
+
+        // TODO: 暫定機能：仮のカード情報で決済トークン取得
+        name: "TEST USER",
+        number: "4242424242424242",
+        expiration_month: "07",
+        expiration_year: "2025",
+        security_code: "999",
       };
       Omise.createToken("card", cardInformation, function (
         statusCode,
         response
       ) {
         if (statusCode === 200) {
-          // Success: send back the TOKEN_ID to your server. The TOKEN_ID can be
-          // found in `response.id`.
-
           var emailVal = document.querySelector("#email").value;
 
           let purchaseFormData = new FormData();
           purchaseFormData.append("omiseToken", response.id);
           purchaseFormData.append("email", emailVal);
           purchaseFormData.append("izakayaId", izakayaId);
+          purchaseFormData.append("price", price);
 
           fetch(process.env.AP_CONTEXT_PATH + "/ticket/buy", {
             method: "POST",
@@ -57,6 +64,7 @@ window.$ = window.jQuery = jQuery;
                   this.msg = response;
                 },
               });
+              document.getElementById("header").classList.add("under-modal");
             });
         } else {
           // Error: display an error message. Note that `response.message` contains
@@ -86,8 +94,6 @@ window.$ = window.jQuery = jQuery;
     setLinkBack(izakayaId);
 
     Omise.setPublicKey("pkey_test_5k4953yfhskp2xwoquh");
-
-    window.addEventListener("load", function () {});
   });
   // ===========================================================================
   // 関数定義 (イベントハンドラ以外)
@@ -105,7 +111,7 @@ window.$ = window.jQuery = jQuery;
         return response.json();
       })
       .then((izakaya) => {
-        console.log(izakaya.pricePerHour);
+        console.log(izakaya.price);
         var vm = new Vue({
           el: "#box__izakaya",
           data: {
@@ -137,7 +143,7 @@ window.$ = window.jQuery = jQuery;
               isCardFlipped: false,
               focusElementStyle: null,
               isInputFocused: false,
-              price: izakaya.pricePerHour,
+              price: izakaya.price,
             };
           },
           mounted() {
@@ -207,6 +213,8 @@ window.$ = window.jQuery = jQuery;
             submitPurchase: handlers.submitPurchase,
           },
         });
+
+        price = izakaya.price;
       })
       .catch((err) => {
         console.log(err);

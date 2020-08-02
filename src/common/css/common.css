@@ -1,10 +1,9 @@
 :root {
   /** グローバル変数 */
-  --primary-color: #48a2b9; /** 強調色 */
   --background-color: #000000; /** 基本背景色*/
   --text-color: #ffffff; /** 基本文字色 */
   --text-color-light-bg: #414141; /** 薄め文字色 */
-  --strong-color: #ff00d8;
+  --strong-color: #ff00d8; /** 強調色 */
 }
 
 html,
@@ -14,8 +13,8 @@ body {
   font-family: kozuka-gothic-pro, sans-serif;
   color: var(--text-color);
   background-color: var(--background-color);
-  /* line-height: 2; */
 }
+
 /* 日本語フォントの字詰め調整 */
 body {
   -webkit-text-size-adjust: 100%;
@@ -50,6 +49,7 @@ h3 {
   box-sizing: border-box;
 }
 
+/* Vue.js のMustacheの展開前文字列を非表示にする */
 [v-cloak] {
   visibility: hidden;
 }
@@ -199,3 +199,8 @@ br.pc_bk {
     height: 600px;
   }
 }
+
+/** デバッグ用 */
+/* * {
+  outline: solid 0.8px gainsboro;
+} */
