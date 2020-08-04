@@ -40,10 +40,12 @@ window.$ = window.jQuery = jQuery;
       ) {
         if (statusCode === 200) {
           var emailVal = document.querySelector("#email").value;
+          var purchaserName = document.querySelector("#purchaser-name").value;
 
           let purchaseFormData = new FormData();
           purchaseFormData.append("omiseToken", response.id);
           purchaseFormData.append("email", emailVal);
+          purchaseFormData.append("purchaserName", purchaserName);
           purchaseFormData.append("izakayaId", izakayaId);
           purchaseFormData.append("price", price);
 
