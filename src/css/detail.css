@@ -69,7 +69,7 @@ div.izakaya-box {
   align-items: center;
 }
 .izakaya-overview.disable {
-  opacity: 70%;
+  opacity: 0.7;
   background-color: black;
 }
 
@@ -91,9 +91,6 @@ div.izakaya-box {
   background-color: var(--strong-color);
   text-align: center;
 }
-.charge-link.disable {
-  opacity: 60%;
-}
 .charge-link > a {
   display: block;
   font-size: 5.3vw;
@@ -105,6 +102,18 @@ div.izakaya-box {
   cursor: default;
   pointer-events: none;
   text-decoration: none;
+}
+.full-text {
+  width: 100%;
+  background-color: gray;
+  text-align: center;
+}
+.full-text > p {
+  display: block;
+  font-size: 5.3vw;
+  color: white;
+  text-decoration: none;
+  line-height: 2;
 }
 
 .info-text > p {

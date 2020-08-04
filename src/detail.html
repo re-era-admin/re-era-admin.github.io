@@ -130,14 +130,18 @@
             </div>
             <div class="m-h4v"></div>
             <div class="buy-content">
-              <div
-                class="charge-link"
-                :class="{ 'disable' : izakaya.numberOfAttendee == izakaya.maxAttendee }"
-              >
-                <a :href="'/buy.html?id=' + izakaya.izakayaId"
-                  >チケットを申し込む</a
-                >
-              </div>
+              <template v-if="izakaya.numberOfAttendee == izakaya.maxAttendee">
+                <div class="full-text">
+                  <p>満席です</p>
+                </div>
+              </template>
+              <template v-else>
+                <div class="charge-link">
+                  <a :href="'/buy.html?id=' + izakaya.izakayaId"
+                    >チケットを申し込む</a
+                  >
+                </div>
+              </template>
               <div class="m-h4v"></div>
               <div class="info-text">
                 <p>
