@@ -1,6 +1,8 @@
 import Vue from "vue";
 import VueTheMask from "vue-the-mask";
 
+import VModal from "vue-js-modal";
+
 import jQuery from "jquery";
 window.$ = window.jQuery = jQuery;
 
@@ -20,6 +22,9 @@ window.$ = window.jQuery = jQuery;
 
   var handlers = {
     submitPurchase: function () {
+      var el = document.getElementById("container__loading");
+      el.classList.add("active");
+      document.getElementById("header").classList.add("under-modal");
       var cardInformation = {
         // name: document.querySelector("#cardName").value,
         // number: document.querySelector("#cardNumber").value,
@@ -34,6 +39,7 @@ window.$ = window.jQuery = jQuery;
         expiration_year: "2025",
         security_code: "999",
       };
+
       Omise.createToken("card", cardInformation, function (
         statusCode,
         response
@@ -56,6 +62,27 @@ window.$ = window.jQuery = jQuery;
             .then((response) => response.json())
             .catch((error) => console.error("Error:", error))
             .then((response) => {
+              if (response.code != undefined) {
+                console.log("Fail", response.message);
+                document
+                  .getElementById("part__modal-icon")
+                  .classList.add("error");
+                var vm = new Vue({
+                  el: "#container__modal",
+                  data: {
+                    msg: [],
+                  },
+                  mounted() {
+                    const result = {
+                      title: "",
+                      text: response.message,
+                    };
+                    this.msg = result;
+                  },
+                });
+                document.getElementById("header").classList.add("under-modal");
+                return;
+              }
               console.log("Success", JSON.stringify(response));
               var vm = new Vue({
                 el: "#container__modal",
@@ -67,6 +94,9 @@ window.$ = window.jQuery = jQuery;
                 },
               });
               document.getElementById("header").classList.add("under-modal");
+              document
+                .getElementById("container__loading")
+                .classList.remove("active");
             });
         } else {
           // Error: display an error message. Note that `response.message` contains
@@ -77,6 +107,9 @@ window.$ = window.jQuery = jQuery;
             response.code,
             response.message
           );
+          document
+            .getElementById("container__loading")
+            .classList.remove("active");
         }
       });
     },
