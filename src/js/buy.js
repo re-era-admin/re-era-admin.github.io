@@ -60,6 +60,10 @@ window.$ = window.jQuery = jQuery;
             .then((response) => response.json())
             .catch((error) => console.error("Error:", error))
             .then((response) => {
+              document
+                .getElementById("container__loading")
+                .classList.remove("active");
+              document.getElementById("header").classList.add("under-modal");
               if (response.code != undefined) {
                 console.log("Fail", response.message);
                 document
@@ -78,7 +82,6 @@ window.$ = window.jQuery = jQuery;
                     this.msg = result;
                   },
                 });
-                document.getElementById("header").classList.add("under-modal");
                 return;
               }
               console.log("Success", JSON.stringify(response));
@@ -91,10 +94,6 @@ window.$ = window.jQuery = jQuery;
                   this.msg = response;
                 },
               });
-              document.getElementById("header").classList.add("under-modal");
-              document
-                .getElementById("container__loading")
-                .classList.remove("active");
             });
         } else {
           // Error: display an error message. Note that `response.message` contains
