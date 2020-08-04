@@ -1,8 +1,6 @@
 import Vue from "vue";
 import VueTheMask from "vue-the-mask";
 
-import VModal from "vue-js-modal";
-
 import jQuery from "jquery";
 window.$ = window.jQuery = jQuery;
 
