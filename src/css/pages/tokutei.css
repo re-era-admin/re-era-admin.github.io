@@ -1,0 +1,100 @@
+body {
+  min-height: 100vh;
+  overscroll-behavior: none;
+}
+
+/** ヘッダー構築部 */
+header#header {
+  width: 100vw;
+  position: sticky;
+  z-index: 30;
+  top: -37vw;
+}
+.header-img {
+  width: 100vw;
+  position: relative;
+}
+.header-img > img {
+  width: 100%;
+}
+.part__link-top > a {
+  position: absolute;
+  width: 100%;
+  height: 75%;
+  top: 0;
+  left: 0;
+  z-index: 3;
+  border-style: none;
+}
+/** コンテンツ部 */
+
+.background-img {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  background: url(/asset/image/バックグラウンド.png);
+  background-size: cover;
+  background-position-x: center;
+  background-position-y: center;
+  /* background-attachment: fixed; */
+  top: 0;
+}
+section#section {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  z-index: 3;
+}
+.container__main-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+h1 {
+  line-height: 3;
+}
+
+h2 {
+  line-height: 2;
+}
+p {
+  padding-bottom: 1.5vw;
+  text-align: center;
+}
+
+/** ディスプレイサイズ1024px以上での表示時 */
+@media screen and (min-width: 1024px) {
+  body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  /** ヘッダ部 */
+  header#header {
+    width: 1024px;
+    top: -390px;
+  }
+  .header-img {
+    width: 1024px;
+  }
+  .header-img:after {
+    position: absolute;
+    content: "";
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  /** コンテンツ部 */
+  .background-img {
+    width: 1024px;
+    background: url(/asset/image/バックグラウンド.png);
+  }
+
+  .container__main-content {
+    max-width: 1024px;
+  }
+}
