@@ -43,16 +43,20 @@ section#section {
   position: relative;
   display: flex;
   flex-direction: column;
+  align-items: center;
   z-index: 3;
 }
 .container__main-content {
+  max-width: 90vw;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: start;
 }
 
 h1 {
+  font-size: 8vw;
   line-height: 3;
+  align-self: center;
 }
 
 h2 {
@@ -60,7 +64,7 @@ h2 {
 }
 p {
   padding-bottom: 1.5vw;
-  text-align: center;
+  text-align: left;
 }
 
 /** ディスプレイサイズ1024px以上での表示時 */
@@ -89,12 +93,16 @@ p {
   }
 
   /** コンテンツ部 */
+  h1 {
+    font-size: 3vw;
+  }
+
   .background-img {
     width: 1024px;
     background: url(/asset/image/バックグラウンド.png);
   }
 
   .container__main-content {
-    max-width: 1024px;
+    max-width: 700px;
   }
 }
