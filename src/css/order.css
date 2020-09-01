@@ -1,0 +1,42 @@
+/* ===================== 
+レイアウトデバッグ用 
+ =====================*/
+.containers {
+  border: 5px solid blue;
+}
+
+.area {
+  border: 5px solid red;
+}
+
+.part {
+  border: 5px solid seagreen;
+}
+
+#main {
+  max-width: 800px;
+  width: 96%;
+  position: relative;
+}
+
+body {
+  background-color: white;
+  color: black;
+}
+
+input {
+  width: 90%;
+}
+
+textarea {
+  width: 90%;
+}
+
+.part {
+  padding: 10px;
+}
+
+.area_pageTitle {
+  background-color: #222;
+  color: #fff;
+}
