@@ -2,15 +2,15 @@
 レイアウトデバッグ用 
  =====================*/
 .containers {
-  border: 5px solid blue;
+  border: 1px solid black;
 }
 
 .area {
-  border: 5px solid red;
+  /* border: 5px solid red; */
 }
 
 .part {
-  border: 5px solid seagreen;
+  border: 1px solid black;
 }
 
 #main {
@@ -25,7 +25,7 @@ body {
 }
 
 input {
-  width: 90%;
+  width: 30%;
 }
 
 textarea {
@@ -39,4 +39,40 @@ textarea {
 .area_pageTitle {
   background-color: #222;
   color: #fff;
+}
+
+#area_comfirmForm {
+  display: none;
+}
+
+#submit {
+  display: none;
+  border-radius: 3%; /* 角丸       */
+  font-size: 18pt; /* 文字サイズ */
+  text-align: center; /* 文字位置   */
+  cursor: pointer; /* カーソル   */
+  padding: 12px 12px; /* 余白       */
+  background: #00b0dc; /* 背景色     */
+  color: #ffffff; /* 文字色     */
+  line-height: 1em; /* 1行の高さ  */
+  transition: 0.3s; /* なめらか変化 */
+  border: 2px solid #00b0dc; /* 枠の指定 */
+}
+#submit:hover {
+  box-shadow: none; /* カーソル時の影消去 */
+  color: #00b0dc; /* 背景色     */
+  background: #99e0e2; /* 文字色     */
+}
+
+#remake_btn {
+  display: none;
+}
+
+.parsley-custom-error-message {
+  color: red;
+}
+
+#comfirmForm_title {
+  background-color: cadetblue;
+  display: none;
 }
