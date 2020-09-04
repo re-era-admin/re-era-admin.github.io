@@ -3,11 +3,11 @@
 ## デプロイ先URL
 
 * masterブランチのデプロイ環境
-  * https://yokocho.flatto.online/
-  * https://cranky-bell-765f86.netlify.app/
+  * (まだStep1に紐付け…) https://yokocho.flatto.online/
+  * https://eager-ptolemy-36ba06.netlify.app/
     * flatto.onlineの元URL
 * developブランチのデプロイ環境
-  * https://develop--cranky-bell-765f86.netlify.app/
+  * https://develop--eager-ptolemy-36ba06.netlify.app/
 
 
 ## 開発環境整備
