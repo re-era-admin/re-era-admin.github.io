@@ -74,52 +74,60 @@
               <div class="izakaya-item">
                 <a
                   class="part__cover detail-link"
-                  :href="'/detail.html?id=' + item.izakayaId"
+                  :href="'/detail.html?id=' + item.varVo出店Id.出店Id"
                 ></a>
-                <div class="part__cover harigami" :class="item.status">
+                <div
+                  class="part__cover harigami"
+                  :class="item.varVoステータス.varステータス"
+                >
                   <div class="part__status-text">
-                    <template v-if="item.status == 'close'">
-                      <p>
-                        準備中
-                      </p>
+                    <template
+                      v-if="item.varVoステータス.varステータス == 'close'"
+                    >
+                      <p>準備中</p>
                     </template>
-                    <template v-else-if="item.status == 'full'">
+                    <template
+                      v-else-if="item.varVoステータス.varステータス == 'full'"
+                    >
                       <p>現在満席</p>
                     </template>
                   </div>
                   <div class="m-h2v"></div>
                   <div class="part__comment-text">
-                    <p v-cloak>{{ item.comment }}</p>
+                    <!-- TODO <p v-cloak>{{ item.comment }}</p> -->
                   </div>
                 </div>
                 <div class="m-h6_5v"></div>
                 <img
                   class="owner-icon"
-                  :src="item.ownerImageUrl"
+                  :src="item.var店主画像URL"
                   alt=""
                   id="owner-icon"
                 />
                 <div class="m-h3v"></div>
-                <h2 class="izakaya-name" v-cloak>{{ item.izakayaName }}</h2>
+                <h2 class="izakaya-name" v-cloak>{{ item.var出店名 }}</h2>
                 <div class="m-h2v"></div>
                 <p class="izakaya-info genre" v-cloak>
-                  【トークジャンル】<br />{{ item.talkGenre }}
+                  【トークジャンル】<br />{{
+                  item.varVoトークジャンル.トークジャンル }}
                 </p>
                 <div class="m-h3v"></div>
                 <p class="izakaya-info owner-name" v-cloak>
-                  【店主】<br />{{ item.ownerName }}
+                  【店主】<br />{{ item.var店主名 }}
                 </p>
                 <div class="m-h3v"></div>
                 <p class="izakaya-info hitokoto" v-cloak>
-                  【店主より】<br />{{ item.hitokoto }}
+                  【店主より】<br />{{ item.var自己紹介文 }}
                 </p>
                 <div class="m-h3v"></div>
                 <div class="izakaya-tags">
                   <div class="price">
-                    <p v-cloak>¥{{ item.price }} / 50分</p>
+                    <p v-cloak>¥{{ item.varチケット価格 }} / 50分</p>
                   </div>
                   <div class="m-w3v"></div>
-                  <template v-if="item.status != 'close'">
+                  <template
+                    v-if="item.varVoステータス.varステータス != 'close'"
+                  >
                     <div class="congestion-item">
                       <div class="congestion-icon">
                         <img src="/asset/image/Icon_ionic-md-person.png" />
@@ -127,12 +135,12 @@
                       <div class="m-w0_5v"></div>
                       <div class="congesiton-text">
                         <p v-cloak>
-                          {{ item.numberOfAttendee + "/" + item.maxAttendee }}
+                          {{ item.var残り席数 + "/" + item.var席数 }}
                         </p>
                       </div>
                     </div>
                     <div class="m-w3v"></div>
-                    <div v-if="item.numberOfAttendee == item.maxAttendee">
+                    <div v-if="item.var残り席数 == item.var席数">
                       <div class="entry-available full">
                         <p>満席</p>
                       </div>

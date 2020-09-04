@@ -10,7 +10,8 @@ window.$ = window.jQuery = jQuery;
   // 共通変数定義
   // ---------------------------------------------------------------------------
 
-  const IZAKAYA_ENDPOINT = process.env.AP_CONTEXT_PATH + "/izakaya/";
+  const IZAKAYA_ENDPOINT =
+    process.env.AP_CONTEXT_PATH + "/出店情報/出店情報一覧を参照する";
 
   // ===========================================================================
   // 初期化関数
@@ -43,15 +44,15 @@ window.$ = window.jQuery = jQuery;
         }
         return response.json();
       })
-      .then((data) => {
-        console.log("data0:", data[0]);
+      .then((responseData) => {
+        console.log("data0:", responseData[0]);
         var vm = new Vue({
           el: "#izakaya-content",
           data: {
             izakaya_list: [],
           },
           mounted() {
-            this.izakaya_list = data;
+            this.izakaya_list = responseData;
           },
         });
       })
