@@ -75,7 +75,7 @@
               <div class="m-h3v"></div>
               <div id="box__izakaya" class="box__izakaya">
                 <div class="part__owner-icon">
-                  <img :src="izakaya.ownerImageUrl" id="owner-icon" v-cloak />
+                  <img :src="izakaya.var店主画像Url" id="owner-icon" v-cloak />
                 </div>
                 <div class="m-w3v"></div>
                 <div class="part__izakaya-name">
@@ -83,7 +83,7 @@
                     <p>ENTRANCE TICKET</p>
                   </div>
                   <div class="part__izakaya-name-text">
-                    <p v-cloak>{{ izakaya.izakayaName }}</p>
+                    <p v-cloak>{{ izakaya.var出店名 }}</p>
                   </div>
                 </div>
               </div>
@@ -418,10 +418,10 @@
                       >合計額(税込)</label
                     >
                     <div class="part__price-text">
-                      <p v-cloak>¥{{ price }}</p>
+                      <p v-cloak>¥{{ varチケット価格 }}</p>
                     </div>
                     <div class="part__bill-text">
-                      <p v-cloak>内訳： 参加費 ¥{{ price }} x 1</p>
+                      <p v-cloak>内訳： 参加費 ¥{{ varチケット価格 }} x 1</p>
                     </div>
                   </div>
                 </div>

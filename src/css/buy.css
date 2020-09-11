@@ -238,8 +238,8 @@ _:future,
   position: relative;
   z-index: 3;
 }
-
-/** TODO 暫定機能：カード入力欄の非表示 */
+/* 
+ TODO 暫定機能：カード入力欄の非表示 
 .card-list {
   visibility: hidden;
   height: 0;
@@ -274,7 +274,7 @@ div.card-form__row:nth-child(6) {
 
 .card-form__inner {
   padding-top: 0 !important;
-}
+} */
 
 /** ディスプレイサイズ1024px以上での表示時 */
 @media screen and (min-width: 1024px) {

@@ -10,7 +10,8 @@ import Vue from "vue";
   // 共通変数定義
   // ---------------------------------------------------------------------------
 
-  const IZAKAYA_ENDPOINT = process.env.AP_CONTEXT_PATH + "/izakaya/";
+  const IZAKAYA_ENDPOINT =
+    process.env.AP_CONTEXT_PATH + "/出店情報/出店情報詳細を参照する/";
 
   // ===========================================================================
   // 初期化関数
@@ -18,9 +19,9 @@ import Vue from "vue";
   //  - アラートを表示 etc
   // ---------------------------------------------------------------------------
   var params = new URL(document.location).searchParams;
-  var izakayaId = params.get("id");
+  var 出店情報Id = params.get("id");
 
-  getIzakaya(izakayaId);
+  getIzakaya(出店情報Id);
 
   window.addEventListener("DOMContentLoaded", function () {
     console.log("dom loaded");
@@ -35,8 +36,8 @@ import Vue from "vue";
   // 関数定義 (イベントハンドラ以外)
   // ---------------------------------------------------------------------------
 
-  function getIzakaya(izakayaId) {
-    fetch(IZAKAYA_ENDPOINT + izakayaId, {
+  function getIzakaya(出店情報Id) {
+    fetch(IZAKAYA_ENDPOINT + 出店情報Id, {
       method: "GET",
       mode: "cors",
     })

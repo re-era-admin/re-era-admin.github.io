@@ -69,19 +69,19 @@
             <div class="izakaya-box">
               <div
                 class="izakaya-overview"
-                :class="{ 'disable' : izakaya.numberOfAttendee == izakaya.maxAttendee}"
+                :class="{ 'disable' : izakaya.var残り席数 == izakaya.var席数}"
               >
                 <div class="owner-icon">
-                  <img :src="izakaya.ownerImageUrl" id="owner-icon" />
+                  <img :src="izakaya.var店主画像Url" id="owner-icon" />
                 </div>
                 <div class="m-h4_5v"></div>
                 <div class="izakaya-name">
-                  <h2 v-cloak>{{ izakaya.izakayaName }}</h2>
+                  <h2 v-cloak>{{ izakaya.var出店名 }}</h2>
                 </div>
                 <div class="m-h6v"></div>
                 <div class="izakaya-tags">
                   <div class="price">
-                    <p v-cloak>¥{{ izakaya.price }} / 50分</p>
+                    <p v-cloak>¥{{ izakaya.varチケット価格 }} / 50分</p>
                   </div>
                   <div class="m-w3v"></div>
                   <div class="congestion-item">
@@ -91,13 +91,12 @@
                     <div class="m-w0_5v"></div>
                     <div class="congesiton-text">
                       <p v-cloak>
-                        {{ izakaya.numberOfAttendee + "/" + izakaya.maxAttendee
-                        }}
+                        {{ izakaya.var残り席数 + "/" + izakaya.var席数 }}
                       </p>
                     </div>
                   </div>
                   <div class="m-w3v"></div>
-                  <div v-if="izakaya.numberOfAttendee == izakaya.maxAttendee">
+                  <div v-if="izakaya.var残り席数 == izakaya.var席数">
                     <div class="entry-available full">
                       <p>満席</p>
                     </div>
@@ -115,39 +114,44 @@
               </div>
               <div class="m-h4_5v"></div>
               <div class="owner-name">
-                <p v-cloak>店主： {{ izakaya.ownerName }}</p>
+                <p v-cloak>店主： {{ izakaya.var店主名 }}</p>
               </div>
               <div class="genre">
-                <p v-cloak>トークジャンル： {{ izakaya.talkGenre }}</p>
+                <p v-cloak>
+                  トークジャンル： {{
+                  izakaya.varVoトークジャンル.varトークジャンル }}
+                </p>
               </div>
               <div class="m-h4_5v"></div>
               <div class="description-title">
                 <p>お店の説明</p>
               </div>
               <div class="description-text">
-                <p v-cloak>{{ izakaya.description }}</p>
+                <p v-cloak>{{ izakaya.varお店の説明 }}</p>
               </div>
             </div>
             <div class="m-h4v"></div>
             <div class="buy-content">
-              <template v-if="izakaya.numberOfAttendee == izakaya.maxAttendee">
+              <template v-if="izakaya.var残り席数 == izakaya.var席数">
                 <div class="full-text">
                   <p>現在満席です</p>
                 </div>
               </template>
               <template v-else>
                 <div class="charge-link">
-                  <!-- <a :href="'/buy.html?id=' + izakaya.izakayaId"> -->
-                  <a href="https://forms.gle/bceJsJRtPKu7oGsk6"> 申し込み</a>
+                  <a :href="'/buy.html?id=' + izakaya.varVo出店Id.var出店Id">
+                    <!-- <a href="https://forms.gle/bceJsJRtPKu7oGsk6">  -->
+                    申し込み</a
+                  >
                 </div>
               </template>
               <div class="m-h4v"></div>
               <div class="info-text">
-                <!-- <p>
+                <p>
                   購入後ZoomのURLが届きます。<br />
                   チケットの有効時間カウントダウンはZoomでトークルームに<br />
                   入った時点からのカウントです。
-                </p> -->
+                </p>
               </div>
             </div>
             <div class="m-h5v"></div>
