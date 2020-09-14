@@ -52,7 +52,7 @@
             <input
               name="オーナーId"
               class="inputData"
-              value="12345678901234567890123456"
+              value="1234567890123456789012345A"
               id="owner_id"
             />
             <div class="part">
@@ -60,7 +60,7 @@
               <select
                 id="ticket_pattern"
                 class="inputData"
-                　name="チケット購入形態"
+                name="チケット購入形態"
               >
                 <option value="1">予約先着型</option>
                 <option value="2">ふらっと型</option>
@@ -323,6 +323,7 @@
 
         fetch(
           process.env.AP_CONTEXT_PATH + "/出店情報/出店情報の登録を申請する",
+          // process.env.AP_CONTEXT_PATH + "/日付テスト",
           {
             method: "POST",
             body: formData,

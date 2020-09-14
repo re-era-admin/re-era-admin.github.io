@@ -1,4 +1,6 @@
 (function () {
+  "use strict";
+
   const firebaseConfig = {
     apiKey: "AIzaSyAcahSSBT9jzNddDlvPLMLIsUFSsagmN4g",
     authDomain: "flatto-yokocho.firebaseapp.com",
@@ -49,12 +51,32 @@
           });
       });
   }
-  document.getElementById("logIn").addEventListener(
-    "click",
-    function (event) {
-      logIn();
-      event.preventDefault();
-    },
-    false
-  );
+  document.getElementById("logIn").addEventListener("click", function () {
+    let email = document.getElementById("email").value;
+    let password = document.getElementById("password").value;
+    firebase
+      .auth()
+      .signInWithEmailAndPassword(email, password)
+      .catch(function (error) {
+        // Handle Errors here.
+        // var errorCode = error.code;
+        // var errorMessage = error.message;
+
+        alert(
+          "ログインに失敗しました。メールアドレス、パスワードのいずれか、または両方が間違っています。"
+        );
+
+        firebase
+          .auth()
+          .currentUser.getIdToken(/* forceRefresh */ true)
+          .then(function (idToken) {
+            //サーバにトークンを投げる
+            //https://firebase.google.com/docs/auth/admin/verify-id-tokens?hl=ja#web
+            location.href = "./order.html";
+          })
+          .catch(function (error) {
+            // Handle error
+          });
+      });
+  });
 });
