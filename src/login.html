@@ -3,20 +3,17 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./common/css/common.css" />
     <title>オンライン横丁 flatto -出店申請フォーム-</title>
   </head>
   <body>
-    <button onclick="register()">登録</button>
-    <button onclick="signIn()">GoogleLogin</button>
-    <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
+    <h1>出店申請フォームログイン画面</h1>
+    メールアドレス<input id="email" /> パスワード<input id="password" />
+    <button onclick="logIn()">ログイン</button>
     <script src="https://www.gstatic.com/firebasejs/6.2.0/firebase-app.js"></script>
-
-    <!-- Add Firebase products that you want to use -->
     <script src="https://www.gstatic.com/firebasejs/6.2.0/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/6.2.0/firebase-firestore.js"></script>
+
     <script>
-      // TODO: Replace the following with your app's Firebase project configuration
       const firebaseConfig = {
         apiKey: "AIzaSyAcahSSBT9jzNddDlvPLMLIsUFSsagmN4g",
         authDomain: "flatto-yokocho.firebaseapp.com",
@@ -30,26 +27,49 @@
 
       // Initialize Firebase
       firebase.initializeApp(firebaseConfig);
+      window.onload = function () {
+        firebase.auth().onAuthStateChanged(function (user) {
+          if (user) {
+            location.href = "./order.html";
+          } else {
+          }
+        });
+      };
     </script>
     <script>
-      function signIn() {
-        var provider = new firebase.auth.GoogleAuthProvider();
-        firebase.auth().signInWithPopup(provider);
-      }
-
-      function register() {
-        email = "im.fumin238@icloud.com";
-        password = "test";
+      function logIn() {
+        email = document.getElementById("email").value;
+        password = document.getElementById("password").value;
         firebase
           .auth()
-          .createUserWithEmailAndPassword("ddd@icloud.com", "teJH209@st")
+          .signInWithEmailAndPassword(email, password)
           .catch(function (error) {
             // Handle Errors here.
-            var errorCode = error.code;
-            var errorMessage = error.message;
-            // ...
+            // var errorCode = error.code;
+            // var errorMessage = error.message;
+
+            alert(
+              "ログインに失敗しました。メールアドレス、パスワードのいずれか、または両方が間違っています。"
+            );
+
+            firebase
+              .auth()
+              .currentUser.getIdToken(/* forceRefresh */ true)
+              .then(function (idToken) {
+                //サーバにトークンを投げる
+                //https://firebase.google.com/docs/auth/admin/verify-id-tokens?hl=ja#web
+                location.href = "./order.html";
+              })
+              .catch(function (error) {
+                // Handle error
+              });
           });
       }
+      //Googleログイン
+      // function googlelogIn() {
+      //   var provider = new firebase.auth.GoogleAuthProvider();
+      //   firebase.auth().signInWithPopup(provider);
+      // }
     </script>
   </body>
 </html>
