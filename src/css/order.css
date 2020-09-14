@@ -76,3 +76,7 @@ textarea {
   background-color: cadetblue;
   display: none;
 }
+
+#owner_id {
+  display: none;
+}

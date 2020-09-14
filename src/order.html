@@ -33,13 +33,13 @@
         <div class="area" id="area_inputForm">
           <form
             id="orderForm"
-            action="./acceptOffer.html"
             　data-parsley-trigger="keyup focusout change input"
           >
             <div class="part">
               <p>出店名[30文字まで]*</p>
               <input
                 id="bar_name"
+                name="出店名"
                 required
                 data-parsley-openDate
                 maxlength="30"
@@ -47,9 +47,15 @@
                 data-parsley-error-message="必須項目です。"
               />
             </div>
+            <!-- TODO サーバから認証情報に合致するオーナIDを取得する -->
+            <input
+              name="オーナーId"
+              value="12345678901234567890123456"
+              id="owner_id"
+            />
             <div class="part">
               <p>チケット購入形態*</p>
-              <select id="ticket_pattern">
+              <select id="ticket_pattern" 　name="チケット購入形態">
                 <option value="1">予約先着型</option>
                 <option value="2">ふらっと型</option>
                 <option value="3">抽選型</option>
@@ -59,6 +65,7 @@
               <p>トークジャンル[50文字まで]*</p>
               <input
                 id="talk_genre"
+                name="トークジャンル"
                 required
                 placeholder="(例)雑談"
                 data-parsley-error-message="必須項目です。"
@@ -68,25 +75,38 @@
               <p>お店の説明*</p>
               <textarea
                 id="description"
+                name="お店の説明"
                 required
                 data-parsley-error-message="必須項目です。"
               ></textarea>
             </div>
             <div class="part">
               <p>お店の説明要約1[20文字]</p>
-              <input id="description_outline1" maxlength="20" />
+              <input
+                id="description_outline1"
+                name="お店の説明要約1"
+                maxlength="20"
+              />
             </div>
             <div class="part">
               <p>お店の説明要約2[20文字]</p>
-              <input id="description_outline2" maxlength="20" />
+              <input
+                id="description_outline2"
+                name="お店の説明要約2"
+                maxlength="20"
+              />
             </div>
             <div class="part">
               <p>お店の説明要約3[20文字]</p>
-              <input id="description_outline3" maxlength="20" />
+              <input
+                id="description_outline3"
+                name="お店の説明要約3"
+                maxlength="20"
+              />
             </div>
             <div class="part">
               <p>お客様席数 (店主様分はこの中に含みません)*</p>
-              <select id="seats">
+              <select id="seats" name="席数">
                 <option value="4">4</option>
                 <option value="3">3</option>
                 <option value="2">2</option>
@@ -97,6 +117,7 @@
               <p>チケット価格(円) 0も設定可能*</p>
               <input
                 id="price"
+                name="チケットの値段"
                 placeholder="(例)5000"
                 required
                 data-parsley-type="integer"
@@ -110,6 +131,7 @@
               </p>
               <input
                 id="unit_time"
+                name="単位時間"
                 required
                 data-parsley-type="integer"
                 data-parsley-min="30"
@@ -120,6 +142,7 @@
               <p>お店の開店時間(現在時刻よりも10分後以降)*</p>
               <input
                 id="start_time"
+                name="開店時間"
                 type="datetime-local"
                 required
                 data-parsley-openDate=""
@@ -129,22 +152,59 @@
             <div class="part">
               <p>開催時間(30分-240分)*</p>
               <input
-                id="duration"
-                data-parsley-type="integer"
-                data-parsley-min="30"
-                data-parsley-max="240"
-                data-parsley-openDate
-                data-parsley-error-message="開催時間は30以上240以下の数字を設定してください。"
+                id="end_time"
+                name="閉店時間"
+                type="datetime-local"
+                required
+                data-parsley-openDate=""
+                data-parsley-error-message="必須項目です。"
               />分
             </div>
             <div class="part">
               <button type="button" id="check_btn">確認画面へ</button>
-              <input type="submit" id="submit" value="申請する" />
+              <button type="button" id="submit">申請する</button>
               <button type="button" id="remake_btn">申請内容を修正する</button>
             </div>
           </form>
         </div>
       </div>
+    </div>
+    <div id="container__modal" class="container__modal">
+      <div class="m-w9v"></div>
+      <div class="box__modal" :class="{ 'active' : msg }">
+        <div class="part__modal-title">
+          <p v-cloak>{{ msg.title }}</p>
+        </div>
+        <div id="part__modal-icon" class="part__modal-icon">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="icon icon-tabler icon-tabler-alert-triangle"
+            width="68"
+            height="68"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="#FFEB3B"
+            fill="none"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path stroke="none" d="M0 0h24v24H0z" />
+            <path d="M12 9v2m0 4v.01" />
+            <path
+              d="M5.07 19H19a2 2 0 0 0 1.75 -2.75L13.75 4a2 2 0 0 0 -3.5 0L3.25 16.25a2 2 0 0 0 1.75 2.75"
+            />
+          </svg>
+        </div>
+        <div class="m-h2v"></div>
+        <div class="part__modal-text">
+          <p v-cloak>{{ msg.text }}</p>
+        </div>
+        <div class="m-h6v"></div>
+        <div class="part__btn-top">
+          <button id="close">閉じる</button>
+        </div>
+      </div>
+      <div class="m-w9v"></div>
     </div>
     <script>
       const firebaseConfig = {
@@ -201,14 +261,16 @@
               error_message +
               "お店の開店時間は今から10分以上後にして下さい。\n";
           }
-          if (
-            document.getElementById("unit_time").value >
-            document.getElementById("duration").value
-          ) {
-            error_message =
-              error_message +
-              "チケット単位時間は開催時間以内に設定して下さい。\n";
-          }
+
+          // TODO 開店期間->閉店時間の変更に伴いチェック処理の変更要
+          // if (
+          //   document.getElementById("unit_time").value >
+          //   document.getElementById("duration").value
+          // ) {
+          //   error_message =
+          //     error_message +
+          //     "チケット単位時間は開催時間以内に設定して下さい。\n";
+          // }
           if (error_message == "") {
             switchComfirmForm();
           } else {
@@ -258,6 +320,56 @@
         document.getElementById("comfirmForm_title").style.display = "block";
         document.getElementById("main").style.backgroundColor = "#ddd";
       }
+
+      function sendRequest() {
+        var formElement = document.querySelector("orderForm");
+        var formData = new FormData(formElement);
+
+        fetch(
+          process.env.AP_CONTEXT_PATH + "/出店情報/出店情報の登録を申請する",
+          {
+            method: "POST",
+            body: formData,
+          }
+        )
+          .then((response) => response.json())
+          .catch((error) => console.error("Error:", error))
+          .then((response) => {
+            // document
+            //   .getElementById("container__loading")
+            //   .classList.remove("active");
+            // document.getElementById("header").classList.add("under-modal");
+            if (response.code != undefined) {
+              console.log("Fail", response.message);
+              document
+                .getElementById("part__modal-icon")
+                .classList.add("error");
+              var vm = new Vue({
+                el: "#container__modal",
+                data: {
+                  msg: [],
+                },
+                mounted() {
+                  const result = {
+                    title: "",
+                    text: response.message,
+                  };
+                  this.msg = result;
+                },
+              });
+              return;
+            }
+            console.log("Success", JSON.stringify(response));
+            Location.href("./acceptOffer.html");
+          });
+      }
+      document.getElementById("submit").addEventListener("click", sendRequest);
+
+      document
+        .getElementById("close")
+        .addEventListener("click", function (event) {
+          document.getElementsById("container__modal").style.display = "none";
+        });
     </script>
   </body>
 </html>
