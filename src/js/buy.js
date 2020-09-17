@@ -10,7 +10,7 @@ window.$ = window.jQuery = jQuery;
   // ===========================================================================
   // 共通変数定義
   // ---------------------------------------------------------------------------
-  let 出店情報Id;
+  let izakayaId;
 
   let price;
 
@@ -47,13 +47,13 @@ window.$ = window.jQuery = jQuery;
           var purchaserName = document.querySelector("#purchaser-name").value;
 
           let purchaseFormData = new FormData();
-          purchaseFormData.append("omiseトークン", response.id);
-          purchaseFormData.append("メールアドレス", emailVal);
-          purchaseFormData.append("購入者名", purchaserName);
-          purchaseFormData.append("出店Id", 出店情報Id);
-          purchaseFormData.append("表示価格", price);
+          purchaseFormData.append("omiseToken", response.id);
+          purchaseFormData.append("email", emailVal);
+          purchaseFormData.append("purchaserName", purchaserName);
+          purchaseFormData.append("izakayaId", izakayaId);
+          purchaseFormData.append("price", price);
 
-          fetch(process.env.AP_CONTEXT_PATH + "/出店情報/チケット申込を行う", {
+          fetch(process.env.AP_CONTEXT_PATH + "/ticket/buy", {
             method: "POST",
             body: purchaseFormData,
           })
@@ -119,11 +119,11 @@ window.$ = window.jQuery = jQuery;
   // ---------------------------------------------------------------------------
   $(function init() {
     var params = new URL(document.location).searchParams;
-    出店情報Id = params.get("id");
+    izakayaId = params.get("id");
 
-    getIzakaya(出店情報Id);
+    getIzakaya(izakayaId);
 
-    setLinkBack(出店情報Id);
+    setLinkBack(izakayaId);
 
     Omise.setPublicKey("pkey_test_5k4953yfhskp2xwoquh");
   });
@@ -131,16 +131,11 @@ window.$ = window.jQuery = jQuery;
   // 関数定義 (イベントハンドラ以外)
   // ---------------------------------------------------------------------------
 
-  function getIzakaya(p出店情報Id) {
-    fetch(
-      process.env.AP_CONTEXT_PATH +
-        "/出店情報/出店情報詳細を参照する/" +
-        p出店情報Id,
-      {
-        method: "GET",
-        mode: "cors",
-      }
-    )
+  function getIzakaya(izakayaId) {
+    fetch(process.env.AP_CONTEXT_PATH + "/izakaya/" + izakayaId, {
+      method: "GET",
+      mode: "cors",
+    })
       .then((response) => {
         if (!response.ok) {
           throw Error(response.statusText);
@@ -180,7 +175,7 @@ window.$ = window.jQuery = jQuery;
               isCardFlipped: false,
               focusElementStyle: null,
               isInputFocused: false,
-              varチケット価格: izakaya.varチケット価格,
+              price: izakaya.price,
             };
           },
           mounted() {
@@ -251,7 +246,7 @@ window.$ = window.jQuery = jQuery;
           },
         });
 
-        price = izakaya.varチケット価格;
+        price = izakaya.price;
       })
       .catch((err) => {
         console.log(err);

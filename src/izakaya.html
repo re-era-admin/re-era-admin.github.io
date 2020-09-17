@@ -122,7 +122,9 @@
                 <div class="m-h3v"></div>
                 <div class="izakaya-tags">
                   <div class="price">
-                    <p v-cloak>¥{{ item.varチケット価格 }} / 50分</p>
+                    <p v-cloak>
+                      ¥{{ item.varチケット価格 }} / {{ item.var単位時間 }}分
+                    </p>
                   </div>
                   <div class="m-w3v"></div>
                   <template
@@ -135,12 +137,12 @@
                       <div class="m-w0_5v"></div>
                       <div class="congesiton-text">
                         <p v-cloak>
-                          {{ item.var残り席数 + "/" + item.var席数 }}
+                          {{ item.var埋まっている席数 + "/" + item.var席数 }}
                         </p>
                       </div>
                     </div>
                     <div class="m-w3v"></div>
-                    <div v-if="item.var残り席数 == item.var席数">
+                    <div v-if="item.var埋まっている席数 == item.var席数">
                       <div class="entry-available full">
                         <p>満席</p>
                       </div>

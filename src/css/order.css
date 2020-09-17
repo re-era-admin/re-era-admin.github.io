@@ -80,3 +80,11 @@ textarea {
 #owner_id {
   display: none;
 }
+
+.minimum_text {
+  width: 30px;
+}
+
+.hiddenData {
+  /* display: none; */
+}
