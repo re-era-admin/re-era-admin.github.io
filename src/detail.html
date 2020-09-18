@@ -82,7 +82,10 @@
                 <div class="izakaya-tags">
                   <div class="price">
                     <!-- FIXME 50分べた打ち。DTOから修正 -->
-                    <p v-cloak>¥{{ izakaya.varチケット価格 }} / 50分</p>
+                    <p v-cloak>
+                      ¥{{ izakaya.varチケット価格 + "/" + izakaya.var単位時間 +
+                      "分"}}
+                    </p>
                   </div>
                   <div class="m-w3v"></div>
                   <div class="congestion-item">
@@ -92,7 +95,8 @@
                     <div class="m-w0_5v"></div>
                     <div class="congesiton-text">
                       <p v-cloak>
-                        {{ izakaya.var残り席数 + "/" + izakaya.var席数 }}
+                        {{ izakaya.var埋まっている席数 + "/" + izakaya.var席数
+                        }}
                       </p>
                     </div>
                   </div>
