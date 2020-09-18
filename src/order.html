@@ -163,9 +163,21 @@
               /><input
                 class="minimum_text start-time"
                 id="start-hour"
-              />時<input class="minimum_text start-time" id="start-min" />分〜
+                data-parsley-type="integer"
+                data-parsley-max="23"
+              />時<input
+                class="minimum_text start-time"
+                id="start-min"
+                data-parsley-type="integer"
+                data-parsley-max="59"
+              />分〜
               <!-- リクエスト用に日付と時間を結合したものを格納するinput 非表示 -->
-              <input class="hiddenData" id="開店時間" name="開店時間" />
+              <input
+                type="datetime-local"
+                class="hiddenData"
+                id="開店時間"
+                name="開店時間"
+              />
               <input
                 id="end-date"
                 class="inputData"
@@ -174,12 +186,24 @@
                 data-parsley-openDate=""
                 data-parsley-error-message="必須項目です。"
               />
-              <input class="minimum_text" id="end-hour" />時<input
+              <input
+                class="minimum_text"
+                id="end-hour"
+                data-parsley-type="integer"
+                data-parsley-max="23"
+              />時<input
                 class="minimum_text"
                 id="end-min"
+                data-parsley-type="integer"
+                data-parsley-max="59"
               />分
               <!-- リクエスト用に日付と時間を結合したものを格納するinput 非表示 -->
-              <input class="hiddenData" id="閉店時間" name="閉店時間" />
+              <input
+                type="datetime-local"
+                class="hiddenData"
+                id="閉店時間"
+                name="閉店時間"
+              />
             </div>
             <div class="part">
               <button type="button" id="check_btn">確認画面へ</button>
@@ -194,7 +218,7 @@
       <div class="m-w9v"></div>
       <div class="box__modal" :class="{ 'active' : msg }">
         <div class="part__modal-title">
-          <p v-cloak>{{ msg.title }}</p>
+          <p1 v-cloak>{{ msg.title }}</p1>
         </div>
         <div id="part__modal-icon" class="part__modal-icon">
           <svg
@@ -273,24 +297,36 @@
         .parsley()
         .on("form:success", function () {
           nowDate = new Date();
-          var time = document.getElementById("開店時間").value;
-          time = time.toString();
-          inputDate = new Date(time);
+          var openDateTime = new Date(
+            document.getElementById("開店時間").value
+          );
+          var endDateTime = new Date(document.getElementById("閉店時間").value);
           var error_message = "";
-          if (nowDate.setMinutes(nowDate.getMinutes() + 10) > inputDate) {
+          if (nowDate.setMinutes(nowDate.getMinutes() + 10) > openDateTime) {
             error_message =
               error_message +
               "お店の開店時間は今から10分以上後にして下さい。\n";
           }
-          // TODO 開店期間->閉店時間の変更に伴いチェック処理の変更要
-          // if (
-          //   document.getElementById("unit_time").value >
-          //   document.getElementById("duration").value
-          // ) {
-          //   error_message =
-          //     error_message +
-          //     "チケット単位時間は開催時間以内に設定して下さい。\n";
-          // }
+
+          //単位時間以下になっていおない事
+          if (
+            (endDateTime - openDateTime) / 60000 <
+            document.getElementById("unit_time").value
+          ) {
+            //60000ミリ秒=1分
+            error_message =
+              error_message +
+              "お店の開店開店時間と閉店時間の間は最低でもチケットの単位時間の設定時間(" +
+              document.getElementById("unit_time").value +
+              "分)よりも開けてください。\n";
+          }
+
+          if (endDateTime < openDateTime) {
+            error_message =
+              error_message +
+              "お店の開店開店時間と閉店時間が前後しています。\n";
+          }
+
           if (error_message == "") {
             switchComfirmForm();
           } else {
@@ -379,28 +415,58 @@
         });
 
       document
+        .querySelector("#start-date")
+        .addEventListener("change", (event) => {
+          createStartDateTime();
+        });
+      document
+        .querySelector("#start-hour")
+        .addEventListener("change", (event) => {
+          createStartDateTime();
+        });
+      document
         .querySelector("#start-min")
         .addEventListener("change", (event) => {
           createStartDateTime();
         });
 
+      document
+        .querySelector("#end-date")
+        .addEventListener("change", (event) => {
+          createEndDateTime();
+        });
+      document
+        .querySelector("#end-hour")
+        .addEventListener("change", (event) => {
+          createEndDateTime();
+        });
+      document.querySelector("#end-min").addEventListener("change", (event) => {
+        createEndDateTime();
+      });
+
       function createStartDateTime() {
         const _startDate = document.querySelector("#start-date").value;
-        const _startHour = document.querySelector("#start-hour").value;
-        const _startMin = document.querySelector("#start-min").value;
+        const _startHour = (
+          "00" + document.querySelector("#start-hour").value
+        ).slice(-2);
+        const _startMin = (
+          "00" + document.querySelector("#start-min").value
+        ).slice(-2);
         const result = document.querySelector("#開店時間");
         result.value = _startDate + "T" + _startHour + ":" + _startMin;
       }
-      const selectElement = document.querySelector("#end-min");
 
-      selectElement.addEventListener("change", (event) => {
+      function createEndDateTime() {
         const _endDate = document.querySelector("#end-date").value;
-        const _endHour = document.querySelector("#end-hour").value;
-        const _endMin = document.querySelector("#end-min").value;
-
+        const _endHour = (
+          "00" + document.querySelector("#end-hour").value
+        ).slice(-2);
+        const _endMin = ("00" + document.querySelector("#end-min").value).slice(
+          -2
+        );
         const result = document.querySelector("#閉店時間");
         result.value = _endDate + "T" + _endHour + ":" + _endMin;
-      });
+      }
     </script>
   </body>
 </html>
