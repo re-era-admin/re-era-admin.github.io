@@ -134,7 +134,7 @@ window.$ = window.jQuery = jQuery;
   function getIzakaya(p出店情報Id) {
     fetch(
       process.env.AP_CONTEXT_PATH +
-        "/出店情報/出店情報詳細を参照する/" +
+        "/出店情報/チケット申込ページを参照する/" +
         p出店情報Id,
       {
         method: "GET",
@@ -181,6 +181,7 @@ window.$ = window.jQuery = jQuery;
               focusElementStyle: null,
               isInputFocused: false,
               varチケット価格: izakaya.varチケット価格,
+              var単位時間: izakaya.var単位時間,
             };
           },
           mounted() {

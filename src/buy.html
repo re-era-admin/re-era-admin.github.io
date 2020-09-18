@@ -418,7 +418,9 @@
                       >合計額(消費税10%込)</label
                     >
                     <div class="part__price-text">
-                      <p v-cloak>¥{{ varチケット価格 }}</p>
+                      <p v-cloak>
+                        ¥{{ varチケット価格 + " / " + var単位時間 + "分"}}
+                      </p>
                     </div>
                     <div class="part__bill-text">
                       <p v-cloak>内訳： 参加費 ¥{{ varチケット価格 }} x 1</p>
