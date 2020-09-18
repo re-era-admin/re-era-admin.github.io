@@ -69,7 +69,7 @@
             <div class="izakaya-box">
               <div
                 class="izakaya-overview"
-                :class="{ 'disable' : izakaya.var残り席数 == izakaya.var席数}"
+                :class="{ 'disable' : izakaya.var埋まっている席数 == izakaya.var席数}"
               >
                 <div class="owner-icon">
                   <img :src="izakaya.var店主画像Url" id="owner-icon" />
@@ -101,7 +101,7 @@
                     </div>
                   </div>
                   <div class="m-w3v"></div>
-                  <div v-if="izakaya.var残り席数 == izakaya.var席数">
+                  <div v-if="izakaya.var埋まっている席数 == izakaya.var席数">
                     <div class="entry-available full">
                       <p>満席</p>
                     </div>
@@ -137,7 +137,7 @@
             </div>
             <div class="m-h4v"></div>
             <div class="buy-content">
-              <template v-if="izakaya.var残り席数 == izakaya.var席数">
+              <template v-if="izakaya.var埋まっている席数 == izakaya.var席数">
                 <div class="full-text">
                   <p>現在満席です</p>
                 </div>
