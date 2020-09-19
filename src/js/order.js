@@ -117,12 +117,25 @@
       console.log(index);
     });
 
+    const myHeaders = new Headers();
+
+    firebase
+      .auth()
+      .currentUser.getIdToken(/* forceRefresh */ true)
+      .then(function (idToken) {
+        myHeaders.append("fireBaseTokenId", idToken);
+      })
+      .catch(function (error) {
+        // Handle error
+      });
+
     fetch(
       process.env.AP_CONTEXT_PATH + "/出店情報/出店情報の登録を申請する",
       // process.env.AP_CONTEXT_PATH + "/日付テスト",
       {
         method: "POST",
         body: formData,
+        headers: myHeaders,
       }
     )
       .then((response) => response.json())
