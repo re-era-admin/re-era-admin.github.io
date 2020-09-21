@@ -19,13 +19,9 @@ import Vue from "vue";
   //  - アラートを表示 etc
   // ---------------------------------------------------------------------------
   var params = new URL(document.location).searchParams;
-  var 出店情報Id = params.get("id");
+  var リダイレクトId = params.get("id");
 
-  getIzakaya(出店情報Id);
-
-  window.addEventListener("DOMContentLoaded", function () {
-    console.log("dom loaded");
-  });
+  リダイレクト情報を取得する(リダイレクトId);
 
   // ===========================================================================
   // イベントハンドラ関数定義
@@ -36,7 +32,7 @@ import Vue from "vue";
   // 関数定義 (イベントハンドラ以外)
   // ---------------------------------------------------------------------------
 
-  function getIzakaya(出店情報Id) {
+  function リダイレクト情報を取得する(リダイレクトId) {
     fetch(IZAKAYA_ENDPOINT + 出店情報Id, {
       method: "GET",
       mode: "cors",

@@ -122,49 +122,52 @@
     firebase
       .auth()
       .currentUser.getIdToken(/* forceRefresh */ true)
-      .then(function (idToken) {
-        myHeaders.append("fireBaseTokenId", idToken);
-      })
       .catch(function (error) {
-        // Handle error
-      });
+        console.error(error);
+        throw error;
+      })
+      .then(function (idToken) {
+        myHeaders.append("Authorization", "Bearer " + idToken);
 
-    fetch(
-      process.env.AP_CONTEXT_PATH + "/出店情報/出店情報の登録を申請する",
-      // process.env.AP_CONTEXT_PATH + "/日付テスト",
-      {
-        method: "POST",
-        body: formData,
-        headers: myHeaders,
-      }
-    )
-      .then((response) => response.json())
-      .catch((error) => console.error("Error:", error))
-      .then((response) => {
-        // document
-        //   .getElementById("container__loading")
-        //   .classList.remove("active");
-        // document.getElementById("header").classList.add("under-modal");
-        if (response.code != undefined) {
-          console.log("Fail", response.message);
-          document.getElementById("part__modal-icon").classList.add("error");
-          var vm = new Vue({
-            el: "#container__modal",
-            data: {
-              msg: [],
-            },
-            mounted() {
-              const result = {
-                title: "",
-                text: response.message,
-              };
-              this.msg = result;
-            },
+        fetch(
+          process.env.AP_CONTEXT_PATH + "/出店情報/出店情報の登録を申請する",
+          // process.env.AP_CONTEXT_PATH + "/日付テスト",
+          {
+            method: "POST",
+            body: formData,
+            headers: myHeaders,
+          }
+        )
+          .then((response) => response.json())
+          .catch((error) => console.error("Error:", error))
+          .then((response) => {
+            // document
+            //   .getElementById("container__loading")
+            //   .classList.remove("active");
+            // document.getElementById("header").classList.add("under-modal");
+            if (response.code != undefined) {
+              console.log("Fail", response.message);
+              document
+                .getElementById("part__modal-icon")
+                .classList.add("error");
+              var vm = new Vue({
+                el: "#container__modal",
+                data: {
+                  msg: [],
+                },
+                mounted() {
+                  const result = {
+                    title: "",
+                    text: response.message,
+                  };
+                  this.msg = result;
+                },
+              });
+              return;
+            }
+            console.log("Success", JSON.stringify(response));
+            location.href = "./acceptOffer.html";
           });
-          return;
-        }
-        console.log("Success", JSON.stringify(response));
-        location.href = "./acceptOffer.html";
       });
   }
   document.getElementById("submit").addEventListener("click", sendRequest);
