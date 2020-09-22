@@ -55,10 +55,54 @@ section#section {
   width: 67vw;
 }
 
+.display-status {
+  width: 100%;
+  height: 100%;
+  padding: 2%;
+  /* height: 10vw; */
+  border-radius: 2vw;
+  display: flex;
+  justify-content: center; /*左右中央揃え*/
+  align-items: center; /*上下中央揃え*/
+  font-size: 6vw;
+  font-weight: 900;
+  z-index: 10;
+}
+
+.display-status-close {
+  background-color: #222;
+}
+
+.display-status-open {
+  background-color: #3caa9b;
+}
+
+.display-status-full {
+  background-color: rgb(199, 79, 79);
+}
+
+.display-status-willOpen {
+  background-color: rgb(255, 208, 0);
+}
+
+.display-status-lottery {
+  background-color: rgb(50, 204, 3);
+}
+
+.display-status-reserve {
+  background-color: rgb(3, 124, 204);
+}
+
+.duration {
+  font-weight: 900;
+  /* color: rgb(248, 247, 202); */
+}
+
 .izakaya-item {
   position: relative;
   border: 1px solid white;
   text-align: center;
+  padding: 10%;
 }
 .izakaya-item.disable {
   opacity: 70%;
@@ -72,20 +116,26 @@ section#section {
   height: 100%;
 }
 .part__cover.harigami {
-  display: none;
+  /* display: none; */
   flex-direction: column;
   align-items: center;
   justify-content: start;
   padding-top: 6vw;
+}
+.part__cover.harigami.満席 {
+  display: flex;
+  background-color: rgba(255, 0, 0, 0.3);
   z-index: 5;
 }
-.part__cover.harigami.full {
+.part__cover.harigami.閉店中 {
   display: flex;
-  background-color: rgba(255, 0, 0, 0.4);
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 5;
 }
-.part__cover.harigami.close {
+.part__cover.harigami.開店待ち {
   display: flex;
-  background-color: rgba(60, 60, 60, 0.5);
+  background-color: rgba(253, 255, 147, 0.3);
+  z-index: 5;
 }
 .part__cover.harigami > p {
   background-color: black;
@@ -215,5 +265,9 @@ img.owner-icon {
   }
   .entry-available > p {
     font-size: 37px;
+  }
+  .display-status {
+    border-radius: 24px;
+    font-size: 61.2px;
   }
 }
