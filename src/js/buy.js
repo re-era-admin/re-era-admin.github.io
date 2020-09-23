@@ -20,6 +20,23 @@ window.$ = window.jQuery = jQuery;
 
   var handlers = {
     submitPurchase: function () {
+      //validation TODO:後でアーキテクチャの方針に合わせてチェック方法修正
+      if (document.getElementById("email").value == "") {
+        alert("メールアドレスを入力してください。");
+        return;
+      }
+
+      var _mailFormat = /^[A-Za-z0-9]{1}[A-Za-z0-9_.-]*@{1}[A-Za-z0-9_.-]{1,}\.[A-Za-z0-9]{1,}$/;
+      if (!_mailFormat.test(document.getElementById("email").value)) {
+        alert("メールアドレスのフォーマットに誤りがあります。");
+        return;
+      }
+
+      if (document.getElementById("purchaser-name").value == "") {
+        alert("Zoom上で表示するお名前を入力してください。");
+        return;
+      }
+
       var el = document.getElementById("container__loading");
       el.classList.add("active");
       document.getElementById("header").classList.add("under-modal");
