@@ -1,0 +1,79 @@
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/クッション.css" />
+    <link rel="stylesheet" href="/common/css/common.css" />
+    <script src="/js/クッション.js"></script>
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=UA-174012826-1"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "UA-174012826-1");
+    </script>
+    <script>
+      (function (d) {
+        var config = {
+            kitId: "bwu7gyp",
+            scriptTimeout: 3000,
+            async: true,
+          },
+          h = d.documentElement,
+          t = setTimeout(function () {
+            h.className =
+              h.className.replace(/\bwf-loading\b/g, "") + " wf-inactive";
+          }, config.scriptTimeout),
+          tk = d.createElement("script"),
+          f = false,
+          s = d.getElementsByTagName("script")[0],
+          a;
+        h.className += " wf-loading";
+        tk.src = "https://use.typekit.net/" + config.kitId + ".js";
+        tk.async = true;
+        tk.onload = tk.onreadystatechange = function () {
+          a = this.readyState;
+          if (f || (a && a != "complete" && a != "loaded")) return;
+          f = true;
+          clearTimeout(t);
+          try {
+            Typekit.load(config);
+          } catch (e) {}
+        };
+        s.parentNode.insertBefore(tk, s);
+      })(document);
+    </script>
+    <title>クッションページ</title>
+  </head>
+  <body>
+    <header id="header">
+      <div class="part__link-top">
+        <a href="/index.html"></a>
+      </div>
+      <div class="header-img">
+        <img src="/asset/image/header-out.png" />
+      </div>
+    </header>
+    <div class="background-img"></div>
+    <section id="section">
+      <div class="container__main-content">
+        <div class="m-w16_5v"></div>
+        <div id="cushion-content" class="container">
+          <h1>{{ data.var出店名 }}</h1>
+          <h1>{{ 開店時間_formatted }}</h1>
+          <div class="charge-link">
+            <a :class="data.表示状態" :href="data.varZoom参加Url">
+              (仮)お店に入る</a
+            >
+          </div>
+        </div>
+        <div class="m-w16_5v"></div>
+      </div>
+    </section>
+  </body>
+</html>

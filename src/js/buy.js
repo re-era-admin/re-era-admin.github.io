@@ -14,28 +14,59 @@ window.$ = window.jQuery = jQuery;
 
   let price;
 
+  var vm = new Vue({
+    el: "#container__modal",
+    data: {
+      msg: [],
+      modalActive: false,
+      closable: false,
+    },
+    methods: {
+      tojiru() {
+        this.modalActive = false;
+      },
+    },
+  });
+
   // ===========================================================================
   // イベントハンドラ関数定義
   // ---------------------------------------------------------------------------
 
   var handlers = {
     submitPurchase: function () {
+      //validation TODO:後でアーキテクチャの方針に合わせてチェック方法修正
+      if (document.getElementById("email").value == "") {
+        alert("メールアドレスを入力してください。");
+        return;
+      }
+
+      var _mailFormat = /^[A-Za-z0-9]{1}[A-Za-z0-9_.-]*@{1}[A-Za-z0-9_.-]{1,}\.[A-Za-z0-9]{1,}$/;
+      if (!_mailFormat.test(document.getElementById("email").value)) {
+        alert("メールアドレスのフォーマットに誤りがあります。");
+        return;
+      }
+
+      if (document.getElementById("purchaser-name").value == "") {
+        alert("Zoom上で表示するお名前を入力してください。");
+        return;
+      }
+
       var el = document.getElementById("container__loading");
       el.classList.add("active");
       document.getElementById("header").classList.add("under-modal");
       var cardInformation = {
-        // name: document.querySelector("#cardName").value,
-        // number: document.querySelector("#cardNumber").value,
-        // expiration_month: document.querySelector("#cardMonth").value,
-        // expiration_year: document.querySelector("#cardYear").value,
-        // security_code: document.querySelector("#cardCvv").value,
+        name: document.querySelector("#cardName").value,
+        number: document.querySelector("#cardNumber").value,
+        expiration_month: document.querySelector("#cardMonth").value,
+        expiration_year: document.querySelector("#cardYear").value,
+        security_code: document.querySelector("#cardCvv").value,
 
-        // TODO: 暫定機能：仮のカード情報で決済トークン取得
-        name: "TEST USER",
-        number: "4242424242424242",
-        expiration_month: "07",
-        expiration_year: "2025",
-        security_code: "999",
+        //仮のカード情報
+        // name: "TEST USER",
+        // number: "4242424242424242",
+        // expiration_month: "07",
+        // expiration_year: "2025",
+        // security_code: "999",
       };
 
       Omise.createToken("card", cardInformation, function (
@@ -64,36 +95,26 @@ window.$ = window.jQuery = jQuery;
                 .getElementById("container__loading")
                 .classList.remove("active");
               document.getElementById("header").classList.add("under-modal");
+              vm.modalActive = true;
               if (response.code != undefined) {
                 console.log("Fail", response.message);
                 document
                   .getElementById("part__modal-icon")
                   .classList.add("error");
-                var vm = new Vue({
-                  el: "#container__modal",
-                  data: {
-                    msg: [],
-                  },
-                  mounted() {
-                    const result = {
-                      title: "",
-                      text: response.message,
-                    };
-                    this.msg = result;
-                  },
-                });
+                const res = {
+                  title: "",
+                  text: response.message,
+                };
+                vm.msg = res;
+                vm.closable = true;
                 return;
               }
               console.log("Success", JSON.stringify(response));
-              var vm = new Vue({
-                el: "#container__modal",
-                data: {
-                  msg: [],
-                },
-                mounted() {
-                  this.msg = response;
-                },
-              });
+              document
+                .getElementById("part__modal-icon")
+                .classList.remove("error");
+              vm.msg = response;
+              vm.closable = false;
             });
         } else {
           // Error: display an error message. Note that `response.message` contains
@@ -134,7 +155,7 @@ window.$ = window.jQuery = jQuery;
   function getIzakaya(p出店情報Id) {
     fetch(
       process.env.AP_CONTEXT_PATH +
-        "/出店情報/出店情報詳細を参照する/" +
+        "/出店情報/チケット申込ページを参照する/" +
         p出店情報Id,
       {
         method: "GET",
@@ -181,6 +202,7 @@ window.$ = window.jQuery = jQuery;
               focusElementStyle: null,
               isInputFocused: false,
               varチケット価格: izakaya.varチケット価格,
+              var単位時間: izakaya.var単位時間,
             };
           },
           mounted() {

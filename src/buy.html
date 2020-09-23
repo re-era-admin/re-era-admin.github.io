@@ -401,24 +401,28 @@
                 <div class="card-form__col card-input">
                   <div class="card-input">
                     <label for="purchaser-name" class="card-input__label"
-                      >お名前</label
+                      >Zoom上で表示するお名前(ニックネーム等も可能です。)</label
                     >
                     <input
                       type="purchaser-name"
                       id="purchaser-name"
+                      maxlength="30"
                       class="card-input__input"
                     />
                   </div>
+                  　
                 </div>
               </div>
               <div class="card-form__row">
                 <div class="card-form__col">
                   <div class="card-input">
                     <label for="cardNumber" class="card-input__label"
-                      >合計額(税込)</label
+                      >合計額(消費税10%込)</label
                     >
                     <div class="part__price-text">
-                      <p v-cloak>¥{{ varチケット価格 }}</p>
+                      <p v-cloak>
+                        ¥{{ varチケット価格 + " / " + var単位時間 + "分"}}
+                      </p>
                     </div>
                     <div class="part__bill-text">
                       <p v-cloak>内訳： 参加費 ¥{{ varチケット価格 }} x 1</p>
@@ -443,7 +447,7 @@
         </div>
         <div id="container__modal" class="container__modal">
           <div class="m-w9v"></div>
-          <div class="box__modal" :class="{ 'active' : msg }">
+          <div class="box__modal" :class="{ 'active' : modalActive }">
             <div class="part__modal-title">
               <p v-cloak>{{ msg.title }}</p>
             </div>
@@ -472,9 +476,16 @@
               <p v-cloak>{{ msg.text }}</p>
             </div>
             <div class="m-h6v"></div>
-            <div class="part__btn-top">
-              <a href="/index.html">Topへ戻る</a>
-            </div>
+            <template v-if="!closable">
+              <div class="part__btn-top">
+                <a href="/index.html">Topへ戻る</a>
+              </div>
+            </template>
+            <template v-else>
+              <div class="part__btn-top">
+                <a @click="tojiru">戻る</a>
+              </div>
+            </template>
           </div>
           <div class="m-w9v"></div>
         </div>
