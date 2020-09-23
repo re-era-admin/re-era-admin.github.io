@@ -128,7 +128,6 @@
       })
       .then(function (idToken) {
         myHeaders.append("Authorization", "Bearer " + idToken);
-
         fetch(
           process.env.AP_CONTEXT_PATH + "/出店情報/出店情報の登録を申請する",
           // process.env.AP_CONTEXT_PATH + "/日付テスト",
@@ -136,6 +135,8 @@
             method: "POST",
             body: formData,
             headers: myHeaders,
+            mode: "cors", // no-cors, *cors, same-origin
+            credentials: "include", // include, *same-origin, omit
           }
         )
           .then((response) => response.json())
