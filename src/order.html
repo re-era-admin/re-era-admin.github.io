@@ -159,15 +159,17 @@
                 data-parsley-openDate=""
                 data-parsley-error-message="必須項目です。"
               /><input
-                class="minimum_text start-time"
+                class="inputData minimum_text start-time"
                 id="start-hour"
                 data-parsley-type="integer"
                 data-parsley-max="23"
+                required
               />時<input
-                class="minimum_text start-time"
+                class="inputData minimum_text start-time"
                 id="start-min"
                 data-parsley-type="integer"
                 data-parsley-max="59"
+                required
               />分〜
               <!-- リクエスト用に日付と時間を結合したものを格納するinput 非表示 -->
               <input
@@ -185,15 +187,17 @@
                 data-parsley-error-message="必須項目です。"
               />
               <input
-                class="minimum_text"
+                class="inputData minimum_text"
                 id="end-hour"
                 data-parsley-type="integer"
                 data-parsley-max="23"
+                required
               />時<input
-                class="minimum_text"
+                class="inputData minimum_text"
                 id="end-min"
                 data-parsley-type="integer"
                 data-parsley-max="59"
+                required
               />分
               <!-- リクエスト用に日付と時間を結合したものを格納するinput 非表示 -->
               <input
@@ -201,6 +205,7 @@
                 class="hiddenData"
                 id="閉店時間"
                 name="閉店時間"
+                required
               />
             </div>
             <div class="part">
