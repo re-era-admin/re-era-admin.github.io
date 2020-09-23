@@ -21,6 +21,9 @@
     <title>オンライン横丁 flatto -出店申請フォーム-</title>
   </head>
   <body>
+    <!-- Fixed -->
+    <div class="modal" id="modal"><img class="modal-loading" /></div>
+
     <!-- Scrolls -->
     <div id="main">
       <div class="containers container_form">
@@ -208,43 +211,6 @@
           </form>
         </div>
       </div>
-    </div>
-    <div id="container__modal" class="container__modal">
-      <div class="m-w9v"></div>
-      <div class="box__modal" :class="{ 'active' : msg }">
-        <div class="part__modal-title">
-          <p1 v-cloak>{{ msg.title }}</p1>
-        </div>
-        <div id="part__modal-icon" class="part__modal-icon">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            class="icon icon-tabler icon-tabler-alert-triangle"
-            width="68"
-            height="68"
-            viewBox="0 0 24 24"
-            stroke-width="1.5"
-            stroke="#FFEB3B"
-            fill="none"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          >
-            <path stroke="none" d="M0 0h24v24H0z" />
-            <path d="M12 9v2m0 4v.01" />
-            <path
-              d="M5.07 19H19a2 2 0 0 0 1.75 -2.75L13.75 4a2 2 0 0 0 -3.5 0L3.25 16.25a2 2 0 0 0 1.75 2.75"
-            />
-          </svg>
-        </div>
-        <div class="m-h2v"></div>
-        <div class="part__modal-text">
-          <p v-cloak>{{ msg.text }}</p>
-        </div>
-        <div class="m-h6v"></div>
-        <div class="part__btn-top">
-          <button id="close">閉じる</button>
-        </div>
-      </div>
-      <div class="m-w9v"></div>
     </div>
     <script src="./js/order.js"></script>
   </body>
