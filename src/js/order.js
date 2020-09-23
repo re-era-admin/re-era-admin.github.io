@@ -110,6 +110,7 @@
   }
 
   function sendRequest() {
+    document.getElementById("modal").style.display = "block";
     switchInputForm();
     var formElement = document.getElementById("orderForm");
     var formData = new FormData(formElement);
@@ -141,28 +142,11 @@
           .then((response) => response.json())
           .catch((error) => console.error("Error:", error))
           .then((response) => {
-            // document
-            //   .getElementById("container__loading")
-            //   .classList.remove("active");
-            // document.getElementById("header").classList.add("under-modal");
             if (response.code != undefined) {
               console.log("Fail", response.message);
-              document
-                .getElementById("part__modal-icon")
-                .classList.add("error");
-              var vm = new Vue({
-                el: "#container__modal",
-                data: {
-                  msg: [],
-                },
-                mounted() {
-                  const result = {
-                    title: "",
-                    text: response.message,
-                  };
-                  this.msg = result;
-                },
-              });
+              alert(response.message);
+              document.getElementById("modal").style.display = "none";
+
               return;
             }
             console.log("Success", JSON.stringify(response));
@@ -171,10 +155,6 @@
       });
   }
   document.getElementById("submit").addEventListener("click", sendRequest);
-
-  document.getElementById("close").addEventListener("click", function (event) {
-    document.getElementsById("container__modal").style.display = "none";
-  });
 
   document.querySelector("#start-date").addEventListener("change", (event) => {
     createStartDateTime();
