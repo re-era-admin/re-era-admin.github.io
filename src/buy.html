@@ -447,7 +447,7 @@
         </div>
         <div id="container__modal" class="container__modal">
           <div class="m-w9v"></div>
-          <div class="box__modal" :class="{ 'active' : msg }">
+          <div class="box__modal" :class="{ 'active' : modalActive }">
             <div class="part__modal-title">
               <p v-cloak>{{ msg.title }}</p>
             </div>
@@ -476,12 +476,16 @@
               <p v-cloak>{{ msg.text }}</p>
             </div>
             <div class="m-h6v"></div>
-            <div class="part__btn-top">
-              <a href="/index.html">Topへ戻る</a>
-            </div>
-            <div class="part__btn-top">
-              <a href="">戻る</a>
-            </div>
+            <template v-if="!closable">
+              <div class="part__btn-top">
+                <a href="/index.html">Topへ戻る</a>
+              </div>
+            </template>
+            <template v-else>
+              <div class="part__btn-top">
+                <a @click="tojiru">戻る</a>
+              </div>
+            </template>
           </div>
           <div class="m-w9v"></div>
         </div>
