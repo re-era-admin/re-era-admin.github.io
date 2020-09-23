@@ -81,6 +81,7 @@
                 id="description"
                 name="お店の説明"
                 class="inputData"
+                placeholder="(例)居酒屋 flattoはオンライン上で横丁で体験できる様な楽しい時間を提供します"
                 required
                 maxlength="1024"
                 data-parsley-error-message="必須項目です。"
@@ -91,6 +92,7 @@
               <input
                 id="description_outline1"
                 name="お店の説明要約1"
+                placeholder="(例)店主は東京で働くサラリーマンです。"
                 class="inputData"
                 maxlength="20"
               />
@@ -100,6 +102,7 @@
               <input
                 id="description_outline2"
                 name="お店の説明要約2"
+                placeholder="(例)一緒に話しながらお酒を呑みましょう^^。"
                 class="inputData"
                 maxlength="20"
               />
@@ -109,6 +112,7 @@
               <input
                 id="description_outline3"
                 name="お店の説明要約3"
+                placeholder="(例)社会人同士"
                 class="inputData"
                 maxlength="20"
               />
@@ -143,6 +147,7 @@
                 id="unit_time"
                 name="単位時間"
                 class="inputData"
+                placeholder="(例)30"
                 required
                 data-parsley-type="integer"
                 data-parsley-min="30"
@@ -150,7 +155,10 @@
               />
             </div>
             <div class="part">
-              <p>お店の開店時間(現在時刻よりも10分後以降)* 〜閉店時間</p>
+              <p>
+                お店の開店時間(現在時刻よりも10分後以降)* 〜閉店時間<br />閉店時刻が24:00の場合は、開店時間の翌日0時0分と設定してください。<br />
+                例)2020/1/1 22時00分 〜 2020/1/2 00時00分
+              </p>
               <input
                 id="start-date"
                 class="inputData start-time"
@@ -161,12 +169,14 @@
               /><input
                 class="inputData minimum_text start-time"
                 id="start-hour"
+                placeholder="(例)22"
                 data-parsley-type="integer"
                 data-parsley-max="23"
                 required
               />時<input
                 class="inputData minimum_text start-time"
                 id="start-min"
+                placeholder="(例)30"
                 data-parsley-type="integer"
                 data-parsley-max="59"
                 required
@@ -189,12 +199,14 @@
               <input
                 class="inputData minimum_text"
                 id="end-hour"
+                placeholder="(例)01"
                 data-parsley-type="integer"
                 data-parsley-max="23"
                 required
               />時<input
                 class="inputData minimum_text"
                 id="end-min"
+                placeholder="(例)30"
                 data-parsley-type="integer"
                 data-parsley-max="59"
                 required
