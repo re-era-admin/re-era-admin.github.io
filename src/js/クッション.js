@@ -15,6 +15,7 @@ import Vue from "vue";
     "/出店情報/クッションUrlに紐づくチケット情報を参照する/";
 
   let 開店時間;
+  let Zoom参加Url;
   let 表示状態 = "非表示";
 
   // ===========================================================================
@@ -50,6 +51,7 @@ import Vue from "vue";
       })
       .then((data) => {
         開店時間 = new Date(data.var開店時間);
+        Zoom参加Url = data.varZoom参加Url;
         console.log("debug", data, 開店時間);
         let フォーマット済み日時 = 日時フォーマット(開店時間);
         var vm = new Vue({
@@ -63,14 +65,37 @@ import Vue from "vue";
             this.data = data;
           },
         });
+        // 本来はawaitしたい。
+        開店待ちする();
       })
       .catch((err) => {
         console.log(err);
       });
   }
 
+  function 開店待ちする() {
+    if (new Date().getTime() >= 開店時間.getTime()) {
+      console.log("開店しました");
+      location.href = Zoom参加Url;
+    } else {
+      console.log("まだです");
+    }
+    // 以降、59秒ごとに開店時間か否かチェックする
+    setInterval(function () {
+      // 現在日時と終了日時を比較
+      const nowDate = new Date();
+      if (nowDate.getTime() >= 開店時間.getTime()) {
+        console.log("開店しました");
+        document.querySelector(".charge-link").classList.add("active");
+        location.href = Zoom参加Url;
+      } else {
+        console.log("まだです");
+      }
+    }, 30000);
+  }
+
   function 日時フォーマット(日時) {
-    console.log("日時", 日時);
+    console.log("フォーマット対象日時", 日時);
     let フォーマット文字列 = 日時.getFullYear() + "/";
     let 月文字列 = 日時.getMonth() + 1;
     let 曜日文字列 = new Intl.DateTimeFormat("ja-JP", {

@@ -87,9 +87,13 @@ div.izakaya-box {
   line-height: 1.5;
 }
 .charge-link {
+  display: none;
   width: 100%;
   background-color: var(--strong-color);
   text-align: center;
+}
+.charge-link.active {
+  display: block;
 }
 .charge-link > a {
   display: block;
