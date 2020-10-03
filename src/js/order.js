@@ -46,6 +46,7 @@
       nowDate = new Date();
       var openDateTime = new Date(document.getElementById("開店時間").value);
       var endDateTime = new Date(document.getElementById("閉店時間").value);
+      var ticketPrice = document.getElementById("price").value;
       var error_message = "";
       if (nowDate.setMinutes(nowDate.getMinutes() + 10) > openDateTime) {
         error_message =
@@ -75,6 +76,13 @@
       if (endDateTime < openDateTime) {
         error_message =
           error_message + "お店の開店開店時間と閉店時間が前後しています。\n";
+      }
+
+      //金額が0または100以上である事
+      if (ticketPrice >= 1 && ticketPrice < 100) {
+        error_message =
+          error_message +
+          "チケット金額は0円、または有料の場合は100円以上を設定してください。\n";
       }
 
       if (error_message == "") {
