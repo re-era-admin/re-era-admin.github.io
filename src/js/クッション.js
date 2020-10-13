@@ -50,7 +50,8 @@ import Vue from "vue";
         return response.json();
       })
       .then((data) => {
-        開店時間 = new Date(data.var開店時間);
+        // ISO-8601 拡張形式とするためタイムゾーン文字列を末尾に追加
+        開店時間 = new Date(data.var開店時間 + "+09:00");
         Zoom参加Url = data.varZoom参加Url;
         console.log("debug", data, 開店時間);
         let フォーマット済み日時 = 日時フォーマット(開店時間);
