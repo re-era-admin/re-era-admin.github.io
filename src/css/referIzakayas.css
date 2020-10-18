@@ -1,0 +1,90 @@
+body {
+  align-items: center;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+html {
+  height: 100%;
+}
+
+#main {
+  max-width: 800px;
+  height: 100%;
+  width: 90%;
+  position: relative;
+  color: black;
+  text-align: center;
+  border: 1px solid black;
+}
+
+.containers {
+  border: 1px solid black;
+  position: relative;
+}
+
+.container_izakayas {
+  /* padding: auto; */
+  position: relative;
+  width: 100%;
+}
+
+.container_title {
+}
+
+.area {
+  /* border: 5px solid red; */
+}
+
+.area_izakaya {
+  width: 90%;
+  margin: 0 auto; /* 中央寄せ */
+  border: 1px solid black;
+}
+
+.area_izakaya_lotteryInfo {
+  width: 90%;
+  margin: 0 auto; /* 中央寄せ */
+  border: 1px solid black;
+}
+
+.area_title {
+  height: 50px;
+}
+
+.part {
+  /* border: 1px solid black; */
+}
+
+.part_btnBack > a {
+  border-radius: 2vw;
+  background-color: #777;
+  color: white;
+  padding: 2%;
+  margin: 0 auto;
+}
+
+.part_izakaya_btnMoveToLottery > a {
+  border-radius: 2vw;
+  background-color: rgb(43, 124, 216);
+  color: white;
+  padding: 2.5%;
+  margin: 0 auto;
+}
+
+.part_links {
+  height: 50px;
+}
+
+.part_title {
+  color: white;
+  background-color: #222;
+  height: 100%;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.part_title > p {
+}

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./common/css/common.css" />
+    <link rel="stylesheet" href="./css/lotteryApplicant.css" />
+    <script src="https://www.gstatic.com/firebasejs/6.2.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.2.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.2.0/firebase-firestore.js"></script>
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.slim.js"
+      integrity="sha256-DrT5NfxfbHvMHux31Lkhxg42LY6of8TaYyK50jnxRnM="
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/parsley.js/2.9.2/parsley.min.js"
+      integrity="sha512-eyHL1atYNycXNXZMDndxrDhNAegH2BDWt1TmkXJPoGf1WLlNYt08CSjkqF5lnCRmdm3IrkHid8s2jOUY4NIZVQ=="
+      crossorigin="anonymous"
+    ></script>
+    <title>オンライン横丁 flatto -抽選画面-</title>
+  </head>
+  <body>
+    <!-- Scrolls -->
+    <div id="main">
+      <div class="container container_title">
+        <div class="area area_title">
+          <div class="part part_title"><p>抽選画面</p></div>
+        </div>
+	  </div>
+	  <div id="izakaya-content" class="izakaya-content">
+      <div class="container container_izakayas">
+        <div class="m-h6v"></div>
+        <div
+          :id="item.id"
+          class="area area_izakaya"
+          v-for="(item , index) in izakaya_list"
+        >
+          <div class="part part_izakaya_title"><p>テスト</p></div>
+          <div class="part part_izakaya_ticketType"><p>抽選予約型</p></div>
+          <div class="part part_izakaya_duration">
+            <p>2020/10/30 22:00〜2020/10/30 23:00</p>
+		  </div>
+		  <div class="part part_izakaya_seats">
+            <p>応募者数/席数　10/4</p>
+          </div>
+          <div class="m-h1_5v"></div>
+         <!-- <template v-if="1==1"> -->
+		  <div class="part area_izakaya_applicantInfo">
+            <div class="part part_izakaya_applicantName">
+              <p>はいねけん</p>
+            </div>
+            <div class="part part_izakaya_applicantSex">
+              <p>男性</p>
+            </div>
+            <div class="part part_izakaya_applicantMessage">
+              <p>ファンです</p>
+            </div>
+            <div class="part part_izakaya_applicantSelectBox">
+              <input type="checkbox"></input>
+            </div>
+		  </div>
+		<!-- </template> -->
+          <div class="m-h1_5v"></div>
+        </div>
+        <div class="m-h6v"></div>
+      </div>
+      <div class="container container_submit">
+        <div class="area area_btnSubmit">
+          <div class="part part_btnSubmit">
+            <a id="btnSubmit">抽選確定</a>
+          </div>
+        </div>
+      </div>
+	  <div class="m-h6v"></div>
+	  <div class="m-h6v"></div>
+	  <div class="container container_btnBack">
+        <div class="area area_btnBack">
+          <div class="part part_btnBack">
+            <a id="btnBack">前のページに戻る</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="./common/js/firebaseAuth.js"></script>
+    <script src="/js/lotteryApplicant.js"></script>
+  </body>
+</html>

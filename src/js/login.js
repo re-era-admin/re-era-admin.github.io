@@ -17,7 +17,7 @@
   window.onload = function () {
     firebase.auth().onAuthStateChanged(function (user) {
       if (user) {
-        location.href = "./order.html";
+        location.href = "./ownerMenu.html";
       } else {
       }
     });
@@ -72,7 +72,7 @@
           .then(function (idToken) {
             //サーバにトークンを投げる
             //https://firebase.google.com/docs/auth/admin/verify-id-tokens?hl=ja#web
-            location.href = "./order.html";
+            location.href = "./ownerMenu.html";
           })
           .catch(function (error) {
             // Handle error
