@@ -123,7 +123,6 @@
                       ¥{{ item.varチケット価格 }} / {{ item.var単位時間 }}分
                     </p>
                   </div>
-                  <div class="m-w3v"></div>
                   <template
                     v-if="item.varVoステータス.varステータス != 'close'"
                   >
@@ -138,7 +137,6 @@
                         </p>
                       </div>
                     </div>
-                    <div class="m-w3v"></div>
                     <div v-if="item.var埋まっている席数 == item.var席数">
                       <div class="entry-available full">
                         <p>満席</p>
@@ -195,7 +193,6 @@
             </div>
           </div>
         </div>
-        <div class="m-w16_5v"></div>
       </div>
     </section>
   </body>

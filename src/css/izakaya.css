@@ -1,3 +1,8 @@
+:root {
+  /** グローバル変数 */
+  --pc-max-width: 800px; /** PC用スタイルでのmax-width値 */
+}
+
 body {
   min-height: 100vh;
   overscroll-behavior: none;
@@ -177,7 +182,7 @@ img.owner-icon {
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: center;
+  justify-content: space-around;
 }
 .price {
   padding: 0 2vw;
@@ -209,10 +214,10 @@ img.owner-icon {
   color: var(--strong-color);
 }
 
-/** ディスプレイサイズ1024px以上での表示時 */
-@media screen and (min-width: 1024px) {
+/** ディスプレイサイズ801px以上での表示時 */
+@media screen and (min-width: 801px) {
   .background-img {
-    width: 1024px;
+    width: var(--pc-max-width);
     background: url(/asset/image/バックグラウンド.png);
   }
   body {
@@ -222,53 +227,50 @@ img.owner-icon {
   }
 
   header#header {
-    width: 1024px;
-    top: -390px;
+    width: var(--pc-max-width);
+    top: -310px;
   }
   .header-img {
-    width: 1024px;
+    width: var(--pc-max-width);
   }
 
   .navi-text {
-    font-size: 41px;
+    font-size: 32px;
   }
   div.container {
-    width: 686px;
+    width: 537px;
+  }
+  .izakaya-item {
+    padding: 8%;
   }
   img.owner-icon {
-    width: 204px;
+    width: 160px;
   }
   .izakaya-name {
-    font-size: 54px;
+    font-size: 43px;
   }
   .izakaya-info {
-    font-size: 27px;
-  }
-  .izakaya-tags {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
+    font-size: 21px;
   }
   .price {
-    padding: 0 20px;
+    padding: 0 16px;
     line-height: 1.6;
   }
   .price > p {
-    font-size: 37px;
+    font-size: 29px;
   }
   .congestion-icon > img {
-    width: 37px;
+    width: 29px;
     object-fit: contain;
   }
   .congesiton-text > p {
-    font-size: 37px;
+    font-size: 29px;
   }
   .entry-available > p {
-    font-size: 37px;
+    font-size: 29px;
   }
   .display-status {
     border-radius: 24px;
-    font-size: 61.2px;
+    font-size: 47.8px;
   }
 }
