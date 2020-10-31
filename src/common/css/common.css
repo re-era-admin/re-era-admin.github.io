@@ -4,6 +4,7 @@
   --text-color: #ffffff; /** 基本文字色 */
   --text-color-light-bg: #414141; /** 薄め文字色 */
   --strong-color: #ff00d8; /** 強調色 */
+  --pc-max-width: 800px; /** PC用スタイルでのmax-width値 */
 }
 
 html,

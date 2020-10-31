@@ -16,6 +16,7 @@ header#header {
 }
 .header-img > img {
   width: 100%;
+  height: auto;
 }
 .part__link-top > a {
   position: absolute;
@@ -172,8 +173,8 @@ div.izakaya-box {
   /* outline: solid 0.8px gainsboro; */
 }
 
-/** ディスプレイサイズ1024px以上での表示時 */
-@media screen and (min-width: 1024px) {
+/** ディスプレイサイズ801px以上での表示時 */
+@media screen and (min-width: 801px) {
   body {
     display: flex;
     flex-direction: column;
@@ -182,11 +183,11 @@ div.izakaya-box {
 
   /** ヘッダ部 */
   header#header {
-    width: 1024px;
-    top: -390px;
+    width: var(--pc-max-width);
+    top: -310px;
   }
   .header-img {
-    width: 1024px;
+    width: var(--pc-max-width);
   }
   .header-img:after {
     position: absolute;
@@ -199,28 +200,27 @@ div.izakaya-box {
 
   /** コンテンツ部 */
   .background-img {
-    width: 1024px;
-    background: url(/asset/image/バックグラウンド.png);
+    width: var(--pc-max-width);
   }
 
   .izakaya-overview {
-    padding: 20px;
+    padding: 25.6px;
   }
 
   .navi-text {
-    font-size: 41px;
+    font-size: 32px;
   }
   div.container {
-    width: 686px;
+    width: 536.4px;
   }
   img.owner-icon {
-    width: 204px;
+    width: 160px;
   }
   .izakaya-name > h2 {
-    font-size: 54px;
+    font-size: 42.2px;
   }
   .izakaya-info {
-    font-size: 27px;
+    font-size: 21.1px;
   }
   .izakaya-tags {
     display: flex;
@@ -229,53 +229,53 @@ div.izakaya-box {
     justify-content: space-evenly;
   }
   .price {
-    padding: 0 20px;
+    padding: 0 16px;
     line-height: 1.6;
   }
   .price > p {
-    font-size: 37px;
+    font-size: 29px;
   }
   .congestion-icon > img {
-    width: 37px;
+    width: 29px;
     object-fit: contain;
   }
   .congesiton-text > p {
-    font-size: 37px;
+    font-size: 29px;
   }
   .entry-available > p {
-    font-size: 37px;
+    font-size: 29px;
   }
   .owner-name > p {
-    font-size: 24px;
+    font-size: 18.7px;
   }
   .genre > p {
-    font-size: 24px;
+    font-size: 18.7px;
   }
 
   .profile-title > p {
-    font-size: 32px;
+    font-size: 25px;
   }
 
   .description-title > p {
-    font-size: 32px;
+    font-size: 25px;
   }
   .description-text > p {
-    font-size: 24px;
+    font-size: 18.7px;
   }
   .charge-link {
     background-color: var(--strong-color);
     text-align: center;
   }
   .charge-link > a {
-    font-size: 53px;
+    font-size: 41.4px;
   }
   .info-text > p {
-    font-size: 24px;
+    font-size: 18.7px;
   }
 
   .owner-icon > img {
-    max-width: 253px;
-    max-height: 253px;
+    max-width: 198px;
+    max-height: 198px;
     object-fit: scale-down;
   }
 }

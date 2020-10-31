@@ -57,13 +57,12 @@
         <a href="/izakaya.html"></a>
       </div>
       <div class="header-img">
-        <img src="/asset/image/header-out.png" />
+        <img src="/asset/image/header-out.png" width="1125" height="806" />
       </div>
     </header>
     <div class="background-img"></div>
     <section id="section">
       <div class="container__main-content">
-        <div class="m-w16_5v"></div>
         <div class="container">
           <div id="izakaya-content" class="izakaya-content">
             <div class="izakaya-box">
@@ -72,7 +71,12 @@
                 :class="{ 'disable' : izakaya.var埋まっている席数 == izakaya.var席数}"
               >
                 <div class="owner-icon">
-                  <img :src="izakaya.var店主画像Url" id="owner-icon" />
+                  <img
+                    :src="izakaya.var店主画像Url"
+                    id="owner-icon"
+                    width="198"
+                    height="198"
+                  />
                 </div>
                 <div class="m-h4_5v"></div>
                 <div class="izakaya-name">
@@ -81,7 +85,6 @@
                 <div class="m-h6v"></div>
                 <div class="izakaya-tags">
                   <div class="price">
-                    <!-- FIXME 50分べた打ち。DTOから修正 -->
                     <p v-cloak>
                       ¥{{ izakaya.varチケット価格 + "/" + izakaya.var単位時間 +
                       "分"}}
@@ -145,7 +148,7 @@
               <template v-else>
                 <div class="charge-link">
                   <a :href="'/buy.html?id=' + izakaya.varVo出店Id.var出店Id">
-                    <!-- <a href="https://forms.gle/bceJsJRtPKu7oGsk6">  -->
+                    <!-- 手作業抽選用：<a href="https://forms.gle/bceJsJRtPKu7oGsk6">  -->
                     申し込み</a
                   >
                 </div>
@@ -162,7 +165,6 @@
             <div class="m-h5v"></div>
           </div>
         </div>
-        <div class="m-w16_5v"></div>
       </div>
     </section>
   </body>
