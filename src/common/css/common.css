@@ -80,10 +80,18 @@ img {
 
 /* レスポンシブ改行位置調整クラス */
 br.sp_bk {
-  display: none;
+  display: inline;
 }
 br.pc_bk {
-  display: inline;
+  display: none;
+}
+@media screen and (min-width: 1024px) {
+  br.sp_bk {
+    display: none;
+  }
+  br.pc_bk {
+    display: inline;
+  }
 }
 
 /* ===== マージン用divのクラス. まとめて宣言 =====  */

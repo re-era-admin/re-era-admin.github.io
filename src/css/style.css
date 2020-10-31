@@ -8,7 +8,7 @@
 }
 
 html {
-  /* max-width: 1024px; */
+  /* max-width: 800px; */
   position: relative;
 }
 
@@ -24,23 +24,23 @@ p {
   --content-text-size: 3.4vw;
   --box-number-text-size: 14vw;
   --box-title-text-line-height: 10vw;
-  --arrowDown-area-height: 20vw;
+  --arrowDown-area-height: 16vw;
   --arrowDown-pict-height: 10vw;
   --arrowDown-pict-width: 20vw;
   --title-height: 47.5vw;
 }
 
-@media (min-width: 1025px) {
+@media (min-width: 801px) {
   :root {
-    --whole-page-vh: 1024px;
-    --content-title-size: 56.3px;
-    --content-text-size: 34.8px;
-    --box-number-text-size: 143.4px;
-    --box-title-text-line-height: 102.4px;
-    --arrowDown-area-height: 204.8px;
-    --arrowDown-pict-height: 102.4px;
-    --arrowDown-pict-width: 204.8px;
-    --title-height: 486.4px;
+    --whole-page-vh: 800px;
+    --content-title-size: 44px;
+    --content-text-size: 27.2px;
+    --box-number-text-size: 112.1px;
+    --box-title-text-line-height: 80px;
+    --arrowDown-area-height: 125.4px;
+    --arrowDown-pict-height: 80px;
+    --arrowDown-pict-width: 160.1px;
+    --title-height: 380.3px;
   }
 }
 
@@ -50,10 +50,6 @@ body {
   position: absolute;
   font-family: kozuka-gothic-pro, sans-serif;
   overscroll-behavior: none;
-  /* left: 50%;
-  transform: translate(-50%, 0);
-  -webkit-transform: translate(-50%, 0);
-  -ms-transform: translate(-50%, 0); */
 }
 
 #backgroudImage {
@@ -92,7 +88,7 @@ body {
   align-items: center;
 }
 
-@media (min-width: 1025px) {
+@media (min-width: 801px) {
   .box_footer {
     height: 70px;
   }
@@ -107,14 +103,14 @@ body {
   flex-direction: column;
   justify-content: space-evenly;
 }
-@media (min-width: 1025px) {
+@media (min-width: 801px) {
   .box_policies {
     flex-direction: row;
     justify-content: center;
   }
 }
 
-@media (min-width: 1025px) {
+@media (min-width: 801px) {
   .part_policy {
     display: flex;
     align-items: center;
@@ -123,7 +119,7 @@ body {
 .part_policy > p {
   font-size: 14px;
 }
-@media (min-width: 1025px) {
+@media (min-width: 801px) {
   .part_policy > p {
     font-size: 12px;
   }
@@ -131,20 +127,20 @@ body {
 .copyright {
   height: 10vw;
 }
-@media (min-width: 1025px) {
+@media (min-width: 801px) {
   .copyright {
     height: 100px;
   }
 }
 
-@media (min-width: 1025px) {
+@media (min-width: 801px) {
   .bk_sp {
     display: none;
   }
 }
 
 #main {
-  max-width: 1024px;
+  max-width: var(--whole-page-vh);
   position: relative;
   /* font-family: "小塚ゴシック Pro", "Kozuka Gothic Pro", sans-serif; */
   margin-top: -71.6vw;
@@ -155,7 +151,7 @@ body {
   -ms-transform: translate(-50%, 0);
 }
 
-@media (min-width: 1025px) {
+@media (min-width: 801px) {
   #main {
     /* position: relative;
     font-family: "小塚ゴシック Pro", "Kozuka Gothic Pro", sans-serif; */
@@ -167,7 +163,7 @@ body {
   display: none;
 }
 
-@media (min-width: 1025px) {
+@media (min-width: 801px) {
   #gradient {
     /* display: block;
     position: fixed;
@@ -178,7 +174,7 @@ body {
     background: linear-gradient(90deg, rgb(0, 0, 0), rgba(0, 0, 0, 0) 3%),
       linear-gradient(270deg, rgb(0, 0, 0), rgba(0, 0, 0, 0) 3%);
     pointer-events: none;
-    width: 1024px;
+    width: 800px;
     left: 50%;
     transform: translate(-50%, 0);
     -webkit-transform: translate(-50%, 0%);
@@ -215,100 +211,79 @@ hr {
 #headder {
   height: var(--header-vh);
   width: var(--whole-page-vh);
-  /* position: fixed; */
   z-index: 1000;
-  /* height: 71.6vw; */
   position: sticky;
   position: -webkit-sticky;
-  top: -35vw;
+  top: -38vw;
+  display: flex;
+  justify-content: center;
 }
-@media (min-width: 1025px) {
+@media (min-width: 801px) {
   #headder {
-    height: 750px;
-    top: -358.4px;
+    height: 570px;
+    top: -305px;
     width: 100%;
-    /* background-color: yellowgreen; */
     border-width: 100px;
-    /* background-color: #0f0; */
-    /* text-align: center; */
-    /* left: 10%; */
-    /* transform: translate(-50%, 0);
-    -webkit-transform: translate(-50%, 0%);
-    -ms-transform: translate(-50%, 0); */
   }
 }
 
 #headder_btn_enter {
-  position: absolute;
-  height: 23vw;
-  width: 45vw;
-  top: 34.2vw;
-  left: 50.5%;
-  transform: translate(-50%, 0);
-  -webkit-transform: translate(-50%, 0%);
-  -ms-transform: translate(-50%, 0);
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-@media (min-width: 1025px) {
-  #headder_btn_enter {
-    left: 50.3%;
-    top: 349.5px;
-    height: 235.5px;
-    width: 460.8px;
+.img-margin {
+  height: 34vw;
+}
+@media (min-width: 801px) {
+  .img-margin {
+    height: 272px;
   }
 }
 
 #headder_btn_enter > a {
-  position: absolute;
-  height: 100%;
-  width: 100%;
-  /* background-color: #0f0; */
-  background: url(../asset/image/enter.png);
-  background-size: cover;
-  background-repeat: no-repeat;
+  height: auto;
+  width: max-content;
+  display: inline;
   z-index: 1001;
 }
 
-@media (min-width: 1025px) {
-  #headder_btn_enter > a {
+#headder_btn_enter > a > img {
+  width: 45vw;
+  display: inline;
+  z-index: 1001;
+}
+
+@media (min-width: 801px) {
+  #headder_btn_enter > a > img {
+    width: 358px;
   }
 }
 
 #headder_img {
-  position: absolute;
   height: 100%;
   width: 100%;
   left: 50%;
-  transform: translate(-50%, 0);
-  -webkit-transform: translate(-50%, 0%);
-  -ms-transform: translate(-50%, 0);
-  /* background-size: contain; */
 }
 
-@media (min-width: 1025px) {
-  #headder_img {
-    width: 1024px;
-    background-size: contain;
-    height: 734px;
-  }
-}
-
-#headder_img div {
+#headder_img {
   background-repeat: no-repeat;
   background: url(/asset/image/yokocho-header.png);
-  /* background-color: beige; */
-  background-size: cover;
+  background-size: contain;
   height: 100%;
   width: 100%;
-  max-width: 100%;
+  max-width: var(--whole-page-vh);
   border-style: none;
 }
 
-@media (min-width: 1025px) {
-  #headder_img div {
-    width: 1024px;
-    /* background-size: contain; */
-    height: 734px;
+@media (min-width: 801px) {
+  #headder_img {
+    width: var(--whole-page-vh);
+    background-size: contain;
+    height: 574px;
   }
 }
 
@@ -329,13 +304,6 @@ container定義
 
 #container_aboutThisService {
   background-color: #ffffff;
-  height: 200vw;
-}
-
-@media (min-width: 1025px) {
-  #container_aboutThisService {
-    height: 2048px;
-  }
 }
 
 #container_AllowingAnonymous {
@@ -349,7 +317,7 @@ container定義
   display: none;
 }
 
-@media (min-width: 1025px) {
+@media (min-width: 801px) {
   #container_guide {
     height: 768px;
   }
@@ -367,14 +335,7 @@ container定義
 }
 
 #container_topImage {
-  height: 215vw;
   width: var(--whole-page-vh);
-}
-
-@media (min-width: 1025px) {
-  #container_topImage {
-    height: 2201.6px;
-  }
 }
 
 /* ===================== 
@@ -396,7 +357,7 @@ area定義
   width: var(--whole-page-vh);
 }
 
-@media (min-width: 1025px) {
+@media (min-width: 801px) {
   #area_aboutThisService_outline {
     height: 512px;
   }
@@ -408,7 +369,7 @@ area定義
   width: var(--whole-page-vh);
 }
 
-@media (min-width: 1025px) {
+@media (min-width: 801px) {
   #area_aboutThisService_title {
     height: 409.6px;
   }
@@ -423,7 +384,7 @@ area定義
   -ms-transform: translate(-50%, 0);
 }
 
-@media (min-width: 1025px) {
+@media (min-width: 801px) {
   #area_aboutThisService_image {
     height: 921.6px;
   }
@@ -434,7 +395,7 @@ area定義
   width: var(--whole-page-vh);
 }
 
-@media (min-width: 1025px) {
+@media (min-width: 801px) {
   #area_AllowingAnonymous_image {
     height: 425px;
   }
@@ -445,7 +406,7 @@ area定義
   width: var(--whole-page-vh);
 }
 
-@media (min-width: 1025px) {
+@media (min-width: 801px) {
   #area_AllowingAnonymous_outline {
     height: 307.2px;
   }
@@ -461,7 +422,7 @@ area定義
   width: var(--whole-page-vh);
 }
 
-@media (min-width: 1025px) {
+@media (min-width: 801px) {
   #area_guide_image {
     height: 256px;
   }
@@ -472,7 +433,7 @@ area定義
   width: var(--whole-page-vh);
 }
 
-@media (min-width: 1025px) {
+@media (min-width: 801px) {
   #area_guide_outline {
     height: 307.2px;
   }
@@ -548,7 +509,7 @@ part以下定義
   -ms-transform: translate(0, -50%);
 }
 
-@media (min-width: 1025px) {
+@media (min-width: 801px) {
   #part_aboutThisService_image_pict {
     height: 819.2px;
   }
@@ -574,7 +535,7 @@ part以下定義
   -ms-transform: translate(-50%, 0);
 }
 
-@media (min-width: 1025px) {
+@media (min-width: 801px) {
   #part_aboutThisService_outline_text {
     height: 512px;
     width: 70%;
@@ -615,10 +576,10 @@ part以下定義
   font-size: 13vw;
 }
 
-@media (min-width: 1025px) {
+@media (min-width: 801px) {
   #part_aboutThisService_title_sub > p {
-    line-height: 158.7px;
-    font-size: 133.1px;
+    line-height: 124.1px;
+    font-size: 104px;
   }
 }
 #part_aboutThisService_title_main {
@@ -640,9 +601,9 @@ part以下定義
   font-weight: 600;
 }
 
-@media (min-width: 1025px) {
+@media (min-width: 801px) {
   #part_aboutThisService_title_main > p {
-    font-size: 92.2px;
+    font-size: 72px;
   }
 }
 
@@ -660,10 +621,11 @@ part以下定義
   bottom: 0px;
 }
 
-@media (min-width: 1025px) {
+@media (min-width: 801px) {
   #part_AllowingAnonymous_image_pict {
-    width: 470px;
+    width: 367.5px;
     height: 191.5px;
+    background-size: contain;
   }
 }
 
@@ -717,7 +679,7 @@ part以下定義
   -ms-transform: translate(-50%, 0);
   bottom: 0px;
 }
-@media (min-width: 1025px) {
+@media (min-width: 801px) {
   #part_guide_image_pict {
     height: 147.5px;
     width: 183.3px;
@@ -744,7 +706,7 @@ part以下定義
   line-height: var(--box-title-text-line-height);
 }
 
-@media (min-width: 1025px) {
+@media (min-width: 801px) {
   #part_guide_outline_text > p {
     line-height: 102.4px;
   }
@@ -826,10 +788,11 @@ part以下定義
   -ms-transform: translate(-50%, -50%);
 }
 
-@media (min-width: 1025px) {
+@media (min-width: 801px) {
   #part_howToEnjoy_title_pict {
     height: 122.9px;
-    width: 603.1px;
+    width: 471.6px;
+    background-size: contain;
   }
 }
 
@@ -880,11 +843,11 @@ part以下定義
   -ms-transform: translate(-50%, 0);
 }
 
-@media (min-width: 1025px) {
+@media (min-width: 801px) {
   .part_howToUse_contents_box > .box_pict {
     position: relative;
     height: 235.5px;
-    width: 460.8px;
+    width: 360.3px;
   }
 }
 
@@ -902,51 +865,48 @@ part以下定義
   position: relative;
   height: 70.4vw;
   width: var(--whole-page-vh);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
 }
 
-@media (min-width: 1025px) {
+@media (min-width: 801px) {
   .part_howToUse_contents_box > .box_pictsHowToUse2 {
     height: 720.9px;
   }
 }
 
 .part_howToUse_contents_box > .box_pictsHowToUse2 > .box_pict1 {
-  position: absolute;
   height: 49.9vw;
   width: 22.7vw;
-  left: 19.5vw;
 }
 
-@media (min-width: 1025px) {
+@media (min-width: 801px) {
   .part_howToUse_contents_box > .box_pictsHowToUse2 > .box_pict1 {
     height: 511px;
     width: 232.5px;
-    left: 199.7px;
   }
 }
 
-.part_howToUse_contents_box > .box_pictsHowToUse2 > .box_pict1 > div {
-  background: url(../asset/image/利用方法2-1.png);
-  border: white solid 2px;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  height: 100%;
-  width: 100%;
+.box_pict1-img > img {
+  height: auto;
+  width: 25vw;
+  border: white solid 1px;
 }
-.part_howToUse_contents_box > .box_pictsHowToUse2 > .box_pict1Supplement {
-  position: absolute;
-  height: var(--content-title-size);
-  width: 29vw;
-  left: 19.5vw;
-  top: 52vw;
+@media (min-width: 801px) {
+  .box_pict1-img > img {
+    width: 232.5px;
+    border: white solid 2px;
+  }
 }
 
-@media (min-width: 1025px) {
+.part_howToUse_contents_box > .box_pictsHowToUse2 > .box_pict1Supplement {
+  height: var(--content-title-size);
+  width: 29vw;
+}
+@media (min-width: 801px) {
   .part_howToUse_contents_box > .box_pictsHowToUse2 > .box_pict1Supplement {
     width: 199.7px;
-    top: 532.5px;
-    left: 199.7px;
   }
 }
 
@@ -954,21 +914,16 @@ part以下定義
   background-color: darkblue;
   height: 100%;
   width: 100%;
-  position: absolute;
 }
 
 .part_howToUse_contents_box > .box_pictsHowToUse2 > .box_pict2 {
-  position: absolute;
   height: 70.4vw;
   width: 31.7vw;
-  left: 54.7vw;
 }
-
-@media (min-width: 1025px) {
+@media (min-width: 801px) {
   .part_howToUse_contents_box > .box_pictsHowToUse2 > .box_pict2 {
     height: 720.9px;
     width: 324.6px;
-    left: 560.1px;
   }
 }
 
@@ -988,7 +943,7 @@ part以下定義
   width: var(--whole-page-vh);
 }
 
-@media (min-width: 1025px) {
+@media (min-width: 801px) {
   .part_howToUse_contents_box > .box_pictsHowToUse3 {
     height: 589.8px;
   }
@@ -1004,7 +959,7 @@ part以下定義
   -ms-transform: translate(-50%, 0);
 }
 
-@media (min-width: 1025px) {
+@media (min-width: 801px) {
   .part_howToUse_contents_box > .box_pictsHowToUse3 > .box_pict1 {
     height: 518px;
     width: 232.5px;
@@ -1031,7 +986,7 @@ part以下定義
   -ms-transform: translate(-50%, 0);
 }
 
-@media (min-width: 1025px) {
+@media (min-width: 801px) {
   .part_howToUse_contents_box > .box_pictsHowToUse3 > .box_pict1Supplement {
     width: 409.6px;
     top: 532.5px;
@@ -1044,9 +999,9 @@ part以下定義
   width: var(--whole-page-vh);
 }
 
-@media (min-width: 1025px) {
+@media (min-width: 801px) {
   .part_howToUse_contents_box > .box_pictsHowToUse4 {
-    height: 742.4px;
+    height: 580.5px;
   }
 }
 
@@ -1064,31 +1019,26 @@ part以下定義
   -ms-transform: translate(-50%, 0);
 }
 
-@media (min-width: 1025px) {
+@media (min-width: 801px) {
   .part_howToUse_contents_box > .box_pictsHowToUse4 > .box_pictsHowToUse4_pict {
-    width: 734.2px;
+    width: 574.1px;
   }
 }
 
 #part_howToUse_title_pict {
-  position: absolute;
-  height: 12vw;
-  width: 78vw;
-  background: url(../asset/image/サービスの利用方法.png);
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  -webkit-transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%);
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-@media (min-width: 1025px) {
-  #part_howToUse_title_pict {
-    height: 122.9px;
-    width: 798.7px;
+#part_howToUse_title_pict > img {
+  width: 78vw;
+}
+@media (min-width: 801px) {
+  #part_howToUse_title_pict > img {
+    height: auto;
+    width: 623.2px;
   }
 }
 
@@ -1125,12 +1075,6 @@ part以下定義
   transform: translate(-50%, 0);
   -webkit-transform: translate(-50%, 0);
   -ms-transform: translate(-50%, 0);
-  /* background-color: rosybrown; */
-}
-@media (min-width: 1025px) {
-  .part_recommendedFor_contents_box {
-    /* height: 400px; */
-  }
 }
 
 .part_recommendedFor_contents_box > .box_number {
@@ -1152,83 +1096,75 @@ part以下定義
 }
 
 #part_recommendedFor_title_pict {
-  position: absolute;
-  height: 12vw;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#part_recommendedFor_title_pict > img {
+  height: auto;
   width: 78vw;
-  background: url(../asset/image/こんな方におすすめ.png);
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  -webkit-transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%);
 }
 
-@media (min-width: 1025px) {
-  #part_recommendedFor_title_pict {
-    height: 122.9px;
-    width: 798.7px;
+@media (min-width: 801px) {
+  #part_recommendedFor_title_pict > img {
+    width: 623.2px;
   }
 }
 
 #part_topImage_arrowDown_pict {
-  width: var(--whole-page-vh);
-  height: var(--arrowDown-area-height);
-  position: absolute;
-  bottom: 0;
+  height: 120px;
+  display: flex;
+  align-items: center;
 }
 
-#part_topImage_arrowDown_pict > div {
-  position: absolute;
-  background: url(../asset/image/arrowDownWhite.png);
-  background-repeat: no-repeat;
-  background-position: center;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  -webkit-transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%);
-  height: 100%;
-  width: 100%;
+@media (min-width: 801px) {
+  #part_topImage_arrowDown_pict > img {
+    width: 33px;
+    height: 17px;
+  }
 }
+
+.top-img_margin {
+  height: 3vw;
+}
+
+@media (min-width: 801px) {
+  .top-img_margin {
+    height: 180px;
+  }
+}
+
 #part_topImage_main_pict {
   height: 100%;
   width: 100%;
 }
 
-@media (min-width: 1025px) {
-  #part_topImage_main_pict {
-    /* height: 1000; */
-  }
-}
-
-#part_topImage_main_pict div {
+#part_topImage_main_pict > div {
   height: 100%;
   width: 100%;
-  /* https://ezgif.com/resize/ezgif-7-713c0cd04579.webp */
   background: url(../asset/image/anime-min.webp);
   background-size: cover;
   background-repeat: no-repeat;
+  background-position-x: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 /* safari */
 @media screen and (-webkit-min-device-pixel-ratio: 0) {
   _::-webkit-full-page-media,
   _:future,
-  :root #part_topImage_main_pict div {
-    height: 100%;
-    width: 100%;
+  :root #part_topImage_main_pict > div {
     background: url(../asset/image/オンライン横丁メインアニメ.gif);
-    background-size: cover;
-    background-repeat: no-repeat;
   }
 }
 
-@media (min-width: 1025px) {
-  #part_topImage_main_pict div {
-    background-size: cover;
+@media (min-width: 801px) {
+  #part_topImage_main_pict > div {
+    background-size: contain;
   }
 }
 
@@ -1246,8 +1182,15 @@ part以下定義
   height: 16vw;
   /* border: red solid 10px; */
 }
+.mt18vw {
+  height: 18vw;
+}
+.mt67vw {
+  height: 67vw;
+  flex-shrink: 0;
+}
 
-@media (min-width: 1025px) {
+@media (min-width: 801px) {
   .mt3vw {
     height: 30.7px;
   }
@@ -1256,11 +1199,15 @@ part以下定義
     position: relative;
     height: 122.9px;
   }
-
   .mt16vw {
     position: relative;
     height: 163.8px;
-    /* border: red solid 10px; */
+  }
+  .mt18vw {
+    height: 180px;
+  }
+  .mt67vw {
+    height: 670px;
   }
 }
 
@@ -1289,47 +1236,33 @@ p {
 /* テスト用コード */
 
 #text_on_top_image {
-  position: absolute;
-  left: 50%;
-  top: 71.6vw;
-  transform: translate(-50%, 0%);
-  -webkit-transform: translate(-50%, 0%);
-  -ms-transform: translate(-50%, 0%);
-  width: 10vw;
-  height: 70%;
   z-index: 100;
+  line-height: normal;
 }
 
-@media (min-width: 1025px) {
-  #text_on_top_image {
-    top: 733.2px;
+body .text {
+  width: calc(20px + 28 * (100vw - 320px) / 480);
+}
+@media (min-width: 801px) {
+  body .text {
+    width: 49px;
   }
-}
-
-body .text,
-body .text > * {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  -webkit-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
 }
 body .text > * {
   font-size: 6vw;
   font-weight: 600;
-  height: 130vw;
   writing-mode: vertical-rl;
   -ms-writing-mode: tb-rl;
   text-align: justify;
   text-justify: inter-ideograph;
+  font-feature-settings: normal;
   letter-spacing: 3vw;
   text-shadow: 0px 0px 30px #ffffff;
+  white-space: nowrap;
 }
-
-@media (min-width: 1025px) {
+@media (min-width: 801px) {
   body .text > * {
-    height: 1331.2px;
-    font-size: 61.4px;
-    letter-spacing: 30.7px;
+    font-size: 48px;
+    letter-spacing: 24px;
   }
 }
