@@ -1,29 +1,20 @@
 (function () {
-  const firebaseConfig = {
-    apiKey: "AIzaSyAcahSSBT9jzNddDlvPLMLIsUFSsagmN4g",
-    authDomain: "flatto-yokocho.firebaseapp.com",
-    databaseURL: "https://flatto-yokocho.firebaseio.com",
-    projectId: "flatto-yokocho",
-    storageBucket: "flatto-yokocho.appspot.com",
-    messagingSenderId: "699983020092",
-    appId: "1:699983020092:web:d29c1bd9f1b62817904339",
-    measurementId: "G-7J94N3VHRE",
-  };
+  // ===========================================================================
+  // 共通変数定義
+  // ---------------------------------------------------------------------------
 
-  // Initialize Firebase
-  firebase.initializeApp(firebaseConfig);
-  window.onload = function () {
-    firebase.auth().onAuthStateChanged(function (user) {
-      if (user) {
-      } else {
-        location.href = "./login.html";
-      }
-    });
-  };
+  // ===========================================================================
+  // 初期化関数
+  //  - イベントハンドラを設定
+  //  - アラートを表示 etc
+  // ---------------------------------------------------------------------------
+
+  //parsleyの初期化
   $("#orderForm").parsley();
   function test() {
     $("#orderForm").parsley().validate();
   }
+
   document.getElementById("check_btn").addEventListener(
     "click",
     function (event) {
@@ -32,6 +23,7 @@
     },
     false
   );
+
   document.getElementById("remake_btn").addEventListener(
     "click",
     function (event) {
@@ -40,57 +32,140 @@
     },
     false
   );
+
+  //
+  //抽選型と、予約先着型は開店期間=チケット単位時間とする。そのためチケット単位時間を非表示にし、自動入力されるようにする。
+  //
+  document.getElementById("ticket_pattern").addEventListener(
+    "change",
+    function (event) {
+      switch (document.getElementById("ticket_pattern").value) {
+        case "1":
+          displayUnitTime();
+          break;
+        case "2":
+          nonDisplayUnitTime();
+          break;
+        case "3":
+          nonDisplayUnitTime();
+          break;
+      }
+    },
+    false
+  );
+
+  document.getElementById("duration").addEventListener(
+    "change",
+    function (event) {
+      if (
+        document.getElementById("ticket_pattern").value == "2" ||
+        document.getElementById("ticket_pattern").value == "3"
+      ) {
+        nonDisplayUnitTime();
+      }
+    },
+    false
+  );
+
+  document.getElementById("submit").addEventListener("click", sendRequest);
+
+  //
+  //応募締め切り日時：開始日、時、分いずれかに更新があった場合にバックエンド連携用にlocal-date-time型inputフォーム[非表示]を自動更新する
+  //
+  // document
+  //   .querySelector("#applicationDeadline-date")
+  //   .addEventListener("change", (event) => {
+  //     createApplicationDateline();
+  //   });
+  // document
+  //   .querySelector("#applicationDeadline-hour")
+  //   .addEventListener("change", (event) => {
+  //     createApplicationDateline();
+  //   });
+  // document
+  //   .querySelector("#applicationDeadline-min")
+  //   .addEventListener("change", (event) => {
+  //     createApplicationDateline();
+  //   });
+
+  //
+  //抽選完了日時：開始日、時、分いずれかに更新があった場合にバックエンド連携用にlocal-date-time型inputフォーム[非表示]を自動更新する
+  //
+  // document
+  //   .querySelector("#lotteryDeadline-date")
+  //   .addEventListener("change", (event) => {
+  //     createLotteryDeadline();
+  //   });
+  // document
+  //   .querySelector("#lotteryDeadline-hour")
+  //   .addEventListener("change", (event) => {
+  //     createLotteryDeadline();
+  //   });
+  // document
+  //   .querySelector("#lotteryDeadline-min")
+  //   .addEventListener("change", (event) => {
+  //     createLotteryDeadline();
+  //   });
+
+  //
+  //支払い締切り日時：開始日、時、分いずれかに更新があった場合にバックエンド連携用にlocal-date-time型inputフォーム[非表示]を自動更新する
+  //
+  // document
+  //   .querySelector("#paymentDeadline-date")
+  //   .addEventListener("change", (event) => {
+  //     createPaymentDeadline();
+  //   });
+  // document
+  //   .querySelector("#paymentDeadline-hour")
+  //   .addEventListener("change", (event) => {
+  //     createPaymentDeadline();
+  //   });
+  // document
+  //   .querySelector("#paymentDeadline-min")
+  //   .addEventListener("change", (event) => {
+  //     createPaymentDeadline();
+  //   });
+
+  //
+  //開店日時：開始日、時、分いずれかに更新があった場合にバックエンド連携用にlocal-date-time型inputフォーム[非表示]を自動更新する
+  //
+  document.querySelector("#start-date").addEventListener("change", (event) => {
+    createStartDateTime();
+  });
+  document.querySelector("#start-hour").addEventListener("change", (event) => {
+    createStartDateTime();
+  });
+  document.querySelector("#start-min").addEventListener("change", (event) => {
+    createStartDateTime();
+  });
+
+  // ===========================================================================
+  // 関数定義 (イベントハンドラ以外)
+  // ---------------------------------------------------------------------------
+
+  //Submit実行時にParsleyを用いてValidationを実施
+  //その後複合パターン等は独自Validationで処理を実施
   $("#orderForm")
     .parsley()
     .on("form:success", function () {
-      nowDate = new Date();
-      var openDateTime = new Date(document.getElementById("開店時間").value);
-      var endDateTime = new Date(document.getElementById("閉店時間").value);
-      var ticketPrice = document.getElementById("price").value;
-      var error_message = "";
-      if (nowDate.setMinutes(nowDate.getMinutes() + 10) > openDateTime) {
-        error_message =
-          error_message + "お店の開店時間は今から10分以上後にして下さい。\n";
-      }
+      //入力項目「お店の開店時間」、「開店期間」を用いて閉店時間を自動生成する
+      createEndDateTime();
 
-      //単位時間以下になっていおない事
-      if (
-        (endDateTime - openDateTime) / 60000 <
-        document.getElementById("unit_time").value
-      ) {
-        //60000ミリ秒=1分
-        error_message =
-          error_message +
-          "お店の開店開店時間と閉店時間の間は最低でもチケットの単位時間の設定時間(" +
-          document.getElementById("unit_time").value +
-          "分)よりも開けてください。\n";
-      }
-
-      if ((endDateTime - openDateTime) / 60000 > 240) {
-        //60000ミリ秒=1分
-        error_message =
-          error_message +
-          "最大開店期間は4時間です。お店の開店開店時間、閉店時間を修正してください";
-      }
-
-      if (endDateTime < openDateTime) {
-        error_message =
-          error_message + "お店の開店開店時間と閉店時間が前後しています。\n";
-      }
-
-      //金額が0または100以上である事
-      if (ticketPrice >= 1 && ticketPrice < 100) {
-        error_message =
-          error_message +
-          "チケット金額は0円、または有料の場合は100円以上を設定してください。\n";
-      }
-
-      if (error_message == "") {
-        switchComfirmForm();
-      } else {
-        alert(error_message);
-      }
+      //parsleyでチェックをかけれない項目のValidation
+      _validateExceptForParseley();
     });
+
+  function displayUnitTime() {
+    document.getElementById("part_unitTime").style.display = "block";
+    document.getElementById("unit_time").value = "";
+  }
+
+  function nonDisplayUnitTime() {
+    document.getElementById("part_unitTime").style.display = "none";
+    document.getElementById("unit_time").value = document.getElementById(
+      "duration"
+    ).value;
+  }
 
   function switchInputForm() {
     var inputDatas = document.getElementsByClassName("inputData");
@@ -145,7 +220,7 @@
             body: formData,
             headers: myHeaders,
             mode: "cors", // no-cors, *cors, same-origin
-            credentials: "include", // include, *same-origin, omit
+            // credentials: "include", // include, *same-origin, omit
           }
         )
           .then((response) => response.json())
@@ -163,30 +238,48 @@
           });
       });
   }
-  document.getElementById("submit").addEventListener("click", sendRequest);
 
-  document.querySelector("#start-date").addEventListener("change", (event) => {
-    createStartDateTime();
-  });
-  document.querySelector("#start-hour").addEventListener("change", (event) => {
-    createStartDateTime();
-  });
-  document.querySelector("#start-min").addEventListener("change", (event) => {
-    createStartDateTime();
-  });
+  //TODO 以下の処理はもう少しまとめたい。
+  function createApplicationDateline() {
+    const _startDate = document.querySelector("#applicationDeadline-date")
+      .value;
+    const _startHour = (
+      "00" + document.querySelector("#applicationDeadline-hour").value
+    ).slice(-2);
+    const _startMin = (
+      "00" + document.querySelector("#applicationDeadline-min").value
+    ).slice(-2);
+    const result = document.querySelector("#応募締め切り日時");
+    result.value = _startDate + "T" + _startHour + ":" + _startMin;
+  }
 
-  document.querySelector("#end-date").addEventListener("change", (event) => {
-    createEndDateTime();
-  });
-  document.querySelector("#end-hour").addEventListener("change", (event) => {
-    createEndDateTime();
-  });
-  document.querySelector("#end-min").addEventListener("change", (event) => {
-    createEndDateTime();
-  });
+  function createLotteryDeadline() {
+    const _startDate = document.querySelector("#lotteryDeadline-date").value;
+    const _startHour = (
+      "00" + document.querySelector("#lotteryDeadline-hour").value
+    ).slice(-2);
+    const _startMin = (
+      "00" + document.querySelector("#lotteryDeadline-min").value
+    ).slice(-2);
+    const result = document.querySelector("#抽選完了日時");
+    result.value = _startDate + "T" + _startHour + ":" + _startMin;
+  }
+
+  function createPaymentDeadline() {
+    const _startDate = document.querySelector("#paymentDeadline-date").value;
+    const _startHour = (
+      "00" + document.querySelector("#paymentDeadline-hour").value
+    ).slice(-2);
+    const _startMin = (
+      "00" + document.querySelector("#paymentDeadline-min").value
+    ).slice(-2);
+    const result = document.querySelector("#支払い締切り日時");
+    result.value = _startDate + "T" + _startHour + ":" + _startMin;
+  }
 
   function createStartDateTime() {
     const _startDate = document.querySelector("#start-date").value;
+    // const _startDate = document.querySelector("#start-date").value;
     const _startHour = (
       "00" + document.querySelector("#start-hour").value
     ).slice(-2);
@@ -198,12 +291,77 @@
   }
 
   function createEndDateTime() {
-    const _endDate = document.querySelector("#end-date").value;
-    const _endHour = ("00" + document.querySelector("#end-hour").value).slice(
-      -2
-    );
-    const _endMin = ("00" + document.querySelector("#end-min").value).slice(-2);
-    const result = document.querySelector("#閉店時間");
-    result.value = _endDate + "T" + _endHour + ":" + _endMin;
+    const _openDate = new Date(document.querySelector("#開店時間").value);
+    const _duration = document.querySelector("#duration").value;
+    _openDate.setMinutes(_openDate.getMinutes() + _duration);
+
+    document.querySelector("#閉店時間").value =
+      _openDate.getFullYear() +
+      "-" +
+      ("00" + (_openDate.getMonth() + 1)).slice(-2) +
+      "-" +
+      ("00" + _openDate.getDate()).slice(-2) +
+      "T" +
+      ("00" + _openDate.getHours()).slice(-2) +
+      ":" +
+      ("00" + _openDate.getMinutes()).slice(-2);
   }
+  
+  function _validateExceptForParseley(){
+    const varNowDate = new Date();
+    const varOpenDateTime = new Date(document.getElementById("開店時間").value);
+    const duration = Number(document.getElementById("duration").value);
+    const unitTime = Number(document.getElementById("unit_time").value);
+    // let applicationDeadline = document.getElementById("応募締め切り日時").value;
+    // let lotteryDeadline = document.getElementById("抽選完了日時").value;
+    // let paymentDeadline = document.getElementById("支払い締切り日時").value;
+
+    //開店時間が現在時刻よりも5分以上後である事をチェック
+    //秒も換算されるためあえて>=を利用しています。
+    let error_message = "";
+    if (new Date().setMinutes(varNowDate.getMinutes() + 5) >= varOpenDateTime) {
+      error_message =
+        error_message + "お店の開店時間は今から5分以上後にして下さい。\n";
+    }
+
+    //開店期間を超える単位時間が設定されていないかんもチェック
+    console.log(unitTime+ ">" +duration);
+    if (unitTime > duration) {
+      error_message =
+        error_message + "チケットの単位時間は開店期間より短く設定してください。\n";
+    }
+
+    //応募締切り日時のチェック
+    // if (nowDate.setMinutes(nowDate.getMinutes() + 60) > applicationDeadline) {
+    //   error_message =
+    //     error_message +
+    //     "応募締め切り日時は今から60分以上後にして下さい。\n";
+    // }
+
+    //応募締切り日時のチェック
+    // if (nowDate.setMinutes(nowDate.getMinutes() + 60) > applicationDeadline) {
+    //   error_message =
+    //     error_message +
+    //     "応募締め切り日時は今から60分以上後にして下さい。\n";
+    // }
+
+    //チケット価格のチェック
+    let ticketPrice = document.getElementById("price").value;
+    if (ticketPrice >= 1 && ticketPrice < 100) {
+      error_message =
+        error_message +
+        "チケット金額は0円、または有料の場合は100円以上を設定してください。\n";
+    }
+
+    //エラー内容の出力
+    if (error_message == "") {
+      switchComfirmForm();
+    } else {
+      alert(error_message);
+    }
+
+  }
+
+
+
 })();
