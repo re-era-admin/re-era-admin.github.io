@@ -18,6 +18,20 @@
       integrity="sha512-eyHL1atYNycXNXZMDndxrDhNAegH2BDWt1TmkXJPoGf1WLlNYt08CSjkqF5lnCRmdm3IrkHid8s2jOUY4NIZVQ=="
       crossorigin="anonymous"
     ></script>
+    <script>
+      function logOut(){
+
+        firebase.auth().onAuthStateChanged( (user) => {
+        firebase.auth().signOut().then(()=>{
+          console.log("ログアウトしました");
+          location.href = "./login.html";
+        })
+      .catch( (error)=>{
+        console.log(`ログアウト時にエラーが発生しました (${error})`);
+      });
+      });
+}
+    </script>
     <title>オンライン横丁 flatto -店主メニュー-</title>
   </head>
   <body>
@@ -35,6 +49,9 @@
 			</div>
 			<div class="part part_links">
 				<a href="./order.html">出店を申請する</a>
+      </div>
+      <div class="part">
+				<input type="button" onclick="logOut()" value="ログアウト"/>
 			</div>
 		</div=>
       </div>
