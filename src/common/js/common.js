@@ -14,7 +14,7 @@
  * - イベントハンドラを設定する。
  * - アラートを表示する。
  */
-(function () {
+$(function init() {
 
   // ===== スクロール時にふわっと現れる演出スクリプト ======
   // IntersectionObserverオブジェクトを作成する。
@@ -44,4 +44,4 @@
   const htmlContent = document.querySelector("html");
   htmlContent.dataset.appCommitId = process.env.COMMIT_REF;
 
-})();
+});
