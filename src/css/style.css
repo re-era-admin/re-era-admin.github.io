@@ -1158,7 +1158,7 @@ part以下定義
   _::-webkit-full-page-media,
   _:future,
   :root #part_topImage_main_pict > div {
-    background: url(../asset/image/オンライン横丁メインアニメ.gif);
+    background-image: url(../asset/image/オンライン横丁メインアニメ.gif);
   }
 }
 
