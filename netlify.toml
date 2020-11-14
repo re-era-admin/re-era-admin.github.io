@@ -15,3 +15,4 @@
 
 [context.branch-deploy.environment]
   NODE_ENV = "staging"
+  command = "npx -p parcel-bundler parcel build src/*.html"
