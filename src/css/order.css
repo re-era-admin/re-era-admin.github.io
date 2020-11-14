@@ -80,6 +80,11 @@ textarea {
   display: none;
 }
 
+.part_back {
+  display: inline;
+  font-size: small;
+}
+
 .parsley-custom-error-message {
   color: red;
 }
