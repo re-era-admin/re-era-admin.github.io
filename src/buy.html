@@ -94,9 +94,16 @@
         </div>
         <div class="m-h13v"></div>
         <!-- TODO 参考サイト：https://codepen.io/JavaScriptJunkie/pen/YzzNGeR -->
-        <div class="wrapper" id="card-form-wrapper">
+        <div
+          class="wrapper"
+          id="card-form-wrapper"
+          :class="{ 'free-spacing' : varチケット価格 === 0}"
+        >
           <div class="card-form">
-            <div class="card-list">
+            <div
+              class="card-list"
+              :class="{ 'free-hidden' : varチケット価格 === 0}"
+            >
               <div
                 class="card-item"
                 v-bind:class="{ '-active' : isCardFlipped }"
@@ -286,8 +293,14 @@
                 </div>
               </div>
             </div>
-            <div class="card-form__inner">
-              <div class="card-input">
+            <div
+              class="card-form__inner"
+              :class="{ 'free-hidden' : varチケット価格 === 0}"
+            >
+              <div
+                class="card-input"
+                :class="{ 'free-hidden' : varチケット価格 === 0}"
+              >
                 <label for="cardNumber" class="card-input__label"
                   >カード番号</label
                 >
@@ -303,7 +316,10 @@
                   autocomplete="off"
                 />
               </div>
-              <div class="card-input">
+              <div
+                class="card-input"
+                :class="{ 'free-hidden' : varチケット価格 === 0}"
+              >
                 <label for="cardName" class="card-input__label"
                   >カード名義</label
                 >
@@ -318,7 +334,10 @@
                   autocomplete="off"
                 />
               </div>
-              <div class="card-form__row">
+              <div
+                class="card-form__row"
+                :class="{ 'free-hidden' : varチケット価格 === 0}"
+              >
                 <div class="card-form__col">
                   <div class="card-form__group">
                     <label for="cardMonth" class="card-input__label"
@@ -363,7 +382,10 @@
                   </div>
                 </div>
                 <div class="card-form__col -cvv">
-                  <div class="card-input">
+                  <div
+                    class="card-input"
+                    :class="{ 'free-hidden' : varチケット価格 === 0}"
+                  >
                     <label for="cardCvv" class="card-input__label"
                       >セキュリティコード</label
                     >
@@ -415,7 +437,10 @@
                   　
                 </div>
               </div>
-              <div class="card-form__row">
+              <div
+                class="card-form__row"
+                :class="{ 'free-hidden' : varチケット価格 === 0}"
+              >
                 <div class="card-form__col">
                   <div class="card-input">
                     <label for="cardNumber" class="card-input__label"

@@ -34,22 +34,7 @@ window.$ = window.jQuery = jQuery;
 
   var handlers = {
     submitPurchase: function () {
-      //validation TODO:後でアーキテクチャの方針に合わせてチェック方法修正
-      if (document.getElementById("email").value == "") {
-        alert("メールアドレスを入力してください。");
-        return;
-      }
-
-      var _mailFormat = /^[A-Za-z0-9]{1}[A-Za-z0-9_.-]*@{1}[A-Za-z0-9_.-]{1,}\.[A-Za-z0-9]{1,}$/;
-      if (!_mailFormat.test(document.getElementById("email").value)) {
-        alert("メールアドレスのフォーマットに誤りがあります。");
-        return;
-      }
-
-      if (document.getElementById("purchaser-name").value == "") {
-        alert("Zoom上で表示するお名前を入力してください。");
-        return;
-      }
+      入力フォームのバリデーション();
 
       var el = document.getElementById("container__loading");
       el.classList.add("active");
@@ -84,38 +69,10 @@ window.$ = window.jQuery = jQuery;
           purchaseFormData.append("出店Id", 出店情報Id);
           purchaseFormData.append("表示価格", price);
 
-          fetch(process.env.AP_CONTEXT_PATH + "/出店情報/チケット申込を行う", {
-            method: "POST",
-            body: purchaseFormData,
-          })
-            .then((response) => response.json())
-            .catch((error) => console.error("Error:", error))
-            .then((response) => {
-              document
-                .getElementById("container__loading")
-                .classList.remove("active");
-              document.getElementById("header").classList.add("under-modal");
-              vm.modalActive = true;
-              if (response.code != undefined) {
-                console.log("Fail", response.message);
-                document
-                  .getElementById("part__modal-icon")
-                  .classList.add("error");
-                const res = {
-                  title: "",
-                  text: response.message,
-                };
-                vm.msg = res;
-                vm.closable = true;
-                return;
-              }
-              console.log("Success", JSON.stringify(response));
-              document
-                .getElementById("part__modal-icon")
-                .classList.remove("error");
-              vm.msg = response;
-              vm.closable = false;
-            });
+          サーバへリクエスト送信(
+            process.env.AP_CONTEXT_PATH + "/出店情報/チケット申込を行う",
+            purchaseFormData
+          );
         } else {
           // Error: display an error message. Note that `response.message` contains
           // a preformatted error message. Also note that `response.code` will be
@@ -128,8 +85,30 @@ window.$ = window.jQuery = jQuery;
           document
             .getElementById("container__loading")
             .classList.remove("active");
+          throw new Error("カード確認エラー");
         }
       });
+    },
+    submitFreeEntry() {
+      入力フォームのバリデーション();
+
+      var el = document.getElementById("container__loading");
+      el.classList.add("active");
+      document.getElementById("header").classList.add("under-modal");
+
+      var emailVal = document.querySelector("#email").value;
+      var purchaserName = document.querySelector("#purchaser-name").value;
+
+      let purchaseFormData = new FormData();
+      purchaseFormData.append("メールアドレス", emailVal);
+      purchaseFormData.append("購入者名", purchaserName);
+      purchaseFormData.append("出店Id", 出店情報Id);
+      purchaseFormData.append("表示価格", price);
+
+      サーバへリクエスト送信(
+        process.env.AP_CONTEXT_PATH + "/出店情報/無料のチケットへ申込を行う",
+        purchaseFormData
+      );
     },
   };
 
@@ -169,7 +148,9 @@ window.$ = window.jQuery = jQuery;
         return response.json();
       })
       .then((izakaya) => {
-        console.log(izakaya.price);
+        console.log("izakaya.price", izakaya.price);
+        price = izakaya.varチケット価格;
+
         var vm = new Vue({
           el: "#box__izakaya",
           data: {
@@ -269,11 +250,15 @@ window.$ = window.jQuery = jQuery;
               }, 300);
               vm.isInputFocused = false;
             },
-            submitPurchase: handlers.submitPurchase,
+            submitPurchase: (function () {
+              if (price === 0) {
+                return handlers.submitFreeEntry;
+              } else {
+                return handlers.submitPurchase;
+              }
+            })(),
           },
         });
-
-        price = izakaya.varチケット価格;
       })
       .catch((err) => {
         console.log(err);
@@ -283,5 +268,55 @@ window.$ = window.jQuery = jQuery;
   function setLinkBack(izakayaId) {
     document.querySelector(".part__link-top > a").href =
       "/detail.html?id=" + izakayaId;
+  }
+
+  function 入力フォームのバリデーション() {
+    //validation TODO:後でアーキテクチャの方針に合わせてチェック方法修正
+    if (document.getElementById("email").value == "") {
+      alert("メールアドレスを入力してください。");
+      throw new Error("入力エラー");
+    }
+
+    var _mailFormat = /^[A-Za-z0-9]{1}[A-Za-z0-9_.-]*@{1}[A-Za-z0-9_.-]{1,}\.[A-Za-z0-9]{1,}$/;
+    if (!_mailFormat.test(document.getElementById("email").value)) {
+      alert("メールアドレスのフォーマットに誤りがあります。");
+      throw new Error("入力エラー");
+    }
+
+    if (document.getElementById("purchaser-name").value == "") {
+      alert("Zoom上で表示するお名前を入力してください。");
+      throw new Error("入力エラー");
+    }
+  }
+
+  function サーバへリクエスト送信(requestUrl, purchaseFormData) {
+    fetch(requestUrl, {
+      method: "POST",
+      body: purchaseFormData,
+    })
+      .then((response) => response.json())
+      .catch((error) => console.error("Error:", error))
+      .then((response) => {
+        document
+          .getElementById("container__loading")
+          .classList.remove("active");
+        document.getElementById("header").classList.add("under-modal");
+        vm.modalActive = true;
+        if (response.code != undefined) {
+          console.error("Fail", response.message);
+          document.getElementById("part__modal-icon").classList.add("error");
+          const res = {
+            title: "",
+            text: response.message,
+          };
+          vm.msg = res;
+          vm.closable = true;
+          throw new Error("サーバでの決済処理エラー");
+        }
+        console.log("Success", JSON.stringify(response));
+        document.getElementById("part__modal-icon").classList.remove("error");
+        vm.msg = response;
+        vm.closable = false;
+      });
   }
 })();

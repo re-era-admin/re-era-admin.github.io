@@ -241,43 +241,49 @@ _:future,
   position: relative;
   z-index: 3;
 }
-/* 
- TODO 暫定機能：カード入力欄の非表示 
-.card-list {
+
+/* TODO 暫定機能：カード入力欄の非表示  */
+/* .card-list, */
+.free-hidden {
   visibility: hidden;
   height: 0;
   margin-bottom: auto;
 }
-.card-form__inner {
+/* .card-form__inner, */
+.free-hidden {
   padding-top: 0px;
 }
-div.card-input:nth-child(2) {
+/* div.card-input:nth-child(2), */
+.free-hidden {
   visibility: hidden;
   height: 0;
 }
-div.card-form__row:nth-child(3) {
+/* div.card-form__row:nth-child(3), */
+.free-hidden {
   visibility: hidden;
   height: 0;
 }
-div.card-form__row:nth-child(6) {
+/* div.card-form__row:nth-child(6), */
+.free-hidden {
   visibility: hidden;
   height: 0;
 }
-.card-form__inner > div:nth-child(1) {
+/* .card-form__inner > div:nth-child(1), */
+.free-hidden {
   visibility: hidden;
   height: 0;
 }
-#card-form-wrapper {
+#card-form-wrapper.free-spacing {
   min-height: auto;
 }
 
-.card-list {
+.card-list.free-hidden {
   margin-bottom: 0 !important;
 }
 
-.card-form__inner {
+.card-form__inner.free-hidden {
   padding-top: 0 !important;
-} */
+}
 
 /** ディスプレイサイズ801px以上での表示時 */
 @media screen and (min-width: 801px) {
