@@ -293,7 +293,7 @@
   function createEndDateTime() {
     const _openDate = new Date(document.querySelector("#開店時間").value);
     const _duration = document.querySelector("#duration").value;
-    _openDate.setMinutes(_openDate.getMinutes() + _duration);
+    _openDate.setMinutes(_openDate.getMinutes() + Number(_duration));
 
     document.querySelector("#閉店時間").value =
       _openDate.getFullYear() +
