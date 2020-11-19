@@ -1,3 +1,21 @@
+/**
+ SCSS の変数・mixin定義
+*/
+
+// PC時の幅の縮小率
+$minimizeRate: 0.8;
+$breakPointMobileMax: 640px;
+$breakPoint: $breakPointMobileMax + 1;
+
+// メディアクエリの一括設定用
+@mixin largeScreen() {
+  @media screen and (min-width: $breakPoint) {
+    @content;
+  }
+}
+
+/** 以下通常のスタイル指定 */
+
 @keyframes my-fade-in {
   from {
     opacity: 0;
@@ -8,7 +26,6 @@
 }
 
 html {
-  /* max-width: 800px; */
   position: relative;
 }
 
@@ -28,19 +45,17 @@ p {
   --arrowDown-pict-height: 10vw;
   --arrowDown-pict-width: 20vw;
   --title-height: 47.5vw;
-}
 
-@media (min-width: 801px) {
-  :root {
-    --whole-page-vh: 800px;
-    --content-title-size: 44px;
-    --content-text-size: 27.2px;
-    --box-number-text-size: 112.1px;
-    --box-title-text-line-height: 80px;
-    --arrowDown-area-height: 125.4px;
-    --arrowDown-pict-height: 80px;
-    --arrowDown-pict-width: 160.1px;
-    --title-height: 380.3px;
+  @include largeScreen() {
+    --whole-page-vh: #{800px * $minimizeRate};
+    --content-title-size: #{44px * $minimizeRate};
+    --content-text-size: #{27.2px * $minimizeRate};
+    --box-number-text-size: #{112.1px * $minimizeRate};
+    --box-title-text-line-height: #{80px * $minimizeRate};
+    --arrowDown-area-height: #{125.4px * $minimizeRate};
+    --arrowDown-pict-height: #{80px * $minimizeRate};
+    --arrowDown-pict-width: #{160.1px * $minimizeRate};
+    --title-height: #{380.3px * $minimizeRate};
   }
 }
 
@@ -65,9 +80,9 @@ body {
   background-size: cover;
   z-index: 1;
   left: 50%;
-  transform: translate(-50%, 0);
-  -webkit-transform: translate(-50%, 0%);
-  -ms-transform: translate(-50%, 0);
+  transform: translate(-49%, 0);
+  -webkit-transform: translate(-49%, 0%);
+  -ms-transform: translate(-49%, 0);
 }
 
 #footer {
@@ -86,13 +101,12 @@ body {
   flex-direction: row;
   justify-content: center;
   align-items: center;
-}
 
-@media (min-width: 801px) {
-  .box_footer {
-    height: 70px;
+  @include largeScreen() {
+    height: 70px * $minimizeRate;
   }
 }
+
 .box_footer > p {
   color: black;
 }
@@ -102,38 +116,36 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
-}
-@media (min-width: 801px) {
-  .box_policies {
+
+  @include largeScreen() {
     flex-direction: row;
     justify-content: center;
   }
 }
 
-@media (min-width: 801px) {
+@include largeScreen() {
   .part_policy {
     display: flex;
     align-items: center;
   }
 }
+
 .part_policy > p {
   font-size: 14px;
-}
-@media (min-width: 801px) {
-  .part_policy > p {
+
+  @include largeScreen() {
     font-size: 12px;
   }
 }
 .copyright {
   height: 10vw;
-}
-@media (min-width: 801px) {
-  .copyright {
-    height: 100px;
+
+  @include largeScreen() {
+    height: 100px * $minimizeRate;
   }
 }
 
-@media (min-width: 801px) {
+@include largeScreen() {
   .bk_sp {
     display: none;
   }
@@ -142,44 +154,20 @@ body {
 #main {
   max-width: var(--whole-page-vh);
   position: relative;
-  /* font-family: "小塚ゴシック Pro", "Kozuka Gothic Pro", sans-serif; */
   margin-top: -71.6vw;
   z-index: 100;
   left: 50%;
   transform: translate(-50%, 0);
   -webkit-transform: translate(-50%, 0%);
   -ms-transform: translate(-50%, 0);
-}
 
-@media (min-width: 801px) {
-  #main {
-    /* position: relative;
-    font-family: "小塚ゴシック Pro", "Kozuka Gothic Pro", sans-serif; */
-    margin-top: -733.2px;
+  @include largeScreen() {
+    margin-top: -733.2px * $minimizeRate;
   }
 }
 
 #gradient {
   display: none;
-}
-
-@media (min-width: 801px) {
-  #gradient {
-    /* display: block;
-    position: fixed;
-    width: 500px;
-    width: 100%;
-    height: 100%;
-    z-index: 100000;
-    background: linear-gradient(90deg, rgb(0, 0, 0), rgba(0, 0, 0, 0) 3%),
-      linear-gradient(270deg, rgb(0, 0, 0), rgba(0, 0, 0, 0) 3%);
-    pointer-events: none;
-    width: 800px;
-    left: 50%;
-    transform: translate(-50%, 0);
-    -webkit-transform: translate(-50%, 0%);
-    -ms-transform: translate(-50%, 0); */
-  }
 }
 
 hr {
@@ -217,13 +205,12 @@ hr {
   top: -38vw;
   display: flex;
   justify-content: center;
-}
-@media (min-width: 801px) {
-  #headder {
-    height: 570px;
-    top: -305px;
+
+  @include largeScreen() {
+    height: 570px * $minimizeRate;
+    top: -305px * $minimizeRate;
     width: 100%;
-    border-width: 100px;
+    border-width: 100px * $minimizeRate;
   }
 }
 
@@ -237,10 +224,9 @@ hr {
 
 .img-margin {
   height: 34vw;
-}
-@media (min-width: 801px) {
-  .img-margin {
-    height: 272px;
+
+  @include largeScreen() {
+    height: 272px * $minimizeRate;
   }
 }
 
@@ -255,11 +241,9 @@ hr {
   width: 45vw;
   display: inline;
   z-index: 1001;
-}
 
-@media (min-width: 801px) {
-  #headder_btn_enter > a > img {
-    width: 358px;
+  @include largeScreen() {
+    width: 358px * $minimizeRate;
   }
 }
 
@@ -277,13 +261,11 @@ hr {
   width: 100%;
   max-width: var(--whole-page-vh);
   border-style: none;
-}
 
-@media (min-width: 801px) {
-  #headder_img {
+  @include largeScreen() {
     width: var(--whole-page-vh);
     background-size: contain;
-    height: 573px;
+    height: 573px * $minimizeRate;
   }
 }
 
@@ -315,11 +297,9 @@ container定義
   background-color: #7c7c7c;
   height: 75vw;
   display: none;
-}
 
-@media (min-width: 801px) {
-  #container_guide {
-    height: 768px;
+  @include largeScreen() {
+    height: 768px * $minimizeRate;
   }
 }
 
@@ -350,16 +330,20 @@ area定義
 #area_aboutThisService_arrowDown {
   width: var(--whole-page-vh);
   height: var(--arrowDown-area-height);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 #area_aboutThisService_outline {
-  height: 50vw;
+  height: 58vw;
   width: var(--whole-page-vh);
-}
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-@media (min-width: 801px) {
-  #area_aboutThisService_outline {
-    height: 512px;
+  @include largeScreen() {
+    height: 512px * $minimizeRate;
   }
 }
 
@@ -367,87 +351,90 @@ area定義
   color: white;
   height: 40vw;
   width: var(--whole-page-vh);
-}
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-@media (min-width: 801px) {
-  #area_aboutThisService_title {
-    height: 409.6px;
+  @include largeScreen() {
+    height: 360px * $minimizeRate;
   }
 }
 
 #area_aboutThisService_image {
   height: 90vw;
-  width: 65vw;
-  left: 50%;
-  transform: translate(-50%, 0);
-  -webkit-transform: translate(-50%, 0%);
-  -ms-transform: translate(-50%, 0);
-}
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-@media (min-width: 801px) {
-  #area_aboutThisService_image {
-    height: 921.6px;
+  @include largeScreen() {
+    height: 921.6px * $minimizeRate;
   }
 }
 
 #area_AllowingAnonymous_image {
   height: 41.5vw;
   width: var(--whole-page-vh);
-}
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
 
-@media (min-width: 801px) {
-  #area_AllowingAnonymous_image {
-    height: 425px;
+  @include largeScreen() {
+    height: 360px * $minimizeRate;
   }
 }
 
 #area_AllowingAnonymous_outline {
   height: 30vw;
   width: var(--whole-page-vh);
-}
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-@media (min-width: 801px) {
-  #area_AllowingAnonymous_outline {
-    height: 307.2px;
+  @include largeScreen() {
+    height: 240.2px * $minimizeRate;
   }
 }
 
 #area_guide_arrowDown {
   width: var(--whole-page-vh);
   height: var(--arrowDown-area-height);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 #area_guide_image {
   height: 25vw;
   width: var(--whole-page-vh);
-}
 
-@media (min-width: 801px) {
-  #area_guide_image {
-    height: 256px;
+  @include largeScreen() {
+    height: 256px * $minimizeRate;
   }
 }
 
 #area_guide_outline {
   height: 30vw;
   width: var(--whole-page-vh);
-}
 
-@media (min-width: 801px) {
-  #area_guide_outline {
-    height: 307.2px;
+  @include largeScreen() {
+    height: 307.2px * $minimizeRate;
   }
 }
 
 #area_howToEnjoy_arrowDown {
   width: var(--whole-page-vh);
   height: var(--arrowDown-area-height);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 #area_howToEnjoy_title {
   height: var(--title-height);
   width: var(--whole-page-vh);
-  /* background-color: tomato; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 #area_howToUse_title {
@@ -458,12 +445,14 @@ area定義
 #area_recommendedFor_arrowDown {
   width: var(--whole-page-vh);
   height: var(--arrowDown-area-height);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 #area_recommendedFor_title {
   height: var(--title-height);
   width: var(--whole-page-vh);
-  /* background-color: tomato; */
 }
 
 #area_topImage_main {
@@ -475,43 +464,27 @@ area定義
 part以下定義 
  =====================*/
 #part_aboutThisService_arrowDown_pict {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  -webkit-transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%);
   height: var(--arrowDown-pict-height);
   width: var(--arrowDown-pict-width);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 #part_aboutThisService_arrowDown_pict > div {
-  position: absolute;
   background: url(../asset/image/arrowDownGray.png);
   background-repeat: no-repeat;
   background-position: center;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  -webkit-transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%);
   height: 100%;
   width: 100%;
 }
 
 #part_aboutThisService_image_pict {
-  position: absolute;
   height: 80vw;
   width: 100%;
-  top: 50%;
-  transform: translate(0, -50%);
-  -webkit-transform: translate(0, -50%);
-  -ms-transform: translate(0, -50%);
-}
 
-@media (min-width: 801px) {
-  #part_aboutThisService_image_pict {
-    height: 819.2px;
+  @include largeScreen() {
+    height: 819.2px * $minimizeRate;
   }
 }
 
@@ -522,38 +495,26 @@ part以下定義
   background-position: center;
   width: 100%;
   background-repeat: no-repeat;
-  position: absolute;
 }
 
 #part_aboutThisService_outline_text {
-  position: absolute;
-  height: 50vw;
+  height: 58vw;
   width: 70vw;
-  left: 50%;
-  transform: translate(-50%, 0);
-  -webkit-transform: translate(-50%, 0);
-  -ms-transform: translate(-50%, 0);
-}
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-@media (min-width: 801px) {
-  #part_aboutThisService_outline_text {
-    height: 512px;
+  @include largeScreen() {
     width: 70%;
+    height: 512px * $minimizeRate;
   }
 }
 
 #part_aboutThisService_outline_text > p {
   color: black;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  -webkit-transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%);
   font-size: var(--content-text-size);
   width: 100%;
-  position: absolute;
   text-align: center;
-  vertical-align: middle;
   font-weight: 600;
   line-height: var(--box-title-text-line-height);
 }
@@ -574,14 +535,13 @@ part以下定義
   font-weight: 600;
   line-height: 15.5vw;
   font-size: 13vw;
-}
 
-@media (min-width: 801px) {
-  #part_aboutThisService_title_sub > p {
-    line-height: 124.1px;
-    font-size: 104px;
+  @include largeScreen() {
+    line-height: 124.1px * $minimizeRate;
+    font-size: 104px * $minimizeRate;
   }
 }
+
 #part_aboutThisService_title_main {
   position: absolute;
   top: 50%;
@@ -592,109 +552,82 @@ part以下定義
   font-weight: bolder;
   z-index: 1;
   color: black;
-  /* height: 50vw; */
   width: 100%;
 }
 
 #part_aboutThisService_title_main > p {
   font-size: 9vw;
   font-weight: 600;
-}
 
-@media (min-width: 801px) {
-  #part_aboutThisService_title_main > p {
-    font-size: 72px;
+  @include largeScreen() {
+    font-size: 72px * $minimizeRate;
   }
 }
 
 #part_AllowingAnonymous_image_pict {
-  position: absolute;
   width: 45.9vw;
   height: 18.7vw;
   background: url(../asset/image/匿名OK.png);
   background-repeat: no-repeat;
   background-size: cover;
-  left: 50%;
-  transform: translate(-50%, 0);
-  -webkit-transform: translate(-50%, 0);
-  -ms-transform: translate(-50%, 0);
-  bottom: 0px;
-}
 
-@media (min-width: 801px) {
-  #part_AllowingAnonymous_image_pict {
-    width: 367.5px;
-    height: 191.5px;
+  @include largeScreen() {
+    width: 367.5px * $minimizeRate;
+    height: 191.5px * $minimizeRate;
     background-size: contain;
   }
 }
 
 #part_AllowingAnonymous_outline_text {
   font-size: var(--content-title-size);
-  /* font-size: 5.5vw; */
   font-weight: 600;
   width: var(--whole-page-vh);
-  top: 50%;
-  position: absolute;
-  transform: translate(0, -50%);
-  -webkit-transform: translate(0, -50%);
-  -ms-transform: translate(0, -50%);
 }
 
 #part_guide_arrowDown_pict {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  -webkit-transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%);
   height: var(--arrowDown-pict-height);
   width: var(--arrowDown-pict-width);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 #part_guide_arrowDown_pict > div {
-  position: absolute;
   background: url(../asset/image/arrowDownWhite.png);
   background-repeat: no-repeat;
   background-position: center;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  -webkit-transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%);
   height: 100%;
   width: 100%;
 }
-#part_guide_image_pict {
-  position: absolute;
-  height: 14.4vw;
-  width: 17.9vw;
-  background: url(../asset/image/指針.png);
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: contain;
-  left: 50%;
-  transform: translate(-50%, 0);
-  -webkit-transform: translate(-50%, 0);
-  -ms-transform: translate(-50%, 0);
-  bottom: 0px;
-}
-@media (min-width: 801px) {
-  #part_guide_image_pict {
-    height: 147.5px;
-    width: 183.3px;
-  }
-}
 
-#part_guide_outline_text {
-  position: absolute;
-  left: 50%;
-  transform: translate(-50%, 0);
-  -webkit-transform: translate(-50%, 0);
-  -ms-transform: translate(-50%, 0);
-  /* height: 100px; */
-  width: 100%;
-}
+// #part_guide_image_pict {
+//   position: absolute;
+//   height: 14.4vw;
+//   width: 17.9vw;
+//   background: url(../asset/image/指針.png);
+//   background-repeat: no-repeat;
+//   background-position: center;
+//   background-size: contain;
+//   left: 50%;
+//   transform: translate(-50%, 0);
+//   -webkit-transform: translate(-50%, 0);
+//   -ms-transform: translate(-50%, 0);
+//   bottom: 0px;
+
+//   @include largeScreen() {
+//     height: 147.5px * $minimizeRate;
+//     width: 183.3px * $minimizeRate;
+//   }
+// }
+
+// #part_guide_outline_text {
+//   position: absolute;
+//   left: 50%;
+//   transform: translate(-50%, 0);
+//   -webkit-transform: translate(-50%, 0);
+//   -ms-transform: translate(-50%, 0);
+//   width: 100%;
+// }
 
 #part_guide_outline_text > p {
   color: white;
@@ -704,35 +637,24 @@ part以下定義
   width: 100%;
   font-weight: 600;
   line-height: var(--box-title-text-line-height);
-}
 
-@media (min-width: 801px) {
-  #part_guide_outline_text > p {
-    line-height: 102.4px;
+  @include largeScreen() {
+    line-height: 102.4px * $minimizeRate;
   }
 }
 
 #part_howToEnjoy_arrowDown_pict {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  -webkit-transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%);
   height: var(--arrowDown-pict-height);
   width: var(--arrowDown-pict-width);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 #part_howToEnjoy_arrowDown_pict > div {
-  position: absolute;
   background: url(../asset/image/arrowDownWhite.png);
   background-repeat: no-repeat;
   background-position: center;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  -webkit-transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%);
   height: 100%;
   width: 100%;
 }
@@ -774,24 +696,16 @@ part以下定義
 }
 
 #part_howToEnjoy_title_pict {
-  position: absolute;
   height: 12vw;
   width: 58.9vw;
   background: url(../asset/image/楽しみ方.png);
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  -webkit-transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%);
-}
 
-@media (min-width: 801px) {
-  #part_howToEnjoy_title_pict {
-    height: 122.9px;
-    width: 471.6px;
+  @include largeScreen() {
+    height: 122.9px * $minimizeRate;
+    width: 471.6px * $minimizeRate;
     background-size: contain;
   }
 }
@@ -801,7 +715,10 @@ part以下定義
   position: relative;
   width: var(--whole-page-vh);
   /* background-color: blue; */
-  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
   clear: both;
 }
 
@@ -837,17 +754,10 @@ part以下定義
   position: relative;
   height: 23vw;
   width: 45vw;
-  left: 50%;
-  transform: translate(-50%, 0);
-  -webkit-transform: translate(-50%, 0);
-  -ms-transform: translate(-50%, 0);
-}
 
-@media (min-width: 801px) {
-  .part_howToUse_contents_box > .box_pict {
-    position: relative;
-    height: 235.5px;
-    width: 360.3px;
+  @include largeScreen() {
+    height: 235.5px * $minimizeRate;
+    width: 360.3px * $minimizeRate;
   }
 }
 
@@ -858,7 +768,6 @@ part以下定義
   background-size: cover;
   height: 100%;
   width: 100%;
-  position: absolute;
 }
 
 .part_howToUse_contents_box > .box_pictsHowToUse2 {
@@ -868,23 +777,19 @@ part以下定義
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
-}
 
-@media (min-width: 801px) {
-  .part_howToUse_contents_box > .box_pictsHowToUse2 {
-    height: 720.9px;
+  @include largeScreen() {
+    height: 720.9px * $minimizeRate;
   }
 }
 
 .part_howToUse_contents_box > .box_pictsHowToUse2 > .box_pict1 {
-  height: 49.9vw;
-  width: 22.7vw;
-}
+  height: auto;
+  width: auto;
 
-@media (min-width: 801px) {
-  .part_howToUse_contents_box > .box_pictsHowToUse2 > .box_pict1 {
-    height: 511px;
-    width: 232.5px;
+  @include largeScreen() {
+    height: 511px * $minimizeRate;
+    width: 232.5px * $minimizeRate;
   }
 }
 
@@ -892,10 +797,9 @@ part以下定義
   height: auto;
   width: 25vw;
   border: white solid 1px;
-}
-@media (min-width: 801px) {
-  .box_pict1-img > img {
-    width: 232.5px;
+
+  @include largeScreen() {
+    width: 232.5px * $minimizeRate;
     border: white solid 2px;
   }
 }
@@ -903,10 +807,9 @@ part以下定義
 .part_howToUse_contents_box > .box_pictsHowToUse2 > .box_pict1Supplement {
   height: var(--content-title-size);
   width: 29vw;
-}
-@media (min-width: 801px) {
-  .part_howToUse_contents_box > .box_pictsHowToUse2 > .box_pict1Supplement {
-    width: 199.7px;
+
+  @include largeScreen() {
+    width: 199.7px * $minimizeRate;
   }
 }
 
@@ -919,11 +822,10 @@ part以下定義
 .part_howToUse_contents_box > .box_pictsHowToUse2 > .box_pict2 {
   height: 70.4vw;
   width: 31.7vw;
-}
-@media (min-width: 801px) {
-  .part_howToUse_contents_box > .box_pictsHowToUse2 > .box_pict2 {
-    height: 720.9px;
-    width: 324.6px;
+
+  @include largeScreen() {
+    height: 720.9px * $minimizeRate;
+    width: 324.6px * $minimizeRate;
   }
 }
 
@@ -941,28 +843,23 @@ part以下定義
   position: relative;
   height: 57.6vw;
   width: var(--whole-page-vh);
-}
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 
-@media (min-width: 801px) {
-  .part_howToUse_contents_box > .box_pictsHowToUse3 {
-    height: 589.8px;
+  @include largeScreen() {
+    height: 589.8px * $minimizeRate;
   }
 }
 
 .part_howToUse_contents_box > .box_pictsHowToUse3 > .box_pict1 {
-  position: absolute;
   height: 51vw;
   width: 22.7vw;
-  left: 50%;
-  transform: translate(-50%, 0);
-  -webkit-transform: translate(-50%, 0);
-  -ms-transform: translate(-50%, 0);
-}
 
-@media (min-width: 801px) {
-  .part_howToUse_contents_box > .box_pictsHowToUse3 > .box_pict1 {
-    height: 518px;
-    width: 232.5px;
+  @include largeScreen() {
+    height: 518px * $minimizeRate;
+    width: 232.5px * $minimizeRate;
   }
 }
 
@@ -975,21 +872,16 @@ part以下定義
   height: 100%;
   width: 100%;
 }
-.part_howToUse_contents_box > .box_pictsHowToUse3 > .box_pict1Supplement {
-  position: absolute;
-  height: var(--content-title-size);
-  width: 40vw;
-  left: 50%;
-  top: 52vw;
-  transform: translate(-50%, 0);
-  -webkit-transform: translate(-50%, 0);
-  -ms-transform: translate(-50%, 0);
-}
 
-@media (min-width: 801px) {
-  .part_howToUse_contents_box > .box_pictsHowToUse3 > .box_pict1Supplement {
-    width: 409.6px;
-    top: 532.5px;
+.part_howToUse_contents_box > .box_pictsHowToUse3 > .box_pict1Supplement {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: var(--content-title-size);
+  width: 100%;
+
+  @include largeScreen() {
+    top: 532.5px * $minimizeRate;
   }
 }
 
@@ -997,31 +889,25 @@ part以下定義
   position: relative;
   height: 72.5vw;
   width: var(--whole-page-vh);
-}
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-@media (min-width: 801px) {
-  .part_howToUse_contents_box > .box_pictsHowToUse4 {
-    height: 580.5px;
+  @include largeScreen() {
+    height: 580.5px * $minimizeRate;
   }
 }
 
 .part_howToUse_contents_box > .box_pictsHowToUse4 > .box_pictsHowToUse4_pict {
-  position: absolute;
   height: 100%;
   width: 71.7vw;
   background: url(../asset/image/利用方法4.png);
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  left: 50%;
-  transform: translate(-50%, 0);
-  -webkit-transform: translate(-50%, 0);
-  -ms-transform: translate(-50%, 0);
-}
 
-@media (min-width: 801px) {
-  .part_howToUse_contents_box > .box_pictsHowToUse4 > .box_pictsHowToUse4_pict {
-    width: 574.1px;
+  @include largeScreen() {
+    width: 574.1px * $minimizeRate;
   }
 }
 
@@ -1034,35 +920,25 @@ part以下定義
 
 #part_howToUse_title_pict > img {
   width: 78vw;
-}
-@media (min-width: 801px) {
-  #part_howToUse_title_pict > img {
+
+  @include largeScreen() {
     height: auto;
-    width: 623.2px;
+    width: 623.2px * $minimizeRate;
   }
 }
 
 #part_recommendedFor_arrowDown_pict {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  -webkit-transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%);
   height: var(--arrowDown-pict-height);
   width: var(--arrowDown-pict-width);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 #part_recommendedFor_arrowDown_pict > div {
-  position: absolute;
   background: url(../asset/image/arrowDownWhite.png);
   background-repeat: no-repeat;
   background-position: center;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  -webkit-transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%);
   height: 100%;
   width: 100%;
 }
@@ -1081,12 +957,6 @@ part以下定義
   font-size: var(--box-number-text-size);
   font-weight: 100;
   height: var(--box-number-text-size);
-  /* background-color: yellow; */
-}
-
-.part_recommendedFor_contents_box > .box_title {
-  /* height: var(--box-title-text-line-height); */
-  /* background-color: violet; */
 }
 
 .part_recommendedFor_contents_box > .box_title p {
@@ -1102,37 +972,34 @@ part以下定義
   align-items: center;
   justify-content: center;
 }
+
 #part_recommendedFor_title_pict > img {
   height: auto;
   width: 78vw;
-}
 
-@media (min-width: 801px) {
-  #part_recommendedFor_title_pict > img {
-    width: 623.2px;
+  @include largeScreen() {
+    width: 623.2px * $minimizeRate;
   }
 }
 
 #part_topImage_arrowDown_pict {
-  height: 120px;
+  height: 100px;
   display: flex;
   align-items: center;
 }
 
 @media (min-width: 801px) {
   #part_topImage_arrowDown_pict > img {
-    width: 33px;
-    height: 17px;
+    width: 33px * $minimizeRate;
+    height: 17px * $minimizeRate;
   }
 }
 
 .top-img_margin {
   height: 3vw;
-}
 
-@media (min-width: 801px) {
-  .top-img_margin {
-    height: 180px;
+  @include largeScreen() {
+    height: 180px * $minimizeRate;
   }
 }
 
@@ -1153,7 +1020,7 @@ part以下定義
   align-items: center;
 }
 
-/* safari */
+/* safari webpの置き換え */
 @media screen and (-webkit-min-device-pixel-ratio: 0) {
   _::-webkit-full-page-media,
   _:future,
@@ -1172,6 +1039,11 @@ part以下定義
   height: 3vw;
 }
 
+.mt9vw {
+  position: relative;
+  height: 9vw;
+}
+
 .mt12vw {
   position: relative;
   height: 12vw;
@@ -1180,7 +1052,6 @@ part以下定義
 .mt16vw {
   position: relative;
   height: 16vw;
-  /* border: red solid 10px; */
 }
 .mt18vw {
   height: 18vw;
@@ -1192,22 +1063,27 @@ part以下定義
 
 @media (min-width: 801px) {
   .mt3vw {
-    height: 30.7px;
+    height: 30.7px * $minimizeRate;
+  }
+
+  .mt9vw {
+    position: relative;
+    height: 90px * $minimizeRate;
   }
 
   .mt12vw {
     position: relative;
-    height: 122.9px;
+    height: 122.9px * $minimizeRate;
   }
   .mt16vw {
     position: relative;
-    height: 163.8px;
+    height: 163.8px * $minimizeRate;
   }
   .mt18vw {
-    height: 180px;
+    height: 180px * $minimizeRate;
   }
   .mt67vw {
-    height: 670px;
+    height: 670px * $minimizeRate;
   }
 }
 
@@ -1242,12 +1118,12 @@ p {
 
 body .text {
   width: calc(20px + 28 * (100vw - 320px) / 480);
-}
-@media (min-width: 801px) {
-  body .text {
-    width: 49px;
+
+  @include largeScreen() {
+    width: 49px * $minimizeRate;
   }
 }
+
 body .text > * {
   font-size: 6vw;
   font-weight: 600;
@@ -1259,10 +1135,9 @@ body .text > * {
   letter-spacing: 3vw;
   text-shadow: 0px 0px 30px #ffffff;
   white-space: nowrap;
-}
-@media (min-width: 801px) {
-  body .text > * {
-    font-size: 48px;
-    letter-spacing: 24px;
+
+  @include largeScreen() {
+    font-size: 48px * $minimizeRate;
+    letter-spacing: 24px * $minimizeRate;
   }
 }
