@@ -131,7 +131,7 @@
                       <div class="card-item__type">
                         <transition name="slide-fade-up">
                           <img
-                            v-bind:src="'/vendor/interactive-paycard-img/' + getCardType + '.png'"
+                            v-bind:src="'/src/vendor/interactive-paycard-img/' + getCardType + '.png'"
                             v-if="getCardType"
                             v-bind:key="getCardType"
                             alt=""
@@ -284,7 +284,7 @@
                     </div>
                     <div class="card-item__type">
                       <img
-                        v-bind:src="'/vendor/interactive-paycard-img/' + getCardType + '.png'"
+                        v-bind:src="'/src/vendor/interactive-paycard-img/' + getCardType + '.png'"
                         v-if="getCardType"
                         class="card-item__typeImg"
                       />
@@ -295,7 +295,7 @@
             </div>
             <div
               class="card-form__inner"
-              :class="{ 'free-hidden' : varチケット価格 === 0}"
+              :class="{ 'free-spacing' : varチケット価格 === 0}"
             >
               <div
                 class="card-input"

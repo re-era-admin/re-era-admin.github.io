@@ -148,7 +148,7 @@ window.$ = window.jQuery = jQuery;
         return response.json();
       })
       .then((izakaya) => {
-        console.log("izakaya.price", izakaya.price);
+        console.log("izakaya.price", izakaya.varチケット価格);
         price = izakaya.varチケット価格;
 
         var vm = new Vue({
@@ -198,6 +198,9 @@ window.$ = window.jQuery = jQuery;
               re = new RegExp("^(34|37)");
               if (number.match(re) != null) return "amex";
 
+              re = new RegExp("^35(2[8-9]|[3-8][0-9])");
+              if (number.match(re) != null) return "jcb";
+
               re = new RegExp("^5[1-5]");
               if (number.match(re) != null) return "mastercard";
 
@@ -207,7 +210,7 @@ window.$ = window.jQuery = jQuery;
               re = new RegExp("^9792");
               if (number.match(re) != null) return "troy";
 
-              return "visa"; // default type
+              return "none"; // default type
             },
             generateCardNumberMask() {
               return this.getCardType === "amex"
