@@ -1,6 +1,17 @@
+// SCSSの共通設定読み込み
+@import "../common/css/common";
+
+// 以下個別のスタイル設定
+
 body {
   min-height: 100vh;
   overscroll-behavior: none;
+
+  @include largeScreen() {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 }
 /** ヘッダー構築部 */
 header#header {
@@ -8,9 +19,18 @@ header#header {
   position: sticky;
   z-index: 30;
   top: -37vw;
+
+  @include largeScreen() {
+    width: var(--pc-max-width);
+    top: -310px * $minimizeRate;
+  }
 }
 .header-img {
   width: 100vw;
+
+  @include largeScreen() {
+    width: var(--pc-max-width);
+  }
 }
 .part__link-to-top > a {
   position: absolute;
@@ -33,6 +53,11 @@ header#header {
   background-position-y: center;
   /* background-attachment: fixed; */
   top: 0;
+
+  @include largeScreen() {
+    width: var(--pc-max-width);
+    background: url(/asset/image/バックグラウンド.png);
+  }
 }
 
 section#section {
@@ -45,6 +70,10 @@ section#section {
 .navi-text {
   font-size: 4vw;
   text-align: center;
+
+  @include largeScreen() {
+    font-size: 32px * $minimizeRate;
+  }
 }
 .container__main-content {
   display: flex;
@@ -53,6 +82,10 @@ section#section {
 }
 .container {
   width: 67vw;
+
+  @include largeScreen() {
+    width: 537px * $minimizeRate;
+  }
 }
 
 .display-status {
@@ -68,6 +101,11 @@ section#section {
   font-weight: 900;
   z-index: 10;
   pointer-events: none;
+
+  @include largeScreen() {
+    border-radius: 24px * $minimizeRate;
+    font-size: 47.8px * $minimizeRate;
+  }
 }
 
 .display-status-close {
@@ -104,6 +142,10 @@ section#section {
   border: 1px solid white;
   text-align: center;
   padding: 10%;
+
+  @include largeScreen() {
+    padding: 8% * $minimizeRate;
+  }
 }
 .izakaya-item.disable {
   opacity: 70%;
@@ -165,12 +207,24 @@ a.detail-link {
 img.owner-icon {
   width: 20vw;
   object-fit: scale-down;
+
+  @include largeScreen() {
+    width: 160px * $minimizeRate;
+  }
 }
 .izakaya-name {
   font-size: 5.3vw;
+
+  @include largeScreen() {
+    font-size: 43px * $minimizeRate;
+  }
 }
 .izakaya-info {
   font-size: 2.66vw;
+
+  @include largeScreen() {
+    font-size: 21px * $minimizeRate;
+  }
 }
 
 .izakaya-tags {
@@ -183,9 +237,18 @@ img.owner-icon {
   padding: 0 2vw;
   background-color: var(--strong-color);
   line-height: 1.6;
+
+  @include largeScreen() {
+    padding: 0 16px;
+    line-height: 1.6;
+  }
 }
 .price > p {
   font-size: 3.7vw;
+
+  @include largeScreen() {
+    font-size: 29px * $minimizeRate;
+  }
 }
 .congestion-item {
   display: flex;
@@ -195,77 +258,29 @@ img.owner-icon {
 .congestion-icon > img {
   width: 3.7vw;
   object-fit: contain;
+
+  @include largeScreen() {
+    width: 29px * $minimizeRate;
+    object-fit: contain;
+  }
 }
 .congesiton-text > p {
   font-size: 3.7vw;
+
+  @include largeScreen() {
+    font-size: 29px * $minimizeRate;
+  }
 }
 .entry-available > p {
   font-size: 3.7vw;
+
+  @include largeScreen() {
+    font-size: 29px * $minimizeRate;
+  }
 }
 .entry-available {
   color: #00ffc4;
 }
 .entry-available.full {
   color: var(--strong-color);
-}
-
-/** ディスプレイサイズ801px以上での表示時 */
-@media screen and (min-width: 801px) {
-  .background-img {
-    width: var(--pc-max-width);
-    background: url(/asset/image/バックグラウンド.png);
-  }
-  body {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-
-  header#header {
-    width: var(--pc-max-width);
-    top: -310px;
-  }
-  .header-img {
-    width: var(--pc-max-width);
-  }
-
-  .navi-text {
-    font-size: 32px;
-  }
-  div.container {
-    width: 537px;
-  }
-  .izakaya-item {
-    padding: 8%;
-  }
-  img.owner-icon {
-    width: 160px;
-  }
-  .izakaya-name {
-    font-size: 43px;
-  }
-  .izakaya-info {
-    font-size: 21px;
-  }
-  .price {
-    padding: 0 16px;
-    line-height: 1.6;
-  }
-  .price > p {
-    font-size: 29px;
-  }
-  .congestion-icon > img {
-    width: 29px;
-    object-fit: contain;
-  }
-  .congesiton-text > p {
-    font-size: 29px;
-  }
-  .entry-available > p {
-    font-size: 29px;
-  }
-  .display-status {
-    border-radius: 24px;
-    font-size: 47.8px;
-  }
 }
