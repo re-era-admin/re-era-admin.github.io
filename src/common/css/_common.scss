@@ -106,7 +106,7 @@ br.sp_bk {
 br.pc_bk {
   display: none;
 }
-@media screen and (min-width: 1024px) {
+@media screen and (min-width: $breakPoint) {
   br.sp_bk {
     display: none;
   }
@@ -169,8 +169,8 @@ br.pc_bk {
   height: 60vw;
 }
 
-/** ディスプレイサイズ1024px以上での表示時 */
-@media screen and (min-width: 1024px) {
+/** PC画面での表示時 */
+@media screen and (min-width: $breakPoint) {
   html,
   body {
     width: 100vw;
