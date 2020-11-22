@@ -1,6 +1,17 @@
+// SCSSの共通設定読み込み
+@import "../common/css/common";
+
+// 以下個別のスタイル設定
+
 body {
   min-height: 100vh;
   overscroll-behavior: none;
+
+  @include largeScreen() {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 }
 
 /** ヘッダー構築部 */
@@ -10,6 +21,11 @@ header#header {
   z-index: 30;
   top: -37vw;
   pointer-events: none;
+
+  @include largeScreen() {
+    width: var(--pc-max-width);
+    top: -310px * $minimizeRate;
+  }
 }
 header#header.under-modal {
   z-index: auto;
@@ -17,6 +33,19 @@ header#header.under-modal {
 .header-img {
   width: 100vw;
   position: relative;
+
+  @include largeScreen() {
+    width: var(--pc-max-width);
+
+    &:after {
+      position: absolute;
+      content: "";
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+  }
 }
 .header-img > img {
   width: 100%;
@@ -43,6 +72,10 @@ header#header.under-modal {
   background-position-y: center;
   /* background-attachment: fixed; */
   top: 0;
+
+  @include largeScreen() {
+    width: var(--pc-max-width);
+  }
 }
 section#section {
   display: flex;
@@ -62,6 +95,12 @@ section#section {
   width: 82vw;
   border: 2px solid var(--strong-color);
   padding: 1.5vw;
+
+  @include largeScreen() {
+    width: 641.2px * $minimizeRate;
+    border: 2px solid var(--strong-color);
+    padding: 11.7px * $minimizeRate;
+  }
 }
 .box__ticket-inner {
   display: flex;
@@ -94,19 +133,35 @@ section#section {
 }
 .part__ticket-title > p {
   font-size: 3vw;
+
+  @include largeScreen() {
+    font-size: 23.4px * $minimizeRate;
+  }
 }
 
 .box__izakaya {
   display: flex;
   width: 74vw;
+
+  @include largeScreen() {
+    width: 578.6px * $minimizeRate;
+  }
 }
 .part__owner-icon > img {
   width: 20vw;
   object-fit: scale-down;
+
+  @include largeScreen() {
+    width: 156.4px * $minimizeRate;
+  }
 }
 .part__izakaya-name {
   position: relative;
   width: 51vw;
+
+  @include largeScreen() {
+    width: 398.8px * $minimizeRate;
+  }
 }
 .part__izakaya-name-bg {
   width: 100%;
@@ -124,6 +179,11 @@ section#section {
   opacity: 0.4;
   flex-shrink: 0;
   padding-top: 2vw;
+
+  @include largeScreen() {
+    font-size: 78.2px * $minimizeRate;
+    padding-top: 14px * $minimizeRate;
+  }
 }
 _::-webkit-full-page-media,
 _:future,
@@ -146,15 +206,28 @@ _:future,
   letter-spacing: 0.2em;
   font-weight: 700;
   font-size: 4vw;
+
+  @include largeScreen() {
+    letter-spacing: 0.2em;
+    font-size: 23.4px * $minimizeRate;
+  }
 }
 
 .part__price-text > p {
   color: var(--text-color-light-bg);
   font-size: calc(26px + 12 * (100vw - 320px) / 480);
+
+  @include largeScreen() {
+    font-size: 39px * $minimizeRate;
+  }
 }
 .part__bill-text > p {
   color: gray;
   font-size: 3vw;
+
+  @include largeScreen() {
+    font-size: 15.6px * $minimizeRate;
+  }
 }
 .card-form__button.hide {
   display: none;
@@ -195,6 +268,10 @@ _:future,
 }
 .part__modal-title {
   font-size: 6vw;
+
+  @include largeScreen() {
+    font-size: 35px * $minimizeRate;
+  }
 }
 .part__modal-icon {
   display: none;
@@ -204,11 +281,19 @@ _:future,
 }
 .part__modal-text {
   width: 80vw;
+
+  @include largeScreen() {
+    width: 50%;
+  }
 }
 .part__modal-text > p {
   font-size: 5vw;
   color: white;
   text-align: center;
+
+  @include largeScreen() {
+    font-size: 23.4px * $minimizeRate;
+  }
 }
 .part__btn-top {
   background-color: white;
@@ -216,11 +301,20 @@ _:future,
   border-radius: 2vw;
   display: flex;
   justify-content: center;
+
+  @include largeScreen() {
+    border-radius: 16px;
+  }
 }
 .part__btn-top > a {
   padding: 2vw 4vw;
   font-size: 6vw;
   color: black;
+
+  @include largeScreen() {
+    padding: 15.6px 31.2px;
+    font-size: 23.4px * $minimizeRate;
+  }
 }
 
 /** 共通パーツ */
@@ -233,6 +327,11 @@ _:future,
   text-align: center;
   justify-content: center;
   align-items: center;
+
+  @include largeScreen() {
+    width: 260px;
+    height: 51.6px;
+  }
 }
 
 /** card-input.css を背景手前に浮かせる */
@@ -283,94 +382,4 @@ _:future,
 
 .card-form__inner.free-spacing {
   padding-top: 0 !important;
-}
-
-/** ディスプレイサイズ801px以上での表示時 */
-@media screen and (min-width: 801px) {
-  body {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-
-  /** ヘッダ部 */
-  header#header {
-    width: var(--pc-max-width);
-    top: -310px;
-  }
-  .header-img {
-    width: var(--pc-max-width);
-  }
-  .header-img:after {
-    position: absolute;
-    content: "";
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-  }
-  /** コンテンツ部 */
-  .background-img {
-    width: var(--pc-max-width);
-  }
-
-  .box__ticket {
-    width: 641.2px;
-    border: 2px solid var(--strong-color);
-    padding: 11.7px;
-  }
-  .part__ticket-title > p {
-    font-size: 23.4px;
-  }
-
-  .box__izakaya {
-    width: 578.6px;
-  }
-  .part__owner-icon > img {
-    width: 156.4px;
-  }
-  .part__izakaya-name {
-    width: 398.8px;
-  }
-  .part__izakaya-name-bg > p {
-    font-size: 78.2px;
-    padding-top: 14px;
-  }
-
-  .part__izakaya-name-text > p {
-    letter-spacing: 0.2em;
-    font-size: 23.4px;
-  }
-
-  .part__price-text > p {
-    font-size: 39px;
-  }
-  .part__bill-text > p {
-    font-size: 15.6px;
-  }
-
-  /** モーダル部品 */
-  .part__modal-title {
-    font-size: 35px;
-  }
-  .part__modal-text {
-    width: 50%;
-  }
-  .part__modal-text > p {
-    font-size: 23.4px;
-  }
-  .part__btn-top {
-    border-radius: 16px;
-  }
-
-  .part__btn-top > a {
-    padding: 15.6px 31.2px;
-    font-size: 23.4px;
-  }
-
-  /** 共通パーツ */
-  .square-fill {
-    width: 260px;
-    height: 51.6px;
-  }
 }
