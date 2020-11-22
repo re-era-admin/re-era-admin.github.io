@@ -1,6 +1,17 @@
+// SCSSの共通設定読み込み
+@import "../common/css/common";
+
+// 以下個別のスタイル設定
+
 body {
   min-height: 100vh;
   overscroll-behavior: none;
+
+  @include largeScreen() {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 }
 
 /** ヘッダー構築部 */
@@ -9,10 +20,29 @@ header#header {
   position: sticky;
   z-index: 30;
   top: -37vw;
+
+  @include largeScreen() {
+    width: var(--pc-max-width);
+    top: -310px * $minimizeRate;
+  }
 }
+
 .header-img {
   width: 100vw;
   position: relative;
+
+  @include largeScreen() {
+    width: var(--pc-max-width);
+
+    &:after {
+      position: absolute;
+      content: "";
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+  }
 }
 .header-img > img {
   width: 100%;
@@ -27,6 +57,7 @@ header#header {
   z-index: 3;
   border-style: none;
 }
+
 /** コンテンツ部 */
 
 .background-img {
@@ -37,23 +68,34 @@ header#header {
   background-size: cover;
   background-position-x: center;
   background-position-y: center;
-  /* background-attachment: fixed; */
   top: 0;
+
+  @include largeScreen() {
+    width: var(--pc-max-width);
+  }
 }
+
 section#section {
   position: relative;
   display: flex;
   flex-direction: column;
   z-index: 3;
 }
+
 .container__main-content {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
+
 div.container {
   width: 67vw;
+
+  @include largeScreen() {
+    width: 536.4px * $minimizeRate;
+  }
 }
+
 div.izakaya-box {
   position: relative;
   display: flex;
@@ -68,25 +110,54 @@ div.izakaya-box {
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  @include largeScreen() {
+    padding: 25.6px * $minimizeRate;
+  }
 }
 .izakaya-overview.disable {
   opacity: 0.7;
   background-color: black;
 }
 
+.navi-text {
+  @include largeScreen() {
+    font-size: 32px * $minimizeRate;
+  }
+}
+
 .izakaya-name > h2 {
   font-size: 5.4vw;
+
+  @include largeScreen() {
+    font-size: 42.2px * $minimizeRate;
+  }
 }
+
 .profile-title > p {
   font-size: 3.2vw;
+
+  @include largeScreen() {
+    font-size: 25px * $minimizeRate;
+  }
 }
+
 .description-title > p {
   font-size: 3.2vw;
+
+  @include largeScreen() {
+    font-size: 25px * $minimizeRate;
+  }
 }
 .description-text > p {
   font-size: 2.4vw;
   line-height: 1.5;
+
+  @include largeScreen() {
+    font-size: 18.7px * $minimizeRate;
+  }
 }
+
 .charge-link {
   width: 100%;
   background-color: var(--strong-color);
@@ -98,12 +169,17 @@ div.izakaya-box {
   color: white;
   text-decoration: none;
   line-height: 2;
+
+  @include largeScreen() {
+    font-size: 41.4px * $minimizeRate;
+  }
 }
 .charge-link.disable > a {
   cursor: default;
   pointer-events: none;
   text-decoration: none;
 }
+
 .full-text {
   width: 100%;
   background-color: gray;
@@ -119,12 +195,29 @@ div.izakaya-box {
 
 .info-text > p {
   font-size: 2.4vw;
+
+  @include largeScreen() {
+    font-size: 18.7px * $minimizeRate;
+  }
 }
 
 .owner-icon > img {
   max-width: 25.3vw;
   max-height: 25.3vw;
   object-fit: scale-down;
+
+  @include largeScreen() {
+    width: 160px * $minimizeRate;
+    max-width: 198px * $minimizeRate;
+    max-height: 198px * $minimizeRate;
+    object-fit: scale-down;
+  }
+}
+
+.izakaya-info {
+  @include largeScreen() {
+    font-size: 21.1px * $minimizeRate;
+  }
 }
 
 .izakaya-tags {
@@ -132,15 +225,32 @@ div.izakaya-box {
   flex-direction: row;
   align-items: center;
   justify-content: center;
+
+  @include largeScreen() {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+  }
 }
 .price {
   padding: 0 2vw;
   background-color: var(--strong-color);
   line-height: 1.6;
+
+  @include largeScreen() {
+    padding: 0 16px;
+    line-height: 1.6;
+  }
 }
 .price > p {
   font-size: 3.7vw;
+
+  @include largeScreen() {
+    font-size: 29px * $minimizeRate;
+  }
 }
+
 .congestion-item {
   display: flex;
   align-items: center;
@@ -149,133 +259,50 @@ div.izakaya-box {
 .congestion-icon > img {
   width: 3.7vw;
   object-fit: contain;
+
+  @include largeScreen() {
+    width: 29px * $minimizeRate;
+    object-fit: contain;
+  }
 }
 .congesiton-text > p {
   font-size: 3.7vw;
+
+  @include largeScreen() {
+    font-size: 29px * $minimizeRate;
+  }
 }
-.entry-available > p {
-  font-size: 3.7vw;
-}
+
 .entry-available {
   color: #00ffc4;
 }
 .entry-available.full {
   color: var(--strong-color);
 }
+.entry-available > p {
+  font-size: 3.7vw;
+
+  @include largeScreen() {
+    font-size: 29px * $minimizeRate;
+  }
+}
+
 .owner-name > p {
   font-size: 2.4vw;
+
+  @include largeScreen() {
+    font-size: 18.7px * $minimizeRate;
+  }
 }
+
 .genre > p {
   font-size: 2.4vw;
+
+  @include largeScreen() {
+    font-size: 18.7px * $minimizeRate;
+  }
 }
 
 * {
   /* outline: solid 0.8px gainsboro; */
-}
-
-/** ディスプレイサイズ801px以上での表示時 */
-@media screen and (min-width: 801px) {
-  body {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-
-  /** ヘッダ部 */
-  header#header {
-    width: var(--pc-max-width);
-    top: -310px;
-  }
-  .header-img {
-    width: var(--pc-max-width);
-  }
-  .header-img:after {
-    position: absolute;
-    content: "";
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-  }
-
-  /** コンテンツ部 */
-  .background-img {
-    width: var(--pc-max-width);
-  }
-
-  .izakaya-overview {
-    padding: 25.6px;
-  }
-
-  .navi-text {
-    font-size: 32px;
-  }
-  div.container {
-    width: 536.4px;
-  }
-  img.owner-icon {
-    width: 160px;
-  }
-  .izakaya-name > h2 {
-    font-size: 42.2px;
-  }
-  .izakaya-info {
-    font-size: 21.1px;
-  }
-  .izakaya-tags {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-evenly;
-  }
-  .price {
-    padding: 0 16px;
-    line-height: 1.6;
-  }
-  .price > p {
-    font-size: 29px;
-  }
-  .congestion-icon > img {
-    width: 29px;
-    object-fit: contain;
-  }
-  .congesiton-text > p {
-    font-size: 29px;
-  }
-  .entry-available > p {
-    font-size: 29px;
-  }
-  .owner-name > p {
-    font-size: 18.7px;
-  }
-  .genre > p {
-    font-size: 18.7px;
-  }
-
-  .profile-title > p {
-    font-size: 25px;
-  }
-
-  .description-title > p {
-    font-size: 25px;
-  }
-  .description-text > p {
-    font-size: 18.7px;
-  }
-  .charge-link {
-    background-color: var(--strong-color);
-    text-align: center;
-  }
-  .charge-link > a {
-    font-size: 41.4px;
-  }
-  .info-text > p {
-    font-size: 18.7px;
-  }
-
-  .owner-icon > img {
-    max-width: 198px;
-    max-height: 198px;
-    object-fit: scale-down;
-  }
 }

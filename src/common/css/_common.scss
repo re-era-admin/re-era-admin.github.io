@@ -1,0 +1,235 @@
+/** ==================================
+ SCSS の共通設定
+ ================================== */
+
+// 変数・mixin定義
+
+// PC時の幅の縮小率
+$minimizeRate: 0.8;
+$breakPointMobileMax: 640px;
+$breakPoint: $breakPointMobileMax + 1;
+
+// メディアクエリの一括設定用
+@mixin largeScreen() {
+  @media screen and (min-width: $breakPoint) {
+    @content;
+  }
+}
+
+// ==== common.cssのコピー ========
+
+:root {
+  /** グローバル変数 */
+  --background-color: #000000; /** 基本背景色*/
+  --text-color: #ffffff; /** 基本文字色 */
+  --text-color-light-bg: #414141; /** 薄め文字色 */
+  --strong-color: #ff00d8; /** 強調色 */
+  --pc-max-width: #{$breakPointMobileMax}; /** PC用スタイルでのmax-width値 */
+}
+
+html,
+body {
+  width: 100%;
+  margin: 0px;
+  font-family: kozuka-gothic-pro, sans-serif;
+  color: var(--text-color);
+  background-color: var(--background-color);
+}
+
+/* 日本語フォントの字詰め調整 */
+body {
+  -webkit-text-size-adjust: 100%;
+  font-feature-settings: "palt";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+@media screen and (-webkit-min-device-pixel-ratio: 0) {
+  ::i-block-chrome,
+  body {
+    font-feature-settings: "pkna";
+  }
+}
+
+/* ===== リセットCSS =====  */
+body,
+h1,
+h2,
+h3,
+p {
+  margin: 0;
+  padding: 0;
+}
+
+h1,
+h2,
+h3 {
+  line-height: 1;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* Vue.js のMustacheの展開前文字列を非表示にする */
+[v-cloak] {
+  visibility: hidden;
+}
+
+/* iOSでのSubmitボタンのスタイルをリセット */
+input[type="submit"],
+input[type="button"] {
+  -webkit-box-sizing: content-box;
+  -webkit-appearance: button;
+  appearance: button;
+  border: none;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+input[type="submit"]::-webkit-search-decoration,
+input[type="button"]::-webkit-search-decoration {
+  display: none;
+}
+input[type="submit"]::focus,
+input[type="button"]::focus {
+  outline-offset: -2px;
+}
+
+img {
+  /* Chrome系における画像ボケ対策 */
+  -webkit-backface-visibility: hidden;
+}
+
+/* レスポンシブ改行位置調整クラス */
+br.sp_bk {
+  display: inline;
+}
+br.pc_bk {
+  display: none;
+}
+@media screen and (min-width: 1024px) {
+  br.sp_bk {
+    display: none;
+  }
+  br.pc_bk {
+    display: inline;
+  }
+}
+
+/* ===== マージン用divのクラス. まとめて宣言 =====  */
+/* 横方向マージン  */
+.m-w0_5v {
+  width: 0.5vw;
+}
+.m-w1_5v {
+  width: 1.5vw;
+}
+.m-w3v {
+  width: 3vw;
+  flex-shrink: 0;
+}
+.m-w5v {
+  width: 5vw;
+}
+.m-w9v {
+  width: 9vw;
+}
+.m-w16_5v {
+  width: 16.5vw;
+}
+
+/* 縦方向マージン  */
+.m-h1_5v {
+  height: 1.5vw;
+}
+.m-h2v {
+  height: 2vw;
+}
+.m-h3v {
+  height: 3vw;
+}
+.m-h4v {
+  height: 4vw;
+}
+.m-h4_5v {
+  height: 4.5vw;
+}
+.m-h5v {
+  height: 5vw;
+}
+.m-h6v {
+  height: 6vw;
+}
+.m-h6_5v {
+  height: 6.5vw;
+}
+.m-h13v {
+  height: 13vw;
+}
+.m-h60v {
+  height: 60vw;
+}
+
+/** ディスプレイサイズ1024px以上での表示時 */
+@media screen and (min-width: 1024px) {
+  html,
+  body {
+    width: 100vw;
+  }
+
+  .m-w0_5v {
+    width: 5px;
+  }
+  .m-w1_5v {
+    width: 15px;
+  }
+  .m-w3v {
+    width: 30px;
+    flex-shrink: 0;
+  }
+  .m-w5v {
+    width: 50px;
+  }
+  .m-w9v {
+    width: 90px;
+  }
+  .m-w16_5v {
+    width: 165px;
+  }
+
+  /* 縦方向マージン  */
+  .m-h1_5v {
+    height: 15px;
+  }
+  .m-h2v {
+    height: 20px;
+  }
+  .m-h3v {
+    height: 30px;
+  }
+  .m-h4v {
+    height: 40px;
+  }
+  .m-h4_5v {
+    height: 45px;
+  }
+  .m-h5v {
+    height: 50px;
+  }
+  .m-h6v {
+    height: 60px;
+  }
+  .m-h6_5v {
+    height: 65px;
+  }
+  .m-h13v {
+    height: 130px;
+  }
+  .m-h60v {
+    height: 600px;
+  }
+}
+
+/** デバッグ用 */
+/* * {
+    outline: solid 0.8px gainsboro;
+  } */

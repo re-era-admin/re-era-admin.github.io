@@ -1,20 +1,7 @@
-/**
- SCSS の変数・mixin定義
-*/
+// SCSSの共通設定読み込み
+@import "../common/css/common";
 
-// PC時の幅の縮小率
-$minimizeRate: 0.8;
-$breakPointMobileMax: 640px;
-$breakPoint: $breakPointMobileMax + 1;
-
-// メディアクエリの一括設定用
-@mixin largeScreen() {
-  @media screen and (min-width: $breakPoint) {
-    @content;
-  }
-}
-
-/** 以下通常のスタイル指定 */
+// 以下個別のスタイル設定
 
 @keyframes my-fade-in {
   from {
