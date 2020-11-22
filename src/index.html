@@ -4,7 +4,6 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./css/style.scss" />
-    <link rel="stylesheet" href="./common/css/common.css" />
     <script
       async
       src="https://www.googletagmanager.com/gtag/js?id=UA-174012826-1"
@@ -20,7 +19,7 @@
     <script>
       (function (d) {
         if (navigator.userAgent.indexOf("iPhone") > 0) {
-          $("body").addClass("iPhone");
+          document.querySelector("body").classList.add("iPhone");
         }
         var config = {
             kitId: "bwu7gyp",
@@ -51,11 +50,6 @@
         s.parentNode.insertBefore(tk, s);
       })(document);
     </script>
-    <script
-      src="https://code.jquery.com/jquery-3.4.1.min.js"
-      integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
-      crossorigin="anonymous"
-    ></script>
     <script src="/common/js/common.js"></script>
     <meta
       name="description"

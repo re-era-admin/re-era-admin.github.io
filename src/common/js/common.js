@@ -1,5 +1,7 @@
+import jQuery from "jquery";
+window.$ = window.jQuery = jQuery;
 
-"use strict";
+("use strict");
 
 // ---------------------------------------------------------------------------
 // 共通変数定義
@@ -15,7 +17,6 @@
  * - アラートを表示する。
  */
 $(function init() {
-
   // ===== スクロール時にふわっと現れる演出スクリプト ======
   // IntersectionObserverオブジェクトを作成する。
   // 交差時に実行するコールバック関数を渡す。
@@ -43,5 +44,4 @@ $(function init() {
   // htmlのdata属性にビルド時のコミットIdを埋め込む
   const htmlContent = document.querySelector("html");
   htmlContent.dataset.appCommitId = process.env.COMMIT_REF;
-
 });
