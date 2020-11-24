@@ -241,8 +241,8 @@ hr {
 }
 
 #headder_img {
+  background-image: url(/asset/image/yokocho-header.png);
   background-repeat: no-repeat;
-  background: url(/asset/image/yokocho-header.png);
   background-size: contain;
   height: 100%;
   width: 100%;
@@ -251,7 +251,6 @@ hr {
 
   @include largeScreen() {
     width: var(--whole-page-vh);
-    background-size: contain;
     height: 573px * $minimizeRate;
   }
 }
@@ -459,7 +458,7 @@ part以下定義
 }
 
 #part_aboutThisService_arrowDown_pict > div {
-  background: url(../asset/image/arrowDownGray.png);
+  background-image: url(../asset/image/arrowDownGray.png);
   background-repeat: no-repeat;
   background-position: center;
   height: 100%;
@@ -477,7 +476,7 @@ part以下定義
 
 #part_aboutThisService_image_pict div {
   height: 100%;
-  background: url(../asset/image/flattoとは.png);
+  background-image: url(../asset/image/flattoとは.png);
   background-size: contain;
   background-position: center;
   width: 100%;
