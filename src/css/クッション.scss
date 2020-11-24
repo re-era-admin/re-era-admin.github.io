@@ -1,0 +1,76 @@
+// SCSSの共通設定読み込み
+@import "../common/css/common";
+
+// 基本形は一覧画面に合わせる
+@import "./izakaya";
+
+// 以下クッションページ独自のスタイル設定
+
+// ヘッダー構築部
+.header-img {
+  width: 100vw;
+  position: relative;
+
+  @include largeScreen() {
+    width: var(--pc-max-width);
+
+    &:after {
+      position: absolute;
+      content: "";
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+  }
+}
+.header-img > img {
+  width: 100%;
+}
+
+/** コンテンツ部 */
+.charge-link {
+  display: none;
+  width: 100%;
+  background-color: var(--strong-color);
+  text-align: center;
+}
+.charge-link.active {
+  display: block;
+}
+.charge-link > a {
+  display: block;
+  font-size: 5.3vw;
+  color: white;
+  text-decoration: none;
+  line-height: 2;
+}
+.charge-link.disable > a {
+  cursor: default;
+  pointer-events: none;
+  text-decoration: none;
+}
+
+.info-text {
+  display: none;
+
+  &.active {
+    display: block;
+  }
+}
+.info-text > p {
+  font-size: 4.4vw;
+  margin-bottom: 50px;
+
+  @include largeScreen() {
+    font-size: 20px;
+  }
+}
+
+.spacing {
+  height: 30px;
+}
+
+// * {
+//    outline: solid 0.8px gainsboro;
+// }
