@@ -54,40 +54,41 @@ window.$ = window.jQuery = jQuery;
         // security_code: "999",
       };
 
-      Omise.createToken("card", cardInformation, function (
-        statusCode,
-        response
-      ) {
-        if (statusCode === 200) {
-          var emailVal = document.querySelector("#email").value;
-          var purchaserName = document.querySelector("#purchaser-name").value;
+      Omise.createToken(
+        "card",
+        cardInformation,
+        function (statusCode, response) {
+          if (statusCode === 200) {
+            var emailVal = document.querySelector("#email").value;
+            var purchaserName = document.querySelector("#purchaser-name").value;
 
-          let purchaseFormData = new FormData();
-          purchaseFormData.append("omiseトークン", response.id);
-          purchaseFormData.append("メールアドレス", emailVal);
-          purchaseFormData.append("購入者名", purchaserName);
-          purchaseFormData.append("出店Id", 出店情報Id);
-          purchaseFormData.append("表示価格", price);
+            let purchaseFormData = new FormData();
+            purchaseFormData.append("omiseトークン", response.id);
+            purchaseFormData.append("メールアドレス", emailVal);
+            purchaseFormData.append("購入者名", purchaserName);
+            purchaseFormData.append("出店Id", 出店情報Id);
+            purchaseFormData.append("表示価格", price);
 
-          サーバへリクエスト送信(
-            process.env.AP_CONTEXT_PATH + "/出店情報/チケット申込を行う",
-            purchaseFormData
-          );
-        } else {
-          // Error: display an error message. Note that `response.message` contains
-          // a preformatted error message. Also note that `response.code` will be
-          // "invalid_card" in case of validation error on the card.
-          alert(
-            "カードの確認でエラーが発生しました.",
-            response.code,
-            response.message
-          );
-          document
-            .getElementById("container__loading")
-            .classList.remove("active");
-          throw new Error("カード確認エラー");
+            サーバへリクエスト送信(
+              process.env.AP_CONTEXT_PATH + "/出店情報/チケット申込を行う",
+              purchaseFormData
+            );
+          } else {
+            // Error: display an error message. Note that `response.message` contains
+            // a preformatted error message. Also note that `response.code` will be
+            // "invalid_card" in case of validation error on the card.
+            alert(
+              "カードの確認でエラーが発生しました.",
+              response.code,
+              response.message
+            );
+            document
+              .getElementById("container__loading")
+              .classList.remove("active");
+            throw new Error("カード確認エラー");
+          }
         }
-      });
+      );
     },
     submitFreeEntry() {
       入力フォームのバリデーション();
@@ -125,7 +126,7 @@ window.$ = window.jQuery = jQuery;
 
     setLinkBack(出店情報Id);
 
-    Omise.setPublicKey("pkey_test_5k4953yfhskp2xwoquh");
+    Omise.setPublicKey(process.env.OMISE_PUBLIC_KEY);
   });
   // ===========================================================================
   // 関数定義 (イベントハンドラ以外)
