@@ -23,8 +23,13 @@ $breakPoint: $breakPointMobileMax + 1;
   --background-color: #000000; /** 基本背景色*/
   --text-color: #ffffff; /** 基本文字色 */
   --text-color-light-bg: #414141; /** 薄め文字色 */
+  --link-text-color: lightblue;
   --strong-color: #ff00d8; /** 強調色 */
   --pc-max-width: #{$breakPointMobileMax}; /** PC用スタイルでのmax-width値 */
+}
+
+a:link {
+  color: var(--link-text-color);
 }
 
 html,
@@ -162,6 +167,10 @@ br.pc_bk {
 .m-h6_5v {
   height: 6.5vw;
 }
+
+.m-h8v {
+  height: 8vw;
+}
 .m-h13v {
   height: 13vw;
 }
@@ -188,6 +197,10 @@ br.pc_bk {
   }
   .m-w5v {
     width: 50px;
+  }
+
+  .m-h8v {
+    height: 8vw;
   }
   .m-w9v {
     width: 90px;

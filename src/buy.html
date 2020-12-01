@@ -502,6 +502,22 @@
               <p v-cloak>{{ msg.text }}</p>
             </div>
             <div class="m-h6v"></div>
+            <template v-show='cushionLink != ""'>
+              <div class="box__cushion-link">
+                <div class="part__link-text">
+                  <p>こちらのリンクからお店へお入りください。</p>
+                </div>
+                <div class="part__cushion-link">
+                  <a
+                    :href="cushionLink"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >{{ cushionLink }}</a
+                  >
+                </div>
+              </div>
+            </template>
+            <div class="m-h8v"></div>
             <template v-if="!closable">
               <div class="part__btn-top">
                 <a href="/index.html">Topへ戻る</a>

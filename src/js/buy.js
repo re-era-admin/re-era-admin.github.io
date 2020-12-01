@@ -18,6 +18,7 @@ window.$ = window.jQuery = jQuery;
     el: "#container__modal",
     data: {
       msg: [],
+      cushionLink: "",
       modalActive: false,
       closable: false,
     },
@@ -125,7 +126,6 @@ window.$ = window.jQuery = jQuery;
     getIzakaya(出店情報Id);
 
     setLinkBack(出店情報Id);
-
     Omise.setPublicKey(process.env.OMISE_PUBLIC_KEY);
   });
   // ===========================================================================
@@ -281,7 +281,7 @@ window.$ = window.jQuery = jQuery;
       throw new Error("入力エラー");
     }
 
-    var _mailFormat = /^[A-Za-z0-9]{1}[A-Za-z0-9_.-]*@{1}[A-Za-z0-9_.-]{1,}\.[A-Za-z0-9]{1,}$/;
+    var _mailFormat = /^[A-Za-z0-9]{1}[A-Za-z0-9_.+-]*@{1}[A-Za-z0-9_.-]{1,}\.[A-Za-z0-9]{1,}$/;
     if (!_mailFormat.test(document.getElementById("email").value)) {
       alert("メールアドレスのフォーマットに誤りがあります。");
       throw new Error("入力エラー");
@@ -317,9 +317,12 @@ window.$ = window.jQuery = jQuery;
           vm.closable = true;
           throw new Error("サーバでの決済処理エラー");
         }
-        console.log("Success", JSON.stringify(response));
+        console.log("Success", response.varVoチケット.varクッションページUrl);
         document.getElementById("part__modal-icon").classList.remove("error");
-        vm.msg = response;
+        vm.msg.title = "お申し込みありがとうございます!";
+        vm.msg.text =
+          "申し込みいただいたチケットは入力いただいたメールアドレスへお送りします。\nメールボックスをご確認ください。";
+        vm.cushionLink = response.varVoチケット.varクッションページUrl;
         vm.closable = false;
       });
   }

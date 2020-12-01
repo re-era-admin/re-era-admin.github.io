@@ -295,6 +295,33 @@ _:future,
     font-size: 23.4px * $minimizeRate;
   }
 }
+
+.box__cushion-link {
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+}
+.part__cushion-link {
+  width: 80vw;
+
+  @include largeScreen() {
+    width: var(--pc-max-width);
+  }
+}
+.part__cushion-link > a {
+  white-space: nowrap;
+  display: block;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  max-width: 80vw;
+
+  @include largeScreen() {
+    max-width: var(--pc-max-width);
+  }
+}
+
 .part__btn-top {
   background-color: white;
   border: solid 1px white;
