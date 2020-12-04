@@ -48,13 +48,16 @@ import Vue from "vue";
         return response.json();
       })
       .then((data) => {
-        console.log(data);
         var vm = new Vue({
           el: "#izakaya-content",
           data: {
             izakaya: [],
           },
           mounted() {
+            console.log(data);
+            //画面表示用にデータを加工
+            data.var開店時間 = _changeFormatDateToDisplay(data.var開店時間);
+            data.var閉店時間 = _changeFormatDateToDisplay(data.var閉店時間);
             this.izakaya = data;
           },
         });
@@ -62,5 +65,27 @@ import Vue from "vue";
       .catch((err) => {
         console.log(err);
       });
+  }
+
+  function _changeFormatDateToDisplay(pDate) {
+    let _date = new Date(pDate);
+    let _formatedDate;
+
+    const wNames = ["日", "月", "火", "水", "木", "金", "土"];
+
+    _formatedDate =
+      _date.getFullYear() +
+      "/" +
+      ("00" + (_date.getMonth() + 1)).slice(-2) +
+      "/" +
+      ("00" + _date.getDate()).slice(-2) +
+      "(" +
+      wNames[_date.getDay()] +
+      ") " +
+      ("00" + _date.getHours()).slice(-2) +
+      ":" +
+      ("00" + _date.getMinutes()).slice(-2);
+
+    return _formatedDate;
   }
 })();
