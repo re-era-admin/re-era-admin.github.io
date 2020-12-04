@@ -290,6 +290,7 @@ _:future,
   font-size: 5vw;
   color: white;
   text-align: center;
+  white-space: pre-line;
 
   @include largeScreen() {
     font-size: 23.4px * $minimizeRate;

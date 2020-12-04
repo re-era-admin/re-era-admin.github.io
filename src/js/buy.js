@@ -321,7 +321,8 @@ window.$ = window.jQuery = jQuery;
         document.getElementById("part__modal-icon").classList.remove("error");
         vm.msg.title = "お申し込みありがとうございます!";
         vm.msg.text =
-          "申し込みいただいたチケットは入力いただいたメールアドレスへお送りします。\nメールボックスをご確認ください。";
+          "申し込みいただいたチケットは入力いただいたメールアドレスへお送りします。\nメールボックスをご確認ください。\nGmailなどの設定によっては迷惑メールに振り分けられるケースがあります。" +
+          "\n見当たらない場合は迷惑メールボックス等をお確かめください。";
         vm.cushionLink = response.varVoチケット.varクッションページUrl;
         vm.closable = false;
       });
