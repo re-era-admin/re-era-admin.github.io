@@ -368,7 +368,27 @@ _:future,
   z-index: 3;
 }
 
-/* TODO 暫定機能：カード入力欄の非表示  */
+/** cardInputに現状使用可能なブランドを表示 */
+.box__card-number-brand {
+  display: inline-flex;
+  align-items: center;
+  margin-left: 2vw;
+
+  @include largeScreen() {
+    margin-left: 15px;
+  }
+}
+.part__card-number-brand {
+  width: 11vw;
+  filter: drop-shadow(0 1px 2px black);
+  margin: 0 3px;
+
+  @include largeScreen() {
+    width: 50px;
+    margin: 0 1px;
+  }
+}
+
 /* .card-list, */
 .free-hidden {
   visibility: hidden;

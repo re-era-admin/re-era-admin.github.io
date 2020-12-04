@@ -311,8 +311,18 @@
                 :class="{ 'free-hidden' : varチケット価格 === 0}"
               >
                 <label for="cardNumber" class="card-input__label"
-                  >カード番号</label
-                >
+                  >カード番号
+                  <div class="box__card-number-brand">
+                    <img
+                      class="part__card-number-brand first"
+                      src="/vendor/interactive-paycard-img/visa.png"
+                    />
+                    <img
+                      class="part__card-number-brand"
+                      src="/asset/image/mastercard_logo.png"
+                    />
+                  </div>
+                </label>
                 <input
                   type="tel"
                   id="cardNumber"
