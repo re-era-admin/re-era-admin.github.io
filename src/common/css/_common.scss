@@ -143,6 +143,12 @@ br.pc_bk {
 }
 
 /* 縦方向マージン  */
+.m-h0_5v {
+  height: 0.5vw;
+}
+.m-h1v {
+  height: 1vw;
+}
 .m-h1_5v {
   height: 1.5vw;
 }
@@ -188,6 +194,9 @@ br.pc_bk {
   .m-w0_5v {
     width: 5px;
   }
+  .m-w1v {
+    width: 10px;
+  }
   .m-w1_5v {
     width: 15px;
   }
@@ -210,6 +219,9 @@ br.pc_bk {
   }
 
   /* 縦方向マージン  */
+  .m-h0_5v {
+    height: 5px;
+  }
   .m-h1_5v {
     height: 15px;
   }
