@@ -142,7 +142,7 @@ window.$ = window.jQuery = jQuery;
   }
 
   function _changeFormatDateToDisplay(pDate) {
-    let _date = new Date(pDate);
+    let _date = new Date(pDate + "+09:00");
     let _formatedDate;
 
     const wNames = ["日", "月", "火", "水", "木", "金", "土"];
