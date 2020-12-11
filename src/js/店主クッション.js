@@ -80,7 +80,7 @@ import Vue from "vue";
       console.log("まだです");
       document.querySelector(".info-text").classList.add("active");
     }
-    // 以降、59秒ごとに開店時間か否かチェックする
+    // 以降、10秒ごとに開店時間か否かチェックする
     setInterval(function () {
       // 現在日時と終了日時を比較
       const nowDate = new Date();
@@ -91,12 +91,12 @@ import Vue from "vue";
       } else {
         console.log("まだです");
       }
-    }, 30000);
+    }, 10000);
   }
 
   function フォーマット済入室可能日時(日時) {
-    // 店主は開店5分前から入室可能.
-    日時.setMinutes(日時.getMinutes() - 5);
+    // 店主は開店3分前から入室可能.
+    日時.setMinutes(日時.getMinutes() - 3);
 
     console.log("フォーマット対象日時", 日時);
     let 月文字列 = 日時.getMonth() + 1;
