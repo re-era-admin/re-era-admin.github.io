@@ -80,6 +80,7 @@ import Vue from "vue";
       location.href = Zoom参加Url;
     } else {
       console.log("まだです");
+      document.querySelector(".info-text").classList.add("active");
     }
     // 以降、59秒ごとに開店時間か否かチェックする
     setInterval(function () {

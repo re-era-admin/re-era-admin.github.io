@@ -66,17 +66,44 @@
           <div class="info-text">
             <p>
               こちらの店舗はまだ開店前です。<br />
-              入室可能日時までお待ち下さい。<br />
-              時間になると自動的にZoomのURLへ移動します。
+              入室可能日時までこのままお待ち下さい。<br />
+              時間になると自動的にZoomが起動します。<br />
+              <br />
+              起動しない方は、以下のような表示がないか確認してクリック(タップ)してください。
             </p>
+            <div class="box__launch-zoom">
+              <a
+                href="https://drive.google.com/file/d/1WWvnhlsJ10qkajD3kvgVUTGjMDE9h0GH/view?usp=sharing"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <img
+                  class="part__launch-zoom pc"
+                  src="/asset/image/クッションページ_Zoom起動_firefox.png"
+                />
+              </a>
+              <a
+                href="https://drive.google.com/file/d/1gCHbPdX9MKklaxQLrN7YlAV0I4RGLMRa/view?usp=sharing"
+                target="_blank"
+                rel="noopener noreferrer"
+              ></a>
+              <img
+                class="part__launch-zoom sp"
+                src="/asset/image/クッションページ_Zoom起動_iOS.png"
+              />
+            </div>
           </div>
-          <h1>出店名：{{ data.var出店名 }}</h1>
-          <h1>入室可能日時：{{ 開店時間_formatted }}</h1>
+          <h1>出店名：<span v-cloak>{{ data.var出店名 }}</span></h1>
+          <div class="spacing"></div>
+          <h1 v-cloak>
+            入室可能日時：<br class="sp_bk" />
+            {{ 開店時間_formatted }}
+          </h1>
           <div class="charge-link">
             <a :href="data.varZoom参加Url"> (仮)お店に入る</a>
           </div>
         </div>
-        <div class="m-w16_5v"></div>
+        <div class="m-h13v"></div>
       </div>
     </section>
   </body>

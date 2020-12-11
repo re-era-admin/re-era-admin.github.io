@@ -53,6 +53,7 @@
 
 .info-text {
   display: none;
+  margin-bottom: 50px;
 
   &.active {
     display: block;
@@ -60,11 +61,19 @@
 }
 .info-text > p {
   font-size: 4.4vw;
-  margin-bottom: 50px;
 
   @include largeScreen() {
     font-size: 20px;
   }
+}
+
+.box__launch-zoom {
+  display: flex;
+  align-items: center;
+}
+.part__launch-zoom {
+  width: 14vw;
+  padding: 10px 0;
 }
 
 .spacing {
