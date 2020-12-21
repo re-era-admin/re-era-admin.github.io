@@ -213,7 +213,7 @@ hr {
   height: 34vw;
 
   @include largeScreen() {
-    height: 272px * $minimizeRate;
+    height: 278px * $minimizeRate;
   }
 }
 
