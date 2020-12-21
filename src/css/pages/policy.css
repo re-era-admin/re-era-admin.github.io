@@ -68,7 +68,7 @@ p {
 }
 
 /** ディスプレイサイズ1024px以上での表示時 */
-@media screen and (min-width: 1024px) {
+@media screen and (min-width: 641px) {
   body {
     display: flex;
     flex-direction: column;
@@ -77,11 +77,11 @@ p {
 
   /** ヘッダ部 */
   header#header {
-    width: 1024px;
-    top: -390px;
+    width: 640px;
+    top: -250px;
   }
   .header-img {
-    width: 1024px;
+    width: 640px;
   }
   .header-img:after {
     position: absolute;
@@ -94,15 +94,15 @@ p {
 
   /** コンテンツ部 */
   h1 {
-    font-size: 3vw;
+    font-size: 2.6vw;
   }
 
   .background-img {
-    width: 1024px;
-    background: url(/asset/image/バックグラウンド.png);
+    width: 640px;
+    background-image: url(/asset/image/バックグラウンド.png);
   }
 
   .container__main-content {
-    max-width: 700px;
+    max-width: 500px;
   }
 }
