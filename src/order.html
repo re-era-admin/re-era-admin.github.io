@@ -71,15 +71,26 @@
                 チケットを申し込むことが可能になります
               </p>
               <div>
-                <input type="checkbox" id="part__check-countersign" />
-                <label for="part__check-countersign">合言葉を設定する</label>
+                <input
+                  type="checkbox"
+                  id="part__check-countersign"
+                  name="鍵付き出店"
+                  class="inputData"
+                />
+                <label for="part__check-countersign"
+                  >合言葉を設定する[英数字で20文字まで]</label
+                >
               </div>
               <div>
                 <input
                   type="text"
                   id="part__countersign-input"
-                  class="disabled"
+                  name="合言葉"
+                  class="inputData disabled"
                   placeholder="合言葉を入力してください"
+                  maxlength="20"
+                  data-parsley-type="alphanum"
+                  data-parsley-type-message="英数字で入力してください"
                 />
               </div>
             </div>

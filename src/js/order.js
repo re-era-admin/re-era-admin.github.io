@@ -15,6 +15,9 @@
     $("#orderForm").parsley().validate();
   }
 
+  // チェックボックスの初期値設定
+  document.getElementById("part__check-countersign").checked = false;
+
   document.getElementById("check_btn").addEventListener(
     "click",
     function (event) {
@@ -187,6 +190,8 @@
     document.getElementById("remake_btn").style.display = "none";
     document.getElementById("inputForm_title").style.display = "block";
     document.getElementById("comfirmForm_title").style.display = "none";
+
+    document.getElementById("main").style.backgroundColor = "#FFF";
   }
 
   function switchComfirmForm() {
@@ -199,6 +204,7 @@
     document.getElementById("remake_btn").style.display = "block";
     document.getElementById("inputForm_title").style.display = "none";
     document.getElementById("comfirmForm_title").style.display = "block";
+
     document.getElementById("main").style.backgroundColor = "#ddd";
   }
 
@@ -210,6 +216,10 @@
     formData.forEach(function (element, index, array) {
       console.log(index);
     });
+    formData.append(
+      "鍵付き出店",
+      document.getElementById("part__check-countersign").checked ? true : false
+    );
 
     const myHeaders = new Headers();
 
@@ -325,16 +335,26 @@
     // let applicationDeadline = document.getElementById("応募締め切り日時").value;
     // let lotteryDeadline = document.getElementById("抽選完了日時").value;
     // let paymentDeadline = document.getElementById("支払い締切り日時").value;
+    let error_message = "";
+
+    const enableCountersign = document.getElementById("part__check-countersign")
+      .checked;
+    if (enableCountersign) {
+      const countersign = document.getElementById("part__countersign-input")
+        .value;
+      if (countersign.length < 1) {
+        error_message = error_message + "合言葉を入力してください。\n";
+      }
+    }
 
     //開店時間が現在時刻よりも5分以上後である事をチェック
     //秒も換算されるためあえて>=を利用しています。
-    let error_message = "";
     if (new Date().setMinutes(varNowDate.getMinutes() + 5) >= varOpenDateTime) {
       error_message =
-        error_message + "お店の開店時間は今から5分以上後にして下さい。\n";
+        error_message + "お店の開店時間は今から5分以上後にしてください。\n";
     }
 
-    //開店期間を超える単位時間が設定されていないかんもチェック
+    //開店期間を超える単位時間が設定されていないかチェック
     console.log(unitTime + ">" + duration);
     if (unitTime > duration) {
       error_message =
