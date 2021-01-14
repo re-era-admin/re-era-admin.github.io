@@ -1,3 +1,8 @@
+// SCSSの共通設定読み込み
+@import "../common/css/common";
+
+// 以下個別のスタイル設定
+
 /* ===================== 
 レイアウトデバッグ用 
  =====================*/
@@ -36,7 +41,7 @@ body {
   color: black;
 }
 
-input {
+input[type="text"] {
   width: 30%;
 }
 
@@ -96,6 +101,20 @@ textarea {
 
 #owner_id {
   display: none;
+}
+
+.part__countersign-text {
+  font-size: 80%;
+  margin-left: 10px;
+
+  @include largeScreen() {
+  }
+}
+
+#part__countersign-input {
+  &.disabled {
+    display: none;
+  }
 }
 
 .minimum_text {

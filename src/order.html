@@ -4,8 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="shortcut icon" href="favicon.ico" />
-    <link rel="stylesheet" href="./common/css/common.css" />
-    <link rel="stylesheet" href="./css/order.css" />
+    <link rel="stylesheet" href="./css/order.scss" />
     <script src="https://www.gstatic.com/firebasejs/6.2.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/6.2.0/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/6.2.0/firebase-firestore.js"></script>
@@ -63,6 +62,26 @@
                 <!-- <option value="2">抽選型</option> -->
                 <option value="3">予約先着型</option>
               </select>
+            </div>
+            <div class="part">
+              <p>鍵付き出店</p>
+              <p class="part__countersign-text">
+                合言葉を有効にすると、合言葉を知っているユーザのみ
+                <br class="sp_bk" />
+                チケットを申し込むことが可能になります
+              </p>
+              <div>
+                <input type="checkbox" id="part__check-countersign" />
+                <label for="part__check-countersign">合言葉を設定する</label>
+              </div>
+              <div>
+                <input
+                  type="text"
+                  id="part__countersign-input"
+                  class="disabled"
+                  placeholder="合言葉を入力してください"
+                />
+              </div>
             </div>
             <div class="part">
               <p>トークジャンル[50文字まで]*</p>

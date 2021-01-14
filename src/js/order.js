@@ -33,6 +33,10 @@
     false
   );
 
+  document
+    .getElementById("part__check-countersign")
+    .addEventListener("change", toggleCountersign);
+
   //
   //抽選型と、予約先着型は開店期間=チケット単位時間とする。そのためチケット単位時間を非表示にし、自動入力されるようにする。
   //
@@ -165,6 +169,12 @@
     document.getElementById("unit_time").value = document.getElementById(
       "duration"
     ).value;
+  }
+
+  function toggleCountersign() {
+    document
+      .getElementById("part__countersign-input")
+      .classList.toggle("disabled");
   }
 
   function switchInputForm() {
@@ -306,8 +316,8 @@
       ":" +
       ("00" + _openDate.getMinutes()).slice(-2);
   }
-  
-  function _validateExceptForParseley(){
+
+  function _validateExceptForParseley() {
     const varNowDate = new Date();
     const varOpenDateTime = new Date(document.getElementById("開店時間").value);
     const duration = Number(document.getElementById("duration").value);
@@ -325,10 +335,11 @@
     }
 
     //開店期間を超える単位時間が設定されていないかんもチェック
-    console.log(unitTime+ ">" +duration);
+    console.log(unitTime + ">" + duration);
     if (unitTime > duration) {
       error_message =
-        error_message + "チケットの単位時間は開店期間より短く設定してください。\n";
+        error_message +
+        "チケットの単位時間は開店期間より短く設定してください。\n";
     }
 
     //応募締切り日時のチェック
@@ -359,9 +370,5 @@
     } else {
       alert(error_message);
     }
-
   }
-
-
-
 })();
