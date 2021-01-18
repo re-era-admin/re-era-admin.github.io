@@ -106,6 +106,7 @@ textarea {
 .part__countersign-text {
   font-size: 80%;
   margin-left: 10px;
+  margin-bottom: 6px;
 
   @include largeScreen() {
   }

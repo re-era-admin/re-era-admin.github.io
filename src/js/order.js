@@ -217,8 +217,8 @@
       console.log(index);
     });
     formData.append(
-      "鍵付き出店",
-      document.getElementById("part__check-countersign").checked ? true : false
+      "合言葉付き出店",
+      document.getElementById("part__check-countersign").checked
     );
 
     const myHeaders = new Headers();
@@ -342,7 +342,7 @@
     if (enableCountersign) {
       const countersign = document.getElementById("part__countersign-input")
         .value;
-      if (countersign.length < 1) {
+      if (!countersign) {
         error_message = error_message + "合言葉を入力してください。\n";
       }
     }
