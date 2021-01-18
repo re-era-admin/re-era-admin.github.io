@@ -135,8 +135,8 @@ window.$ = window.jQuery = jQuery;
         }
         break;
 
-      case "閉店中":
-        return "閉店中";
+      case "Close":
+        return "Close";
         break;
     }
   }
