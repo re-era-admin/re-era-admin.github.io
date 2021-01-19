@@ -14,6 +14,9 @@ window.$ = window.jQuery = jQuery;
 
   let price;
 
+  const 合言葉確認URL =
+    process.env.AP_CONTEXT_PATH + "/出店情報/合言葉を照合する";
+
   var vm = new Vue({
     el: "#container__modal",
     data: {
@@ -149,7 +152,10 @@ window.$ = window.jQuery = jQuery;
         return response.json();
       })
       .then((izakaya) => {
-        console.log("izakaya.price", izakaya.varチケット価格);
+        if (izakaya.合言葉設定) {
+          合言葉を照合する();
+        }
+
         price = izakaya.varチケット価格;
 
         var vm = new Vue({
@@ -272,6 +278,42 @@ window.$ = window.jQuery = jQuery;
   function setLinkBack(izakayaId) {
     document.querySelector(".part__link-top > a").href =
       "/detail.html?id=" + izakayaId;
+  }
+
+  function 合言葉を照合する() {
+    var cookies = document.cookie.split(";");
+    let 合言葉 = "";
+    for (var c of cookies) {
+      var cArray = c.split("=");
+      if (cArray[0] == "countersign") {
+        合言葉 = cArray[1]; // [key,value]
+      }
+    }
+    let param = new FormData();
+
+    param.append("出店Id", 出店情報Id);
+    param.append("合言葉", 合言葉);
+
+    // サーバに合言葉が合っているか確認する
+    fetch(合言葉確認URL, {
+      method: "POST",
+      body: param,
+    })
+      .catch((error) => console.error("Error:", error))
+      .then((response) => {
+        document
+          .getElementById("container__loading")
+          .classList.remove("active");
+        response.text().then(function (text) {
+          if (text && text == "OK") {
+            console.log("合言葉が確認できました。");
+            return;
+          } else if (text && text == "合言葉が間違っています") {
+            alert("不正な遷移が確認されました。\nトップに戻ります。");
+            location.href = "/index.html";
+          }
+        });
+      });
   }
 
   function 入力フォームのバリデーション() {

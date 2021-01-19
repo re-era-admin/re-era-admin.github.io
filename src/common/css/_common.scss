@@ -24,12 +24,16 @@ $breakPoint: $breakPointMobileMax + 1;
   --text-color: #ffffff; /** 基本文字色 */
   --text-color-light-bg: #414141; /** 薄め文字色 */
   --link-text-color: lightblue;
+  --link-visited-color: rgb(192, 113, 238);
   --strong-color: #ff00d8; /** 強調色 */
   --pc-max-width: #{$breakPointMobileMax}; /** PC用スタイルでのmax-width値 */
 }
 
 a:link {
   color: var(--link-text-color);
+}
+a:visited {
+  color: var(--link-visited-color);
 }
 
 html,
@@ -117,6 +121,70 @@ br.pc_bk {
   }
   br.pc_bk {
     display: inline;
+  }
+}
+
+/** モーダル部品 */
+.container__loading {
+  display: none;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  z-index: 1000;
+  background-color: rgba(20, 20, 20, 0.8);
+}
+.container__loading.active {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.box__modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 300;
+  height: 100vh;
+  width: 100vw;
+  background-color: rgba(20, 20, 20, 0.8);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  visibility: hidden;
+}
+.box__modal.active {
+  visibility: visible;
+}
+.part__modal-title {
+  font-size: 6vw;
+
+  @include largeScreen() {
+    font-size: 35px * $minimizeRate;
+  }
+}
+.part__modal-icon {
+  display: none;
+}
+.part__modal-icon.error {
+  display: block;
+}
+.part__modal-text {
+  width: 80vw;
+
+  @include largeScreen() {
+    width: 50%;
+  }
+}
+.part__modal-text > p {
+  font-size: 5vw;
+  color: white;
+  text-align: center;
+  white-space: pre-line;
+
+  @include largeScreen() {
+    font-size: 23.4px * $minimizeRate;
   }
 }
 

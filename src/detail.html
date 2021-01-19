@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="shortcut icon" href="favicon.ico" />
     <link rel="stylesheet" href="/css/detail.scss" />
+    <link rel="stylesheet" href="/vendor/three-dots/three-dots.min.css" />
     <script defer src="/js/detail.js"></script>
     <script
       async
@@ -175,7 +176,7 @@
               </template>
               <template v-else>
                 <div class="charge-link">
-                  <a :href="'/buy.html?id=' + izakaya.varVo出店Id.var出店Id">
+                  <a :href="chargeLinkPath" v-on:click.prevent="fnOnClick">
                     <!-- 手作業抽選用：<a href="https://forms.gle/bceJsJRtPKu7oGsk6">  -->
                     申し込み</a
                   >
@@ -193,6 +194,71 @@
             <div class="m-h5v"></div>
           </div>
         </div>
+        <div id="container__loading" class="container__loading">
+          <!-- TODO:参考サイト https://github.com/nzbin/three-dots -->
+          <div class="dot-spin"></div>
+        </div>
+      </div>
+      <div id="container__modal" class="container__modal">
+        <div class="m-w9v"></div>
+        <div class="box__modal" :class="{ 'active' : modalActive }">
+          <div class="part__modal-title">
+            <p>合言葉を入力してください</p>
+          </div>
+          <div id="part__modal-icon" class="part__modal-icon">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="icon icon-tabler icon-tabler-alert-triangle"
+              width="68"
+              height="68"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="#FFEB3B"
+              fill="none"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path stroke="none" d="M0 0h24v24H0z" />
+              <path d="M12 9v2m0 4v.01" />
+              <path
+                d="M5.07 19H19a2 2 0 0 0 1.75 -2.75L13.75 4a2 2 0 0 0 -3.5 0L3.25 16.25a2 2 0 0 0 1.75 2.75"
+              />
+            </svg>
+          </div>
+          <div class="m-h2v"></div>
+          <div class="part__countersign-input">
+            <input
+              type="text"
+              name="合言葉"
+              placeholder="合言葉を入力してください"
+              maxlength="20"
+            />
+          </div>
+          <div class="m-h2v"></div>
+          <div class="part__modal-text">
+            <p v-cloak>{{ msg.text }}</p>
+          </div>
+          <div class="m-h2v"></div>
+          <div class="box__cushion-link">
+            <div class="part__link-text">
+              <p>
+                このお店は合言葉を知っている人だけが参加できます。<br />
+                合言葉がわからない場合は店主にお聞き下さい
+              </p>
+            </div>
+          </div>
+          <div class="m-h3v"></div>
+          <div class="box__btn-group">
+            <div class="part__btn-top">
+              <a href="#" @click="tojiru">キャンセル</a>
+            </div>
+            <div class="m-w3v"></div>
+            <div class="part__btn-top">
+              <a href="#" @click="fnConfirm">OK</a>
+            </div>
+          </div>
+        </div>
+        <div class="m-w9v"></div>
       </div>
     </section>
   </body>

@@ -21,6 +21,10 @@ header#header {
   z-index: 30;
   top: -37vw;
 
+  &.under-modal {
+    z-index: 1;
+  }
+
   @include largeScreen() {
     width: var(--pc-max-width);
     top: -310px * $minimizeRate;
@@ -305,6 +309,36 @@ div.izakaya-box {
   @include largeScreen() {
     font-size: 18.7px * $minimizeRate;
   }
+}
+
+.box__btn-group {
+  display: flex;
+}
+.part__btn-top {
+  background-color: white;
+  border: solid 1px white;
+  border-radius: 2vw;
+  display: flex;
+  justify-content: center;
+
+  @include largeScreen() {
+    border-radius: 16px;
+  }
+}
+.part__btn-top > a {
+  padding: 2vw 4vw;
+  font-size: 6vw;
+  color: black;
+  text-decoration: none;
+
+  @include largeScreen() {
+    padding: 10px 31.2px;
+    font-size: 20px * $minimizeRate;
+  }
+}
+
+input.error {
+  border: red solid 1px;
 }
 
 * {
