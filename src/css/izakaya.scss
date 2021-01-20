@@ -130,6 +130,13 @@ section#section {
 .display-status-reserve {
   background-color: rgb(3, 124, 204);
 }
+.display-status-vip {
+  background-color: var(--vip-accent-color);
+
+  & > p {
+    filter: drop-shadow(1px 1.5px 3.5px #2f2f2f);
+  }
+}
 
 .duration {
   font-weight: 900;
@@ -144,6 +151,19 @@ section#section {
 
   @include largeScreen() {
     padding: 8% * $minimizeRate;
+  }
+
+  &.vip {
+    border-color: var(--vip-border-color);
+    background: linear-gradient(
+      rgba(1, 74, 74, 0.72) 0%,
+      rgba(52, 1, 1, 0.72) 100%
+    );
+
+    & > p,
+    h2 {
+      color: var(--vip-accent-color);
+    }
   }
 }
 .izakaya-item.disable {
@@ -240,6 +260,14 @@ img.owner-icon {
   @include largeScreen() {
     padding: 0 16px;
     line-height: 1.6;
+  }
+
+  &.vip {
+    background-color: var(--vip-accent-color);
+
+    p {
+      filter: drop-shadow(1px 2.5px 2.5px black);
+    }
   }
 }
 .price > p {

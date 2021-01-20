@@ -73,13 +73,25 @@
     </header>
     <div class="background-img"></div>
     <section id="section">
-      <div class="container__main-content">
+      <div id="container__main-content" class="container__main-content">
+        <div
+          class="box__vip-heading"
+          :class="{ 'active' : izakaya.var合言葉設定 }"
+        >
+          <div class="part__vip-heading-title">
+            <p>VIP限定ラウンジ</p>
+          </div>
+          <div class="part__vip-heading-text">
+            <p>チケットの購入には店主様が設定した合言葉が必要です。</p>
+          </div>
+        </div>
         <div class="container">
           <div id="izakaya-content" class="izakaya-content">
             <div class="izakaya-box">
               <div
                 class="izakaya-overview"
-                :class="{ 'disable' : izakaya.var埋まっている席数 == izakaya.var席数}"
+                :class="{ 'disable' : izakaya.var埋まっている席数 == izakaya.var席数,
+                          'vip' : izakaya.var合言葉設定 }"
               >
                 <div class="owner-icon">
                   <img
@@ -95,7 +107,7 @@
                 </div>
                 <div class="m-h6v"></div>
                 <div class="izakaya-tags">
-                  <div class="price">
+                  <div class="price" :class="{ 'vip' : izakaya.var合言葉設定 }">
                     <p v-cloak>
                       ¥{{ izakaya.varチケット価格 + "/" + izakaya.var単位時間 +
                       "分"}}
@@ -175,7 +187,10 @@
                 </div>
               </template>
               <template v-else>
-                <div class="charge-link">
+                <div
+                  class="charge-link"
+                  :class="{ 'vip' : izakaya.var合言葉設定 }"
+                >
                   <a :href="chargeLinkPath" v-on:click.prevent="fnOnClick">
                     <!-- 手作業抽選用：<a href="https://forms.gle/bceJsJRtPKu7oGsk6">  -->
                     申し込み</a
@@ -253,7 +268,7 @@
               <a href="#" @click="tojiru">キャンセル</a>
             </div>
             <div class="m-w3v"></div>
-            <div class="part__btn-top">
+            <div class="part__btn-top ok">
               <a href="#" @click="fnConfirm">OK</a>
             </div>
           </div>

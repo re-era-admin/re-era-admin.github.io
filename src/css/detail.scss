@@ -92,6 +92,36 @@ section#section {
   align-items: center;
 }
 
+.box__vip-heading {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  &.active {
+    display: flex;
+    margin-bottom: 15px;
+  }
+}
+
+.part__vip-heading-title {
+  font-size: 8vw;
+  color: var(--vip-accent-color);
+  font-weight: bold;
+
+  @include largeScreen() {
+    font-size: 48px;
+  }
+}
+.part__vip-heading-text {
+  font-size: 2.4vw;
+  color: var(--vip-accent-color);
+
+  @include largeScreen() {
+    font-size: 14px;
+  }
+}
+
 div.container {
   width: 67vw;
 
@@ -118,10 +148,15 @@ div.izakaya-box {
   @include largeScreen() {
     padding: 25.6px * $minimizeRate;
   }
-}
-.izakaya-overview.disable {
-  opacity: 0.7;
-  background-color: black;
+
+  &.disable {
+    opacity: 0.7;
+    background-color: black;
+  }
+
+  &.vip {
+    border-color: var(--vip-border-color);
+  }
 }
 
 .navi-text {
@@ -170,6 +205,14 @@ div.izakaya-box {
   width: 100%;
   background-color: var(--strong-color);
   text-align: center;
+
+  &.vip {
+    background-color: var(--vip-accent-color);
+
+    a {
+      filter: drop-shadow(1px 2.5px 2.5px black);
+    }
+  }
 }
 .charge-link > a {
   display: block;
@@ -250,6 +293,14 @@ div.izakaya-box {
     padding: 0 16px;
     line-height: 1.6;
   }
+
+  &.vip {
+    background-color: var(--vip-accent-color);
+
+    p {
+      filter: drop-shadow(1px 2.5px 2.5px black);
+    }
+  }
 }
 .price > p {
   font-size: 3.7vw;
@@ -311,6 +362,16 @@ div.izakaya-box {
   }
 }
 
+/* ===== モーダル画面 ==================-*/
+
+.part__link-text {
+  font-size: 3.2vw;
+
+  @include largeScreen() {
+    font-size: 22px;
+  }
+}
+
 .box__btn-group {
   display: flex;
 }
@@ -324,10 +385,19 @@ div.izakaya-box {
   @include largeScreen() {
     border-radius: 16px;
   }
+
+  &.ok {
+    background-color: var(--strong-color);
+    border: none;
+
+    a {
+      color: white;
+    }
+  }
 }
 .part__btn-top > a {
   padding: 2vw 4vw;
-  font-size: 6vw;
+  font-size: 4vw;
   color: black;
   text-decoration: none;
 

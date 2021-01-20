@@ -65,7 +65,8 @@ window.$ = window.jQuery = jQuery;
                 responseData[i].varVoステータス.varステータス,
                 responseData[i].varVoチケット購入形態.varチケット購入形態,
                 responseData[i].var席数,
-                responseData[i].var埋まっている席数
+                responseData[i].var埋まっている席数,
+                responseData[i].var合言葉設定
               );
             });
             this.izakaya_list = responseData;
@@ -77,7 +78,13 @@ window.$ = window.jQuery = jQuery;
       });
   }
 
-  function _createDisplayPattern(status, ticketPattern, seat, filledSeat) {
+  function _createDisplayPattern(
+    status,
+    ticketPattern,
+    seat,
+    filledSeat,
+    合言葉設定
+  ) {
     let displayPattern;
 
     //表示しないパターンのものはバックエンドからの返却は行われない想定。
@@ -94,6 +101,9 @@ window.$ = window.jQuery = jQuery;
         if (seat == filledSeat) {
           return "満席";
           break;
+        }
+        if (合言葉設定) {
+          return "VIP限定ラウンジ";
         }
         if (ticketPattern == "ふらっと型") {
           return "開店待ち";
@@ -120,6 +130,9 @@ window.$ = window.jQuery = jQuery;
         if (seat == filledSeat) {
           return "満席";
           break;
+        }
+        if (合言葉設定) {
+          return "VIP限定ラウンジ";
         }
         if (ticketPattern == "ふらっと型") {
           return "開店中";

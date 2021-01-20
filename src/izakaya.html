@@ -81,7 +81,7 @@
               class="izakaya-box"
               v-for="(item , index) in izakaya_list"
             >
-              <div class="izakaya-item">
+              <div class="izakaya-item" :class="{ 'vip' : item.var合言葉設定 }">
                 <a
                   class="part__cover detail-link"
                   :href="'/detail.html?id=' + item.varVo出店Id.var出店Id"
@@ -124,7 +124,7 @@
                 </p>
                 <div class="m-h3v"></div>
                 <div class="izakaya-tags">
-                  <div class="price">
+                  <div class="price" :class="{ 'vip' : item.var合言葉設定 }">
                     <p v-cloak>
                       ¥{{ item.varチケット価格 }} / {{ item.var単位時間 }}分
                     </p>
@@ -185,6 +185,13 @@
                 <template v-if="item.表示パターン == '開店中'">
                   <div class="izakaya-tags">
                     <div class="display-status display-status-open">開店中</div>
+                  </div>
+                </template>
+                <template v-if="item.表示パターン == 'VIP限定ラウンジ'">
+                  <div class="izakaya-tags">
+                    <div class="display-status display-status-vip">
+                      <p>VIP限定ラウンジ</p>
+                    </div>
                   </div>
                 </template>
                 <template v-if="item.表示パターン == 'Close'">

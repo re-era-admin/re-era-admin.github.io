@@ -26,6 +26,9 @@ $breakPoint: $breakPointMobileMax + 1;
   --link-text-color: lightblue;
   --link-visited-color: rgb(192, 113, 238);
   --strong-color: #ff00d8; /** 強調色 */
+  --vip-border-color: #dac57e;
+  --vip-accent-color: #e2c67b;
+
   --pc-max-width: #{$breakPointMobileMax}; /** PC用スタイルでのmax-width値 */
 }
 

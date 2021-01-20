@@ -107,22 +107,21 @@ import Vue from "vue";
       })
       .then((data) => {
         var vm = new Vue({
-          el: "#izakaya-content",
+          el: "#container__main-content",
           data: {
             izakaya: [],
             fnOnClick: null,
             chargeLinkPath: "",
           },
           mounted() {
-            console.log(data);
+            console.log("data", data);
             //画面表示用にデータを加工
             data.var開店時間 = _changeFormatDateToDisplay(data.var開店時間);
             data.var閉店時間 = _changeFormatDateToDisplay(data.var閉店時間);
             this.izakaya = data;
 
             // 合言葉付き出店の場合、下部リンククリック時に入力モーダルを表示
-            console.log("通った", data.var合言葉);
-            if (!data.var合言葉) {
+            if (!data.var合言葉設定) {
               this.chargeLinkPath =
                 "/buy.html?id=" + data.varVo出店Id.var出店Id;
               this.fnOnClick = () => {
