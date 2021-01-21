@@ -285,7 +285,7 @@ window.$ = window.jQuery = jQuery;
     let 合言葉 = "";
     for (var c of cookies) {
       var cArray = c.split("=");
-      if (cArray[0] == "countersign") {
+      if (cArray[0].trim(" ") == "countersign") {
         合言葉 = cArray[1]; // [key,value]
       }
     }

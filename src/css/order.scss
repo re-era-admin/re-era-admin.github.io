@@ -103,6 +103,14 @@ textarea {
   display: none;
 }
 
+.part.countersign {
+  display: none;
+
+  &.active {
+    display: block;
+  }
+}
+
 .part__countersign-text {
   font-size: 80%;
   margin-left: 10px;

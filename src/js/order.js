@@ -15,8 +15,9 @@
     $("#orderForm").parsley().validate();
   }
 
-  // チェックボックスの初期値設定
+  // チェックボックス、リストの初期値設定
   document.getElementById("part__check-countersign").checked = false;
+  document.getElementById("ticket_pattern").value = 1;
 
   document.getElementById("check_btn").addEventListener(
     "click",
@@ -46,6 +47,7 @@
   document.getElementById("ticket_pattern").addEventListener(
     "change",
     function (event) {
+      toggleCountersignBox(event.currentTarget);
       switch (document.getElementById("ticket_pattern").value) {
         case "1":
           displayUnitTime();
@@ -172,6 +174,20 @@
     document.getElementById("unit_time").value = document.getElementById(
       "duration"
     ).value;
+  }
+
+  function toggleCountersignBox(target) {
+    switch (target.value) {
+      case "1":
+        document.querySelector(".part.countersign").classList.remove("active");
+        break;
+      case "2":
+        // no-op
+        break;
+      case "3":
+        document.querySelector(".part.countersign").classList.add("active");
+        break;
+    }
   }
 
   function toggleCountersign() {
