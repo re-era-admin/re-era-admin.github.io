@@ -308,7 +308,7 @@ window.$ = window.jQuery = jQuery;
           if (text && text == "OK") {
             console.log("合言葉が確認できました。");
             return;
-          } else if (text && text == "合言葉が間違っています") {
+          } else if (text && text == "NG") {
             alert("不正な遷移が確認されました。\nトップに戻ります。");
             location.href = "/index.html";
           }

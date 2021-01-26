@@ -60,7 +60,7 @@ import Vue from "vue";
             if (text && text == "OK") {
               document.cookie = `countersign=${合言葉}`;
               location.href = "/buy.html?id=" + 出店情報Id;
-            } else if (text && text == "合言葉が間違っています") {
+            } else if (text && text == "NG") {
               modalVm.$set(
                 modalVm.msg,
                 "text",
@@ -83,7 +83,7 @@ import Vue from "vue";
     data: {
       msg: [],
       modalActive: false,
-      closable: false,
+      closable: true,
       fnConfirm: handlers.confirmCountersign,
     },
     methods: {
