@@ -24,7 +24,9 @@ $breakPoint: $breakPointMobileMax + 1;
   --text-color: #ffffff; /** 基本文字色 */
   --text-color-light-bg: #414141; /** 薄め文字色 */
   --link-text-color: lightblue;
+  --link-text-color-light: blue;
   --link-visited-color: rgb(192, 113, 238);
+  --link-visited-color-light: #ae34d3;
   --strong-color: #ff00d8; /** 強調色 */
   --vip-border-color: #dac57e;
   --vip-accent-color: #e2c67b;
@@ -34,9 +36,17 @@ $breakPoint: $breakPointMobileMax + 1;
 
 a:link {
   color: var(--link-text-color);
+
+  &.light {
+    color: var(--link-text-color-light);
+  }
 }
 a:visited {
   color: var(--link-visited-color);
+
+  &.light {
+    color: var(--link-visited-color-light);
+  }
 }
 
 html,

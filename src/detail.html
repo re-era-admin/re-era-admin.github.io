@@ -187,6 +187,10 @@
                 </div>
               </template>
               <template v-else>
+                <!-- <template v-if="izakaya.varVoステータス.Voステータス == '開店中'">
+
+                </template> -->
+
                 <div
                   class="charge-link"
                   :class="{ 'vip' : izakaya.var合言葉設定 }"
@@ -264,9 +268,11 @@
           </div>
           <div class="m-h3v"></div>
           <div class="box__btn-group">
-            <div class="part__btn-top">
-              <a href="#" @click="tojiru">キャンセル</a>
-            </div>
+            <template v-if="closable">
+              <div class="part__btn-top">
+                <a href="#" @click="tojiru">キャンセル</a>
+              </div>
+            </template>
             <div class="m-w3v"></div>
             <div class="part__btn-top ok">
               <a href="#" @click="fnConfirm">OK</a>
