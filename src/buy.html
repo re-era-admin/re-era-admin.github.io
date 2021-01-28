@@ -523,7 +523,7 @@
               <p v-cloak>{{ msg.text }}</p>
             </div>
             <div class="m-h6v"></div>
-            <template v-show='cushionLink != ""'>
+            <template v-if="cushionLink">
               <div class="box__cushion-link">
                 <div class="part__link-text">
                   <p>こちらのリンクからお店へお入りください。</p>
@@ -537,8 +537,8 @@
                   >
                 </div>
               </div>
+              <div class="m-h8v"></div>
             </template>
-            <div class="m-h8v"></div>
             <template v-if="!closable">
               <div class="part__btn-top">
                 <a href="/index.html">Topへ戻る</a>
@@ -546,7 +546,7 @@
             </template>
             <template v-else>
               <div class="part__btn-top">
-                <a @click="tojiru">閉じる</a>
+                <a href="#" @click="tojiru">閉じる</a>
               </div>
             </template>
           </div>

@@ -357,6 +357,7 @@ window.$ = window.jQuery = jQuery;
           };
           vm.msg = res;
           vm.closable = true;
+          document.getElementById("header").classList.remove("under-modal");
           throw new Error("サーバでの決済処理エラー");
         }
         console.log("Success", response.varVoチケット.varクッションページUrl);
