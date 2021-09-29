@@ -22,6 +22,7 @@
   },
   "homepage": "https://github.com/Re-eRA/online-yokocho-front#readme",
   "devDependencies": {
+    "@parcel/transformer-sass": "^2.0.0-rc.0",
     "csslint": "^1.0.5",
     "cssnano": "^4.1.10",
     "htmllint": "^0.8.0",
