@@ -120,39 +120,13 @@
                 data-parsley-error-message="必須項目です。"
               ></textarea>
             </div>
-            <!-- <div class="part">
-              <p>お店の説明要約1[20文字]</p>
-              <input
-                id="description_outline1"
-                name="お店の説明要約1"
-                placeholder="(例)店主は東京で働くサラリーマンです。"
-                class="inputData"
-                maxlength="20"
-              />
-            </div>
-            <div class="part">
-              <p>お店の説明要約2[20文字]</p>
-              <input
-                id="description_outline2"
-                name="お店の説明要約2"
-                placeholder="(例)一緒に話しながらお酒を呑みましょう^^。"
-                class="inputData"
-                maxlength="20"
-              />
-            </div>
-            <div class="part">
-              <p>お店の説明要約3[20文字]</p>
-              <input
-                id="description_outline3"
-                name="お店の説明要約3"
-                placeholder="(例)社会人同士"
-                class="inputData"
-                maxlength="20"
-              />
-            </div> -->
             <div class="part">
               <p>お客様席数 (店主様分はこの中に含みません)*</p>
               <select id="seats" class="inputData" name="席数">
+                <option value="12">12</option>
+                <option value="11">11</option>
+                <option value="10">10</option>
+                <option value="9">9</option>
                 <option value="8">8</option>
                 <option value="7">7</option>
                 <option value="6">6</option>
@@ -175,102 +149,6 @@
                 data-parsley-error-message="チケット価格を数字で入力してください。"
               />
             </div>
-            <!-- <div class="part">
-              <p>応募締切り日時</p>
-              <input
-                id="applicationDeadline-date"
-                class="inputData"
-                type="date"
-                required
-                data-parsley-openDate=""
-                data-parsley-error-message="必須項目です。"
-              /><input
-                class="inputData minimum_text"
-                id="applicationDeadline-hour"
-                placeholder="(例)22"
-                data-parsley-type="integer"
-                data-parsley-max="23"
-                required
-              />時<input
-                class="inputData minimum_text"
-                id="applicationDeadline-min"
-                placeholder="(例)30"
-                data-parsley-type="integer"
-                data-parsley-max="59"
-                required
-              />分〜 -->
-            <!-- リクエスト用に日付と時間を結合したものを格納するinput 非表示 -->
-            <!-- <input
-                type="datetime-local"
-                class=""
-                id="応募締め切り日時"
-                name="応募締め切り日時"
-              />
-            </div> -->
-            <!-- <div class="part">
-              <p>抽選完了日時</p>
-              <input
-                id="lotteryDeadline-date"
-                class="inputData"
-                type="date"
-                required
-                data-parsley-openDate=""
-                data-parsley-error-message="必須項目です。"
-              /><input
-                class="inputData minimum_text"
-                id="lotteryDeadline-hour"
-                placeholder="(例)22"
-                data-parsley-type="integer"
-                data-parsley-max="23"
-                required
-              />時<input
-                class="inputData minimum_text"
-                id="lotteryDeadline-min"
-                placeholder="(例)30"
-                data-parsley-type="integer"
-                data-parsley-max="59"
-                required
-              />分〜 -->
-            <!-- リクエスト用に日付と時間を結合したものを格納するinput 非表示 -->
-            <!-- <input
-                type="datetime-local"
-                class=""
-                id="抽選完了日時"
-                name="抽選完了日時"
-              />
-            </div> -->
-            <!-- <div class="part">
-              <p>支払い締切り日時</p>
-              <input
-                id="paymentDeadline-date"
-                class="inputData"
-                type="date"
-                required
-                data-parsley-openDate=""
-                data-parsley-error-message="必須項目です。"
-              /><input
-                class="inputData minimum_text"
-                id="paymentDeadline-hour"
-                placeholder="(例)22"
-                data-parsley-type="integer"
-                data-parsley-max="23"
-                required
-              />時<input
-                class="inputData minimum_text"
-                id="paymentDeadline-min"
-                placeholder="(例)30"
-                data-parsley-type="integer"
-                data-parsley-max="59"
-                required
-              />分〜 -->
-            <!-- リクエスト用に日付と時間を結合したものを格納するinput 非表示 -->
-            <!-- <input
-                type="datetime-local"
-                class=""
-                id="支払い締切り日時"
-                name="支払い締切り日時"
-              />
-            </div> -->
             <div class="part">
               <p>お店の開店時間(現在時刻よりも5分後以降)<br /></p>
               <input

@@ -79,63 +79,6 @@
   document.getElementById("submit").addEventListener("click", sendRequest);
 
   //
-  //応募締め切り日時：開始日、時、分いずれかに更新があった場合にバックエンド連携用にlocal-date-time型inputフォーム[非表示]を自動更新する
-  //
-  // document
-  //   .querySelector("#applicationDeadline-date")
-  //   .addEventListener("change", (event) => {
-  //     createApplicationDateline();
-  //   });
-  // document
-  //   .querySelector("#applicationDeadline-hour")
-  //   .addEventListener("change", (event) => {
-  //     createApplicationDateline();
-  //   });
-  // document
-  //   .querySelector("#applicationDeadline-min")
-  //   .addEventListener("change", (event) => {
-  //     createApplicationDateline();
-  //   });
-
-  //
-  //抽選完了日時：開始日、時、分いずれかに更新があった場合にバックエンド連携用にlocal-date-time型inputフォーム[非表示]を自動更新する
-  //
-  // document
-  //   .querySelector("#lotteryDeadline-date")
-  //   .addEventListener("change", (event) => {
-  //     createLotteryDeadline();
-  //   });
-  // document
-  //   .querySelector("#lotteryDeadline-hour")
-  //   .addEventListener("change", (event) => {
-  //     createLotteryDeadline();
-  //   });
-  // document
-  //   .querySelector("#lotteryDeadline-min")
-  //   .addEventListener("change", (event) => {
-  //     createLotteryDeadline();
-  //   });
-
-  //
-  //支払い締切り日時：開始日、時、分いずれかに更新があった場合にバックエンド連携用にlocal-date-time型inputフォーム[非表示]を自動更新する
-  //
-  // document
-  //   .querySelector("#paymentDeadline-date")
-  //   .addEventListener("change", (event) => {
-  //     createPaymentDeadline();
-  //   });
-  // document
-  //   .querySelector("#paymentDeadline-hour")
-  //   .addEventListener("change", (event) => {
-  //     createPaymentDeadline();
-  //   });
-  // document
-  //   .querySelector("#paymentDeadline-min")
-  //   .addEventListener("change", (event) => {
-  //     createPaymentDeadline();
-  //   });
-
-  //
   //開店日時：開始日、時、分いずれかに更新があった場合にバックエンド連携用にlocal-date-time型inputフォーム[非表示]を自動更新する
   //
   document.querySelector("#start-date").addEventListener("change", (event) => {
@@ -171,9 +114,8 @@
 
   function nonDisplayUnitTime() {
     document.getElementById("part_unitTime").style.display = "none";
-    document.getElementById("unit_time").value = document.getElementById(
-      "duration"
-    ).value;
+    document.getElementById("unit_time").value =
+      document.getElementById("duration").value;
   }
 
   function toggleCountersignBox(target) {
@@ -277,8 +219,9 @@
 
   //TODO 以下の処理はもう少しまとめたい。
   function createApplicationDateline() {
-    const _startDate = document.querySelector("#applicationDeadline-date")
-      .value;
+    const _startDate = document.querySelector(
+      "#applicationDeadline-date"
+    ).value;
     const _startHour = (
       "00" + document.querySelector("#applicationDeadline-hour").value
     ).slice(-2);
@@ -353,11 +296,13 @@
     // let paymentDeadline = document.getElementById("支払い締切り日時").value;
     let error_message = "";
 
-    const enableCountersign = document.getElementById("part__check-countersign")
-      .checked;
+    const enableCountersign = document.getElementById(
+      "part__check-countersign"
+    ).checked;
     if (enableCountersign) {
-      const countersign = document.getElementById("part__countersign-input")
-        .value;
+      const countersign = document.getElementById(
+        "part__countersign-input"
+      ).value;
       if (!countersign) {
         error_message = error_message + "合言葉を入力してください。\n";
       }
